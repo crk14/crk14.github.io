@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Gulp是基于Node.js流的前端自动化构建工具Gulp用处Gulp自动化构建工具可以增强你的工作流程！易于使用、易于学习、构建快速、插件高质！在日常开发中，可以借助Gulp的一些插件完成很多的前端任务。如：代码的编译（sass、less）、压缩css，js、图片、合并js，css、es6转es5、自动刷新页面等。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Gulp">
+<meta property="og:url" content="&#x2F;2019&#x2F;11&#x2F;02&#x2F;Gulp&#x2F;index.html">
+<meta property="og:site_name" content="陈礽奎的个人博客">
+<meta property="og:description" content="Gulp是基于Node.js流的前端自动化构建工具Gulp用处Gulp自动化构建工具可以增强你的工作流程！易于使用、易于学习、构建快速、插件高质！在日常开发中，可以借助Gulp的一些插件完成很多的前端任务。如：代码的编译（sass、less）、压缩css，js、图片、合并js，css、es6转es5、自动刷新页面等。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-11-02T09:05:37.571Z">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="/2019/11/02/Gulp/"/>
+
+
+
+
+
+  <title>Gulp | 陈礽奎的个人博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">陈礽奎的个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+            
+            日程表
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="/2019/11/02/Gulp/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CRK">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://c-ssl.duitang.com/uploads/item/201411/21/20141121082939_QJUjE.thumb.700_0.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陈礽奎的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Gulp</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-02T16:57:47+08:00">
+                2019-11-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="Gulp是基于Node-js流的前端自动化构建工具"><a href="#Gulp是基于Node-js流的前端自动化构建工具" class="headerlink" title="Gulp是基于Node.js流的前端自动化构建工具"></a>Gulp是基于Node.js流的前端自动化构建工具</h3><h3 id="Gulp用处"><a href="#Gulp用处" class="headerlink" title="Gulp用处"></a>Gulp用处</h3><p>Gulp自动化构建工具可以增强你的工作流程！<br>易于使用、易于学习、构建快速、插件高质！<br>在日常开发中，可以借助Gulp的一些插件完成很多的前端任务。<br>如：代码的编译（sass、less）、压缩css，js、图片、合并js，css、es6转es5、自动刷新页面等。</p>
+<a id="more"></a>
+<p>gulp中文官网： <a href="https://www.gulpjs.com.cn/">https://www.gulpjs.com.cn/</a><br>插件地址： <a href="https://gulpjs.com/plugins/">https://gulpjs.com/plugins/</a></p>
+<hr>
+<p>使用Gulp</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">确保根目录存在 package.json 文件，执行 npm init -y 生成</span><br><span class="line"></span><br><span class="line">查看gulp版本</span><br><span class="line">gulp -v</span><br><span class="line"></span><br><span class="line">删除旧版本</span><br><span class="line">npm rm gulp --global</span><br><span class="line"></span><br><span class="line">1.安装gulp-cli：</span><br><span class="line">npm install gulp-cli --global</span><br><span class="line"></span><br><span class="line">2.作为项目的开发依赖（devDependencies）安装：</span><br><span class="line">npm install gulp --save-dev</span><br><span class="line"></span><br><span class="line">3.在项目根目录下创建一个名为 gulpfile.js 的配置文件：</span><br><span class="line">此文件是项目主文件，运行gulp命令时，默认运行此文件</span><br><span class="line"></span><br><span class="line">4.命令行运行 gulp：</span><br><span class="line">gulp  或  gulp + 任务名</span><br><span class="line"></span><br><span class="line">直接运行 gulp 默认执行 default 任务（task）。</span><br><span class="line">想要单独执行特定的任务（task），请输入 gulp taskName</span><br></pre></td></tr></table></figure>
+<h3 id="Gulp-常用API"><a href="#Gulp-常用API" class="headerlink" title="Gulp 常用API"></a>Gulp 常用API</h3><p>task()、src()、dest()、watch()、series()、parallel()</p>
+<h3 id="gulp-task-方法用来注册任务"><a href="#gulp-task-方法用来注册任务" class="headerlink" title="gulp.task 方法用来注册任务"></a>gulp.task 方法用来注册任务</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gulp.task(taskName, taskFunction)</span><br><span class="line">taskName 为任务名</span><br><span class="line">taskFunction 为任务函数，我们把任务要执行的代码都写在里面。</span><br></pre></td></tr></table></figure>
+<h3 id="gulp-src-创建一个流，用于从文件系统读取元数据对象-用来读取文件"><a href="#gulp-src-创建一个流，用于从文件系统读取元数据对象-用来读取文件" class="headerlink" title="gulp.src 创建一个流，用于从文件系统读取元数据对象(用来读取文件)"></a>gulp.src 创建一个流，用于从文件系统读取元数据对象(用来读取文件)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gulp.src(globs[, options])</span><br><span class="line">globs 参数是文件匹配模式(类似正则表达式)，当然也可以直接指定某个具体的文件路径。当有多个匹配模式时，该参数为一个数组。</span><br><span class="line">options 为可选参数，通常不需要用到。</span><br></pre></td></tr></table></figure>
+<h3 id="匹配模式"><a href="#匹配模式" class="headerlink" title="匹配模式"></a>匹配模式</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">* 匹配文件路径中的0个或多个字符，但不会匹配路径分隔符(/)，除非路径分隔符出现在末尾</span><br><span class="line">** 匹配路径中的0个或多个目录及其子目录，需要单独出现，即它左右不能有其他东西了。如果出现在末尾，也能匹配文件。</span><br><span class="line">? 匹配文件路径中的一个字符(不会匹配路径分隔符)</span><br><span class="line">[...] 匹配方括号中出现的字符中的任意一个，当方括号中第一个字符为^或!时，则表示不匹配方括号中出现的其他字符中的任意一个，类似js正则表达式中的用法</span><br><span class="line">!(pattern|pattern|pattern) 匹配任何与括号中给定的任一模式都不匹配的</span><br><span class="line">?(pattern|pattern|pattern) 匹配括号中给定的任一模式0次或1次，类似于js正则中的(pattern|pattern|pattern)?</span><br><span class="line">+(pattern|pattern|pattern) 匹配括号中给定的任一模式至少1次，类似于js正则中的(pattern|pattern|pattern)+</span><br><span class="line">*(pattern|pattern|pattern) 匹配括号中给定的任一模式0次或多次，类似于js正则中的(pattern|pattern|pattern)*</span><br><span class="line">@(pattern|pattern|pattern) 匹配括号中给定的任一模式1次，类似于js正则中的(pattern|pattern|pattern)</span><br></pre></td></tr></table></figure>
+<h3 id="gulp-dest-创建一个流，用于将元数据对象写入到文件系统（设置生成文件的路径）"><a href="#gulp-dest-创建一个流，用于将元数据对象写入到文件系统（设置生成文件的路径）" class="headerlink" title="gulp.dest 创建一个流，用于将元数据对象写入到文件系统（设置生成文件的路径）"></a>gulp.dest 创建一个流，用于将元数据对象写入到文件系统（设置生成文件的路径）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">gulp.dest(path[,options])</span><br><span class="line">path 将写入文件的输出目录的路径。</span><br><span class="line">options 为可选参数，通常不需要用到。</span><br><span class="line"></span><br><span class="line">var gulp = require(<span class="string">'gulp'</span>);</span><br><span class="line">gulp.task(<span class="string">'mytask'</span>, <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">    gulp.src(<span class="string">"./js/a.js"</span>)</span><br><span class="line">    .pipe(gulp.dest(<span class="string">"./dist"</span>));</span><br><span class="line">&#125;);</span><br><span class="line">读取文件流（gulp.src），通过管道（pipe），把文件流写入（gulp.dest）当前目录下的 dist 文件夹中</span><br></pre></td></tr></table></figure>
+<h3 id="gulp-watch-监听-globs-并在发生更改时运行任务"><a href="#gulp-watch-监听-globs-并在发生更改时运行任务" class="headerlink" title="gulp.watch  监听 globs 并在发生更改时运行任务"></a>gulp.watch  监听 globs 并在发生更改时运行任务</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">gulp.watch(globs[, options], [tasks])</span><br><span class="line">globs 为要监视的文件匹配模式，规则和用法与gulp.src()方法中的globs相同。</span><br><span class="line">options 为可选参数，通常不需要用到。</span><br><span class="line">tasks 为文件变化后要执行的 一个任务函数 或由 series() 和 parallel() 生成的组合任务</span><br></pre></td></tr></table></figure>
+<h4 id="gulp-series-将任务函数或组合操作组合成更大的操作"><a href="#gulp-series-将任务函数或组合操作组合成更大的操作" class="headerlink" title="gulp.series() 将任务函数或组合操作组合成更大的操作"></a>gulp.series() 将任务函数或组合操作组合成更大的操作</h4><p>gulp.series(‘task1’,’task2’,’task3’……);<br>返回一个组合操作，它将注册为任务或嵌套在其他 series 或 parallel 组合中。<br>当执行组合操作时，所有任务将按顺序运行。<br>如果一个任务中发生错误，则不会运行后续任务。</p>
+<h4 id="gulp-parallel-将任务函数或组合操作组合成更大的操作"><a href="#gulp-parallel-将任务函数或组合操作组合成更大的操作" class="headerlink" title="gulp.parallel() 将任务函数或组合操作组合成更大的操作"></a>gulp.parallel() 将任务函数或组合操作组合成更大的操作</h4><p>gulp.parallel(‘task1’,’task2’,’task3’……);<br>返回一个组合操作，它将注册为任务或嵌套在其他 series 或 parallel 组合中。<br>当执行组合操作时，所有任务将以最大并发性运行。<br>如果一个任务发生错误，其他任务可能不确定地完成，也可能不完成。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/11/02/NodeJs/" rel="next" title="NodeJs">
+                <i class="fa fa-chevron-left"></i> NodeJs
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://c-ssl.duitang.com/uploads/item/201411/21/20141121082939_QJUjE.thumb.700_0.jpeg"
+                alt="CRK" />
+            
+              <p class="site-author-name" itemprop="name">CRK</p>
+              <p class="site-description motion-element" itemprop="description">这个人很懒，什么都没有留下</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%20%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Gulp是基于Node-js流的前端自动化构建工具"><span class="nav-number">1.</span> <span class="nav-text">Gulp是基于Node.js流的前端自动化构建工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Gulp用处"><span class="nav-number">2.</span> <span class="nav-text">Gulp用处</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Gulp-常用API"><span class="nav-number">3.</span> <span class="nav-text">Gulp 常用API</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gulp-task-方法用来注册任务"><span class="nav-number">4.</span> <span class="nav-text">gulp.task 方法用来注册任务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gulp-src-创建一个流，用于从文件系统读取元数据对象-用来读取文件"><span class="nav-number">5.</span> <span class="nav-text">gulp.src 创建一个流，用于从文件系统读取元数据对象(用来读取文件)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#匹配模式"><span class="nav-number">6.</span> <span class="nav-text">匹配模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gulp-dest-创建一个流，用于将元数据对象写入到文件系统（设置生成文件的路径）"><span class="nav-number">7.</span> <span class="nav-text">gulp.dest 创建一个流，用于将元数据对象写入到文件系统（设置生成文件的路径）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gulp-watch-监听-globs-并在发生更改时运行任务"><span class="nav-number">8.</span> <span class="nav-text">gulp.watch  监听 globs 并在发生更改时运行任务</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#gulp-series-将任务函数或组合操作组合成更大的操作"><span class="nav-number">8.1.</span> <span class="nav-text">gulp.series() 将任务函数或组合操作组合成更大的操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#gulp-parallel-将任务函数或组合操作组合成更大的操作"><span class="nav-number">8.2.</span> <span class="nav-text">gulp.parallel() 将任务函数或组合操作组合成更大的操作</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">CRK</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
