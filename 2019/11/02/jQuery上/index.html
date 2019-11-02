@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="jQuery简介jQuery也就是JavaScript和查询（Query）即 辅助JavaScript开发的类库。jQuery是一个兼容多浏览器的javascript库。 jQuery的优点：轻量级、强大的选择器、出色的DOM操作、可靠的事件处理机制、完善的Ajax、出色的浏览器兼容性、便捷的链式操作、丰富的插件支持、完善的文档、学习成本低、开源 等等jQuery使用进入jQuery官网或其他平台">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jQuery上">
+<meta property="og:url" content="&#x2F;2019&#x2F;11&#x2F;02&#x2F;jQuery%E4%B8%8A&#x2F;index.html">
+<meta property="og:site_name" content="陈礽奎的个人博客">
+<meta property="og:description" content="jQuery简介jQuery也就是JavaScript和查询（Query）即 辅助JavaScript开发的类库。jQuery是一个兼容多浏览器的javascript库。 jQuery的优点：轻量级、强大的选择器、出色的DOM操作、可靠的事件处理机制、完善的Ajax、出色的浏览器兼容性、便捷的链式操作、丰富的插件支持、完善的文档、学习成本低、开源 等等jQuery使用进入jQuery官网或其他平台">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-11-02T09:21:35.450Z">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="/2019/11/02/jQuery上/"/>
+
+
+
+
+
+  <title>jQuery上 | 陈礽奎的个人博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">陈礽奎的个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+            
+            日程表
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="/2019/11/02/jQuery%E4%B8%8A/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CRK">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://c-ssl.duitang.com/uploads/item/201411/21/20141121082939_QJUjE.thumb.700_0.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陈礽奎的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">jQuery上</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-02T17:14:35+08:00">
+                2019-11-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="jQuery简介"><a href="#jQuery简介" class="headerlink" title="jQuery简介"></a>jQuery简介</h3><p>jQuery也就是JavaScript和查询（Query）即 辅助JavaScript开发的类库。<br>jQuery是一个兼容多浏览器的javascript库。</p>
+<h4 id="jQuery的优点：轻量级、强大的选择器、出色的DOM操作、可靠的事件处理机制、完善的Ajax、出色的浏览器兼容性、便捷的链式操作、丰富的插件支持、完善的文档、学习成本低、开源-等等"><a href="#jQuery的优点：轻量级、强大的选择器、出色的DOM操作、可靠的事件处理机制、完善的Ajax、出色的浏览器兼容性、便捷的链式操作、丰富的插件支持、完善的文档、学习成本低、开源-等等" class="headerlink" title="jQuery的优点：轻量级、强大的选择器、出色的DOM操作、可靠的事件处理机制、完善的Ajax、出色的浏览器兼容性、便捷的链式操作、丰富的插件支持、完善的文档、学习成本低、开源 等等"></a>jQuery的优点：轻量级、强大的选择器、出色的DOM操作、可靠的事件处理机制、完善的Ajax、出色的浏览器兼容性、便捷的链式操作、丰富的插件支持、完善的文档、学习成本低、开源 等等</h4><h4 id="jQuery使用"><a href="#jQuery使用" class="headerlink" title="jQuery使用"></a>jQuery使用</h4><p>进入jQuery官网或其他平台下载jQuery文件，并且引入页面：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span> src=<span class="string">"js/jquery-1.8.3.min.js"</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>注意：2.0及之后的版本，不再兼容 IE 6 7 8</p>
+<a id="more"></a>
+<h3 id="jQuery选择器-简洁的写法，支持CSS1到CSS3的选择器"><a href="#jQuery选择器-简洁的写法，支持CSS1到CSS3的选择器" class="headerlink" title="jQuery选择器 简洁的写法，支持CSS1到CSS3的选择器"></a>jQuery选择器 简洁的写法，支持CSS1到CSS3的选择器</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$(“<span class="comment">#test”)选取id为test的元素---单个元素</span></span><br><span class="line">$(“.<span class="built_in">test</span>”)选取所有class为<span class="built_in">test</span>的元素---元素集合</span><br><span class="line">$(“div”)选取所有的&lt;div&gt;元素---元素集合</span><br><span class="line">$(“div  span”)选取&lt;div&gt;里的所有的&lt;span&gt;(可以选到子和孙所有元素)元素---元素集合</span><br><span class="line">$(“div:first”)选取所有&lt;div&gt;元素中第1个&lt;div&gt;元素---单个元素</span><br><span class="line">$(“div:last”)选取所有&lt;div&gt;元素中最后一个&lt;div&gt;元素---单个元素</span><br><span class="line">$(“input:even”)选取索引(索引从0开始,0算为偶数)是偶数的&lt;input&gt;元素---元素集合</span><br><span class="line">$(“input:odd”)选取索引(索引从0开始)是奇数的&lt;input&gt;元素---元素集合</span><br><span class="line">$(“div[title=<span class="built_in">test</span>]”)选取属性title为“<span class="built_in">test</span>”的&lt;div&gt;元素---元素集合</span><br><span class="line">$(“div:nth-child(1)”) 选取所有div中，是其父标签的第一个子元素的div元素---元素集合</span><br></pre></td></tr></table></figure>
+<h3 id="jQuery-DOM"><a href="#jQuery-DOM" class="headerlink" title="jQuery DOM"></a>jQuery DOM</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">创建节点:</span><br><span class="line">运用传统的javascript方法，创建一个div节点：</span><br><span class="line">var newDiv = document.createElement(‘div’);</span><br><span class="line">newDiv.innerText = <span class="string">' 新建节点'</span>;</span><br><span class="line"></span><br><span class="line">jQuery中创建一个div节点：</span><br><span class="line">$(‘&lt;div&gt;新建节点&lt;/div&gt;’);</span><br><span class="line"></span><br><span class="line">插入节点:</span><br><span class="line">用javascript方法，插入一个节点：</span><br><span class="line">var Newp = document.createElement(“p”);</span><br><span class="line">document.body.appendChild(Newp);</span><br><span class="line"></span><br><span class="line">jQuery中插入节点：例：$( a ).append( c );</span><br><span class="line">append  ------a里末尾插c</span><br><span class="line">appendTo  ---c插到a里末尾</span><br><span class="line">prepend ------a里前面插c</span><br><span class="line">prependTo ---c插到a里前面</span><br><span class="line"></span><br><span class="line">after-----------a之后插c</span><br><span class="line">insertAfter ----c插到a之后</span><br><span class="line">before --------a之前插c</span><br><span class="line">insertBefore --c插到a之前</span><br><span class="line"></span><br><span class="line">删除节点:</span><br><span class="line">用javascript方法，删除一个节点：</span><br><span class="line">var b = document.getElementById(“<span class="built_in">test</span>”);</span><br><span class="line">var c = b.parentNode;</span><br><span class="line">c.removeChild(b);</span><br><span class="line"></span><br><span class="line">jQuery中删除节点：</span><br><span class="line">$(<span class="string">'#test'</span>).remove();</span><br><span class="line">remove() 删除节点</span><br><span class="line">empty() 清空节点内容</span><br><span class="line">detach() 移除被选元素，包括所有的文本和子节点，返回移除元素的副本</span><br><span class="line"></span><br><span class="line">替换节点:</span><br><span class="line">用javascript方法，替换节点：</span><br><span class="line">parent.replaceChild( newNode , oldNode );</span><br><span class="line"></span><br><span class="line">jQuery中替换节点：</span><br><span class="line">$(“&lt;p&gt;替换 &lt;/p&gt;”).replaceAll(“<span class="comment">#test1″);</span></span><br><span class="line"></span><br><span class="line">复制节点:</span><br><span class="line">运用传统的javascript方法，复制一个节点：</span><br><span class="line">var txt = document.querySelector(<span class="string">"p"</span>);</span><br><span class="line">var clonep = txt.cloneNode(<span class="literal">true</span>);</span><br><span class="line">document.body.appendChild(clonep);</span><br><span class="line"></span><br><span class="line">jQuery中复制一个节点：</span><br><span class="line">var clone_a = a.clone(<span class="literal">true</span>);  深复制包括事件处理程序</span><br><span class="line">$(<span class="string">'body'</span>).append(clone_a);</span><br></pre></td></tr></table></figure>
+<h4 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法:"></a>常用方法:</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">.children() 获得匹配元素集合中每个元素的所有子元素</span><br><span class="line">.next() 获得匹配元素集合中每个元素的下一个同辈元素</span><br><span class="line">.prev() 获得匹配元素集合中每个元素紧邻的上一个同辈元素</span><br><span class="line">.parent() 获得当前匹配元素集合中每个元素的父元素</span><br><span class="line">.closest() 从当前元素开始，返回最先匹配到的符合条件的父元素</span><br><span class="line">.find(child) 获得当前匹配元素集合中每个元素的后代</span><br><span class="line">.siblings() 获得匹配元素集合中所有元素的同辈元素</span><br><span class="line">.eq() 匹配元素集合中指定索引的一个元素</span><br><span class="line">. index() 方法返回指定元素相对于其他指定元素的 index 位置</span><br><span class="line">.end() 将匹配的元素变为前一次的状态</span><br><span class="line">.each() 循环，为每个匹配的元素执行函数</span><br><span class="line">.is() 根据选择器、元素或 jQuery 对象来检测匹配元素集合，如果有元素匹配给定的参数，则返回 <span class="literal">true</span></span><br><span class="line">.addClass() 为每个匹配的元素添加指定的类名</span><br><span class="line">.removeClass() 从匹配的元素中删除全部或者指定的类</span><br><span class="line">.toggleClass() 从匹配的元素中添加或删除一个类</span><br><span class="line">.hasClass() 检查元素是否含有某个特定的类，有则返回<span class="literal">true</span></span><br><span class="line">.attr() 设置或返回被选元素的属性值</span><br><span class="line">.removeAttr() 从每一个匹配的元素中删除一个属性</span><br><span class="line">.html() 设置或取得第一个匹配元素的html内容</span><br><span class="line">.text() 设置或取得第一个匹配元素的文本内容</span><br><span class="line">.val() 设置或返回匹配元素的值(表单元素)</span><br><span class="line">.css() 设置或返回匹配元素的样式属性</span><br><span class="line">.width() 设置或返回匹配元素的宽度</span><br><span class="line">.height() 设置或返回匹配元素的高度</span><br><span class="line">.scrollLeft() 设置或返回匹配元素相对滚动条左侧的偏移</span><br><span class="line">.scrollTop() 设置或返回匹配元素相对滚动条顶部的偏移</span><br><span class="line">.position() 获取匹配元素相对于定位父元素的偏移  &#123;left: 40,  top: 50&#125;</span><br><span class="line">.offset() 获取或设置匹配元素在当前视口的相对偏移  &#123;left: 40,  top: 50&#125;</span><br><span class="line">. wrap() 使用指定的 HTML 元素来包裹每个被选元素</span><br><span class="line">$(<span class="string">"p"</span>).wrap(<span class="string">"&lt;div&gt;&lt;/div&gt;"</span>); // 给每个P元素包裹一个div元素</span><br><span class="line">......</span><br><span class="line">$.trim( str ) 函数会移除字符串开始和末尾处的所有空白字符</span><br><span class="line">$.each() 遍历数组</span><br><span class="line">$.each(data,<span class="keyword">function</span> (index,value) &#123;</span><br><span class="line">    console.log(<span class="string">'数组当前元素的索引'</span> + index);</span><br><span class="line">    console.log(<span class="string">'数组当前元素的值'</span> + value);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="jQuery动画"><a href="#jQuery动画" class="headerlink" title="jQuery动画"></a>jQuery动画</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></td><td class="code"><pre><span class="line">展开／收起:</span><br><span class="line">slideUp(null/speed , easing , fn);   收起</span><br><span class="line">slideDown(null/speed , easing , fn);   展开</span><br><span class="line">参数：可选</span><br><span class="line">null：不传参，执行默认效果</span><br><span class="line">speed：<span class="string">'slow'</span>|<span class="string">'normal'</span>|<span class="string">'fast'</span> 或 毫秒数</span><br><span class="line">easing：指定动画效果，默认是<span class="string">"swing"</span>，可扩展</span><br><span class="line">fn：回调函数，当动画执行完毕以后执行</span><br><span class="line"></span><br><span class="line">示例</span><br><span class="line">$(<span class="string">'#con'</span>).slideDown( 1000 , <span class="string">'swing'</span> , <span class="function"><span class="title">function</span></span> ()&#123; alert(<span class="string">'123'</span>); &#125; );</span><br><span class="line">$(<span class="string">'#con'</span>).slideUp(&#123;</span><br><span class="line">       duration:1000,</span><br><span class="line">       easing:<span class="string">'easeOutElastic'</span>,</span><br><span class="line">       complete:<span class="function"><span class="title">function</span></span> ()&#123;</span><br><span class="line">            alert(<span class="string">'再见~'</span>);</span><br><span class="line">       &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">反转开关:</span><br><span class="line">1.toggle(null/speed , easing , fn);</span><br><span class="line">参数：可选</span><br><span class="line">null：不传参，执行默认效果</span><br><span class="line">speed：<span class="string">'slow'</span>|<span class="string">'normal'</span>|<span class="string">'fast'</span> 或 毫秒数</span><br><span class="line">easing：指定动画效果，默认是<span class="string">"swing"</span>，可扩展</span><br><span class="line">fn：回调函数，当动画执行完毕以后执行</span><br><span class="line"></span><br><span class="line">2.用于绑定两个或多个事件处理器函数，以响应被选元素轮流的 click 事件</span><br><span class="line">3.如果元素是可见的，切换为隐藏的；如果元素是隐藏的，切换为可见的</span><br><span class="line"></span><br><span class="line">显示隐藏：</span><br><span class="line">show(null/speed , easing , fn);   显示</span><br><span class="line">hide(null/speed , easing , fn);   隐藏</span><br><span class="line">参数：可选</span><br><span class="line">null：不传参，执行默认效果</span><br><span class="line">speed：<span class="string">'slow'</span>|<span class="string">'normal'</span>|<span class="string">'fast'</span> 或 毫秒数</span><br><span class="line">easing：指定动画效果，默认是<span class="string">"swing"</span>，可扩展</span><br><span class="line">fn：回调函数，当动画执行完毕以后执行</span><br><span class="line"></span><br><span class="line">淡入淡出：</span><br><span class="line">fadeIn(null/speed , easing , fn);   淡入</span><br><span class="line">fadeOut(null/speed , easing , fn);   淡出</span><br><span class="line">参数：可选</span><br><span class="line">null：不传参，执行默认效果</span><br><span class="line">speed：<span class="string">'slow'</span>|<span class="string">'normal'</span>|<span class="string">'fast'</span> 或 毫秒数</span><br><span class="line">easing：指定动画效果，默认是<span class="string">"swing"</span>，可扩展</span><br><span class="line">fn：回调函数，当动画执行完毕以后执行</span><br><span class="line"></span><br><span class="line">自定义动画：</span><br><span class="line">用法一 : animate(&#123;styles&#125; , speed , easing , fn)</span><br><span class="line">参数：可选</span><br><span class="line">&#123;styles&#125;：一组css设置集合</span><br><span class="line">speed：<span class="string">'slow'</span>|<span class="string">'normal'</span>|<span class="string">'fast'</span> 或 毫秒数</span><br><span class="line">easing：指定动画效果，默认是<span class="string">"swing"</span>，可扩展</span><br><span class="line">fn：回调函数，当动画执行完毕以后执行</span><br><span class="line">animate( )方法执行css属性集的自定义动画</span><br><span class="line"></span><br><span class="line">用法二 : animate(&#123;styles&#125; ,&#123;queue,duration,easing,complete&#125;);</span><br><span class="line">参数：</span><br><span class="line">&#123;styles&#125;：一组css设置集合</span><br><span class="line">queue：是否加入动画队列执行 <span class="literal">true</span>/<span class="literal">false</span> (默认<span class="literal">true</span>)</span><br><span class="line">duration：定义动画持续时间</span><br><span class="line">easing：指定动画效果，默认是“swing”，可扩展</span><br><span class="line">complete：回调函数，当动画执行完毕以后执行</span><br><span class="line"></span><br><span class="line">可操作属性：</span><br><span class="line">不是所有的css属性都可以用Jquery动画（animate函数）来动态改变，下面是JQ可以操作的css属性：</span><br><span class="line">backgroundPosition    borderWidth    borderBottomWidth</span><br><span class="line">borderLeftWidth    borderRightWidth    borderTopWidth</span><br><span class="line">borderSpacing    margin    marginBottom    marginLeft</span><br><span class="line">marginRight    marginTop    outlineWidth    padding</span><br><span class="line">paddingBottom    paddingLeft    paddingRight</span><br><span class="line">paddingTop    height    width    maxHeight    maxWidth</span><br><span class="line">minHeight    maxWidth    font    fontSize    opacity</span><br><span class="line">bottom    left    right    top    letterSpacing    wordSpacing</span><br><span class="line">lineHeight     textIndent     scrollLeft     scrollTop</span><br><span class="line">… …</span><br><span class="line"></span><br><span class="line">停止动画：</span><br><span class="line">stop()停止当前动画(并不会停止动画队列中剩下的动画)</span><br><span class="line">stop(<span class="literal">true</span>)停止所有动画</span><br><span class="line">stop(<span class="literal">true</span>,<span class="literal">true</span>)停止所有动画,并到达当前动画的终点</span><br><span class="line">$(<span class="string">"#go"</span>).click(<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">  $(“.block”).animate(&#123;left: ‘200px<span class="string">'&#125;, 5000);</span></span><br><span class="line"><span class="string">&#125;);</span></span><br><span class="line"><span class="string">$("#stop").click(function()&#123;</span></span><br><span class="line"><span class="string">  $(".block").stop(); //停止当前动画</span></span><br><span class="line"><span class="string">&#125;);</span></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/11/02/Gulp/" rel="next" title="Gulp">
+                <i class="fa fa-chevron-left"></i> Gulp
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/11/02/jQuery%E4%B8%8B/" rel="prev" title="jQuery下">
+                jQuery下 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://c-ssl.duitang.com/uploads/item/201411/21/20141121082939_QJUjE.thumb.700_0.jpeg"
+                alt="CRK" />
+            
+              <p class="site-author-name" itemprop="name">CRK</p>
+              <p class="site-description motion-element" itemprop="description">这个人很懒，什么都没有留下</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%20%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#jQuery简介"><span class="nav-number">1.</span> <span class="nav-text">jQuery简介</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#jQuery的优点：轻量级、强大的选择器、出色的DOM操作、可靠的事件处理机制、完善的Ajax、出色的浏览器兼容性、便捷的链式操作、丰富的插件支持、完善的文档、学习成本低、开源-等等"><span class="nav-number">1.1.</span> <span class="nav-text">jQuery的优点：轻量级、强大的选择器、出色的DOM操作、可靠的事件处理机制、完善的Ajax、出色的浏览器兼容性、便捷的链式操作、丰富的插件支持、完善的文档、学习成本低、开源 等等</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#jQuery使用"><span class="nav-number">1.2.</span> <span class="nav-text">jQuery使用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jQuery选择器-简洁的写法，支持CSS1到CSS3的选择器"><span class="nav-number">2.</span> <span class="nav-text">jQuery选择器 简洁的写法，支持CSS1到CSS3的选择器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jQuery-DOM"><span class="nav-number">3.</span> <span class="nav-text">jQuery DOM</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#常用方法"><span class="nav-number">3.1.</span> <span class="nav-text">常用方法:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jQuery动画"><span class="nav-number">4.</span> <span class="nav-text">jQuery动画</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">CRK</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

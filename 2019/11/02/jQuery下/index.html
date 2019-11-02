@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="jQuery事件1234567891011121314151617181920blur()focus()click()dblclick()keyup()keydown()mouseenter()mouseleave()mouseover()mouseout()mousedown()mousemove()mouseup()change()select()submit()scroll()resize(">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jQuery下">
+<meta property="og:url" content="&#x2F;2019&#x2F;11&#x2F;02&#x2F;jQuery%E4%B8%8B&#x2F;index.html">
+<meta property="og:site_name" content="陈礽奎的个人博客">
+<meta property="og:description" content="jQuery事件1234567891011121314151617181920blur()focus()click()dblclick()keyup()keydown()mouseenter()mouseleave()mouseover()mouseout()mousedown()mousemove()mouseup()change()select()submit()scroll()resize(">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-11-02T09:29:10.943Z">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="/2019/11/02/jQuery下/"/>
+
+
+
+
+
+  <title>jQuery下 | 陈礽奎的个人博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">陈礽奎的个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+            
+            日程表
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="/2019/11/02/jQuery%E4%B8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CRK">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://c-ssl.duitang.com/uploads/item/201411/21/20141121082939_QJUjE.thumb.700_0.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陈礽奎的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">jQuery下</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-02T17:22:20+08:00">
+                2019-11-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="jQuery事件"><a href="#jQuery事件" class="headerlink" title="jQuery事件"></a>jQuery事件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">blur()</span><br><span class="line">focus()</span><br><span class="line">click()</span><br><span class="line">dblclick()</span><br><span class="line">keyup()</span><br><span class="line">keydown()</span><br><span class="line">mouseenter()</span><br><span class="line">mouseleave()</span><br><span class="line">mouseover()</span><br><span class="line">mouseout()</span><br><span class="line">mousedown()</span><br><span class="line">mousemove()</span><br><span class="line">mouseup()</span><br><span class="line">change()</span><br><span class="line">select()</span><br><span class="line">submit()</span><br><span class="line">scroll()</span><br><span class="line">resize()</span><br><span class="line">ready()</span><br><span class="line">load()</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h4 id="事件绑定及移除"><a href="#事件绑定及移除" class="headerlink" title="事件绑定及移除"></a>事件绑定及移除</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">bind</span>( )  为每个匹配的元素绑定一个或多个事件处理函数</span><br><span class="line">语法：<span class="built_in">bind</span>( event , fn ) //不能给未来元素添加事件</span><br><span class="line">$(<span class="string">"p"</span>).<span class="built_in">bind</span>(<span class="string">"click"</span>, <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">    alert( $(this).text() );</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">$(<span class="string">'h2'</span>).<span class="built_in">bind</span>(&#123;</span><br><span class="line">    mouseover: <span class="function"><span class="title">function</span></span> ()&#123;</span><br><span class="line">        alert(<span class="string">'移上'</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    mouseout: <span class="function"><span class="title">function</span></span> ()&#123;</span><br><span class="line">        alert(<span class="string">'移出'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">unbind( ) 与 <span class="built_in">bind</span>( ) 反向的操作，删除元素的一个或多个事件</span><br><span class="line">语法：unbind(event , fnName )</span><br><span class="line"></span><br><span class="line">live( )  把事件绑定到当前及以后添加的元素上面</span><br><span class="line">语法：live( event , fn )  // 1.9.x已经放弃</span><br><span class="line">$(<span class="string">"p"</span>).live(<span class="string">"click"</span>, <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">   alert( $(this).text() );</span><br><span class="line">&#125;);</span><br><span class="line">JQ1.4之前用得比较多，现在已被放到不推荐使用列表中</span><br><span class="line">die(event , fnName ) 与 live() 反向的操作，删除先前用live()绑定的事件</span><br><span class="line"></span><br><span class="line">delegate( )  把事件绑定到当前及以后添加的元素上面</span><br><span class="line">语法：delegate( selector , event , fn )</span><br><span class="line">$(<span class="string">"ul"</span>).delegate(<span class="string">"li"</span>, <span class="string">"click"</span>, <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">     alert( $(this).html() );</span><br><span class="line">&#125;);</span><br><span class="line">JQ1.4之后加入的，和live有点相似</span><br><span class="line">undelegate( selector , event , fnName )   删除由 delegate() 方法添加的一个或多个事件处理程序</span><br><span class="line"></span><br><span class="line">on( )  把事件绑定到当前及以后添加的元素上面</span><br><span class="line">语法：on( event , selector , fn )</span><br><span class="line">$(<span class="string">"p"</span>).on(<span class="string">"click"</span>, <span class="function"><span class="title">function</span></span>()&#123; //未来元素无效</span><br><span class="line">    alert( $(this).text() );</span><br><span class="line">&#125;); </span><br><span class="line"></span><br><span class="line">$(“ul”).on( “click” , “li”,  <span class="function"><span class="title">function</span></span>()&#123; //未来元素有效</span><br><span class="line">     alert( $(this).html() );</span><br><span class="line">&#125;);</span><br><span class="line">JQ1.7开始引入了全新事件绑定机制</span><br><span class="line">off( event , selector , fn )   on()的反向操作，移除用on()绑定的事件</span><br><span class="line"></span><br><span class="line">建议:</span><br><span class="line">从jQuery1.7开始，jQuery引入了全新的事件绑定机制，on()和off()两个函数统一处理事件绑定。</span><br><span class="line">jQuery推出on()的目的有2个，一是为了统一接口，二是为了提高性能，所以从现在开始用on()替换<span class="built_in">bind</span>(), live(), delegate吧。尤其是不要再用live()了，因为它已经放入不推荐使用列表中，随时会被弃用。</span><br><span class="line"></span><br><span class="line">一次性事件</span><br><span class="line">one( )  为匹配的元素绑定一次性的事件处理函数</span><br><span class="line">语法：one( event , fn )    //未来元素无效</span><br><span class="line">$(<span class="string">"p"</span>).one(<span class="string">"click"</span>, <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">    alert( $(this).html() );</span><br><span class="line">&#125;);</span><br><span class="line">当使用 one() 方法时，每个元素只能运行一次事件处理器函数，执行完之后事件就会被移除</span><br></pre></td></tr></table></figure>
+<h3 id="合成事件"><a href="#合成事件" class="headerlink" title="合成事件:"></a>合成事件:</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">hover( )方法</span><br><span class="line">语法：hover(fn1,fn2); // 鼠标进入时执行fn1，鼠标离开时执行fn2</span><br><span class="line"></span><br><span class="line">$(<span class="string">"td"</span>).hover(</span><br><span class="line">   <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">      $(this).addClass(<span class="string">"hover"</span>);</span><br><span class="line">   &#125;,</span><br><span class="line">   <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">      $(this).removeClass(<span class="string">"hover"</span>);</span><br><span class="line">   &#125;</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">toggle( )方法</span><br><span class="line">语法：toggle(fn1,fn2,fn3,fn4...); </span><br><span class="line">$(<span class="string">"li"</span>).toggle( // 响应匹配元素的轮流的click事件</span><br><span class="line">    <span class="function"><span class="title">function</span></span> () &#123; $(this).addClass(“show”); &#125;,</span><br><span class="line">    <span class="function"><span class="title">function</span></span> () &#123; $(this).removeClass(“show”); &#125;</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">$(“div”).toggle( ); //显示隐藏</span><br></pre></td></tr></table></figure>
+<h3 id="事件对象-…"><a href="#事件对象-…" class="headerlink" title="事件对象 {…}"></a>事件对象 {…}</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">事件对象存储了和事件相关的信息</span><br><span class="line">原生JS事件对象:</span><br><span class="line">oDiv.onclick=<span class="keyword">function</span> (ev)&#123;</span><br><span class="line">      var oEvent=ev||window.event;</span><br><span class="line">      console.log(oEvent); //oEvent即为事件对象</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">JQ处理了其中的兼容问题，可以直接使用</span><br><span class="line">$(‘body’).click(<span class="keyword">function</span>(e)&#123; </span><br><span class="line">    console.log(e); //e即为事件对象 </span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">阻止冒泡/传播：e.stopPropagation()</span><br><span class="line">阻止默认行为：e.preventDefault();</span><br><span class="line">事件类型：e.type</span><br><span class="line">触发事件的元素：e.target ( 原生DOM节点 )</span><br><span class="line">指示按了哪个键或按钮：e.which</span><br><span class="line">鼠标的相对坐标：e.clientX/Y   e.pageX/Y</span><br><span class="line">事件发生时的时间戳：e.timeStamp（返回总毫秒数）</span><br><span class="line">鼠标事件中离开或者进入的DOM元素：e.relatedTarget</span><br></pre></td></tr></table></figure>
+<h3 id="转换："><a href="#转换：" class="headerlink" title="转换："></a>转换：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">在实际工作中，我们可能会有这样的需求</span><br><span class="line">使用JQ获取DOM对象，然后在JS使用</span><br><span class="line">或者JS获取的DOM对象，然后在JQ使用</span><br><span class="line">var box = document.querySelector(<span class="string">'#box'</span>); // js dom</span><br><span class="line">var <span class="variable">$box</span> = $(<span class="string">'#box'</span>); // jq dom</span><br><span class="line"></span><br><span class="line"><span class="variable">$box</span>[0].style.color = <span class="string">'blue'</span>;</span><br><span class="line"><span class="variable">$box</span>.get(0).style.color = <span class="string">'blue'</span>;</span><br><span class="line"></span><br><span class="line">$(box).css(<span class="string">'color'</span>,<span class="string">'red'</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="符冲突问题"><a href="#符冲突问题" class="headerlink" title="$符冲突问题"></a>$符冲突问题</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">在jQuery中，$符是jQuery的别名</span><br><span class="line">所有使用$符的地方都可以使用jQuery来替换</span><br><span class="line">例如：</span><br><span class="line">    $(<span class="string">'#div'</span>).click(....);  </span><br><span class="line">    等同于  </span><br><span class="line">    jQuery(<span class="string">'#div'</span>).click(....);</span><br><span class="line"></span><br><span class="line">当我们引入多个js库后，在另一个js库中也定义了$符的话，我们使用$符号时就会发生冲突。</span><br><span class="line"></span><br><span class="line">&lt;script src=<span class="string">"prototype-1.6.0.js"</span>&gt;&lt;/script&gt;</span><br><span class="line">&lt;script src=<span class="string">"jquery-1.8.3.js"</span>&gt;&lt;/script&gt;</span><br><span class="line">jquery最后引入</span><br><span class="line">此时，$符指向jquery中定义的$符号</span><br><span class="line"></span><br><span class="line">&lt;script src=<span class="string">"jquery-1.8.3.js"</span>&gt;&lt;/script&gt;</span><br><span class="line">&lt;script src=<span class="string">"prototype-1.6.0.js"</span>&gt;&lt;/script&gt;</span><br><span class="line">prototype最后引入</span><br><span class="line">此时，$符指向prototype中定义的$符号</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">noConflict()方法</span><br><span class="line">jQuery中的noConflict( )方法的作用就是让jQuery放弃对$符的所有权</span><br><span class="line">当代码中调用该方法后，不可以使用$来调用jQuery方法</span><br><span class="line"></span><br><span class="line">$.noConflict( );</span><br><span class="line">$(‘<span class="comment">#div’).click(....);   //无效</span></span><br><span class="line">jQuery(‘<span class="comment">#div’).click(....);   //有效</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">jQuery别名</span><br><span class="line">jQuery中允许我们自定义jQuery的别名</span><br><span class="line"></span><br><span class="line">var jq=$.noConflict();</span><br><span class="line">jq(‘<span class="comment">#div’).click(....); //有效</span></span><br><span class="line">jQuery(‘<span class="comment">#div’).click(....); //有效</span></span><br><span class="line">$(‘<span class="comment">#div’).click(....); //无效 报错</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">如何继续使用$符</span><br><span class="line">如果jQuery代码习惯使用$符号，并且不愿意改变这种习惯，可以把$符号作为变量传递给ready方法，函数内可以正常使用$符</span><br><span class="line">$.noConflict( );</span><br><span class="line">jQuery(<span class="keyword">function</span> ($)&#123;</span><br><span class="line">       $(‘h1’).click( <span class="function"><span class="title">function</span></span> ()&#123; alert($(this).html( ) );</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="jQuery-AJAX"><a href="#jQuery-AJAX" class="headerlink" title="jQuery AJAX"></a>jQuery AJAX</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line">$.ajax( options ) 通过 HTTP 请求加载远程数据</span><br><span class="line"></span><br><span class="line">url：请求的url地址</span><br><span class="line"></span><br><span class="line"><span class="built_in">type</span>：请求类型（get/post...）</span><br><span class="line"></span><br><span class="line">cache：是否读取缓存，默认<span class="literal">true</span></span><br><span class="line"></span><br><span class="line">data：要发送给服务器的数据，示例：</span><br><span class="line"><span class="string">"name=jack&amp;age=19"</span></span><br><span class="line">string或Object</span><br><span class="line">&#123;name:<span class="string">"jack"</span>,age:<span class="string">"19"</span>&#125;</span><br><span class="line"></span><br><span class="line">async：默认<span class="literal">true</span>，为异步请求</span><br><span class="line"></span><br><span class="line">dataType：服务器返回的数据类型</span><br><span class="line">特殊的格式JQ会进行预解析和兼容性修复。</span><br><span class="line">可选择的值：<span class="string">"xml"</span> , <span class="string">"html"</span> , <span class="string">"script"</span> , <span class="string">"json"</span> , <span class="string">"text"</span>，”jsonp”等</span><br><span class="line"></span><br><span class="line">timeout：设置超时（毫秒）</span><br><span class="line"></span><br><span class="line">success：请求成功的回调函数</span><br><span class="line"></span><br><span class="line">error：请求失败的回调函数</span><br><span class="line"></span><br><span class="line">complete：请求完成后的回调函数，无论成功与失败</span><br><span class="line"></span><br><span class="line">beforeSend：发送请求前可以修改XMLHttpRequest对象的函数，例如添加自定义 HTTP头。</span><br><span class="line">在beforeSend中如果返回<span class="literal">false</span>可以取消本次ajax请求。XMLHttpRequest对象是惟一的参数。</span><br><span class="line"></span><br><span class="line">$(<span class="string">'#login'</span>).click(<span class="function"><span class="title">function</span></span> ()&#123;</span><br><span class="line">    $.ajax(&#123;</span><br><span class="line">        <span class="built_in">type</span>:<span class="string">'get'</span>,</span><br><span class="line">        url:<span class="string">'test.php'</span>,</span><br><span class="line">        dataType:<span class="string">'json'</span>,</span><br><span class="line">        cache:<span class="literal">false</span>, //不使用缓存</span><br><span class="line">        success:<span class="keyword">function</span> (json)&#123;</span><br><span class="line">            $(<span class="string">'h1'</span>).html(json.name+json.sex+json.age);</span><br><span class="line">        &#125;,</span><br><span class="line">        error:<span class="function"><span class="title">function</span></span> ()&#123;</span><br><span class="line">            alert(<span class="string">'请求失败'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">serialize( )</span><br><span class="line">将一个form表单内的所有数据转换为可以发送给服务器的字符串</span><br><span class="line">示例：$(<span class="string">"form"</span>).serialize()</span><br><span class="line"><span class="string">"name=小明&amp;age=19&amp;msg=abc"</span></span><br><span class="line"></span><br><span class="line">$.get()</span><br><span class="line">$.get( url [, data] [, callback] [, dataType]);</span><br><span class="line">url : 请求的URL</span><br><span class="line">data ： 可选，发送至服务器的数据</span><br><span class="line">callback ： 可选，请求完成时的回调函数</span><br><span class="line">dataType ： 可选，参照$.ajax参数中的dataType</span><br><span class="line">$.get(“act.php”,&#123;user:“cainiao”,pass:“123”&#125;,<span class="keyword">function</span> (data)&#123;</span><br><span class="line">    alert(data.msg);</span><br><span class="line">&#125;,“json”);</span><br><span class="line"></span><br><span class="line">$.post()</span><br><span class="line">$.post 与 $.get 语法相同，唯一的不同就是请求是以post方式进行。</span><br><span class="line">示例：</span><br><span class="line">$.post(“act.php”,&#123;user:“cainiao”,pass:“123”&#125;,<span class="keyword">function</span> (data)&#123;</span><br><span class="line">    alert(data.msg);</span><br><span class="line">&#125;, ”json”);</span><br><span class="line"></span><br><span class="line">$.getJSON()</span><br><span class="line">$.getJSON(url [, callback]);加载一段JSON并解析</span><br><span class="line"></span><br><span class="line">$.getScript()</span><br><span class="line">getScript() 方法使用 AJAX 的 HTTP GET 请求获取和执行 JavaScript</span><br><span class="line">$.getScript(url,success(response,status))</span><br><span class="line"></span><br><span class="line">load()</span><br><span class="line">方法从服务器加载数据，并把返回的数据放置到指定的元素中</span><br><span class="line">$(selector).load(url,data,<span class="keyword">function</span>(response,status,xhr))</span><br><span class="line">$(<span class="string">'div'</span>).load(<span class="string">'data/test.html'</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="jsonp："><a href="#jsonp：" class="headerlink" title="jsonp："></a>jsonp：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">ipt.onkeyup=<span class="function"><span class="title">function</span></span> ()&#123;</span><br><span class="line">    $.ajax(&#123;</span><br><span class="line">        <span class="built_in">type</span>:<span class="string">'get'</span>,</span><br><span class="line">        url:<span class="string">'http://suggestion.baidu.com/su?wd='</span>+$(<span class="string">'#ipt'</span>).val(),</span><br><span class="line">        dataType:<span class="string">'jsonp'</span>,</span><br><span class="line">        jsonp:<span class="string">'cb'</span>,</span><br><span class="line">        // jsonpCallback:<span class="string">'mycallback'</span>,</span><br><span class="line">        success:<span class="keyword">function</span> (json)&#123;</span><br><span class="line">            // $(<span class="string">'#list'</span>).empty();</span><br><span class="line">            $(<span class="string">'#list'</span>).html(<span class="string">''</span>);</span><br><span class="line">            <span class="keyword">for</span> (var i = 0; i &lt; json.s.length; i++) &#123;</span><br><span class="line">                $(<span class="string">'#list'</span>).append(<span class="string">'&lt;li&gt;'</span>+json.s[i]+<span class="string">'&lt;/li&gt;'</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="jQuery扩展-插件开发接口"><a href="#jQuery扩展-插件开发接口" class="headerlink" title="jQuery扩展 ( 插件开发接口 )"></a>jQuery扩展 ( 插件开发接口 )</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">$.extend()方法</span><br><span class="line">jQuery.extend（[boolean],target [，object1] [，objectN]）</span><br><span class="line">[boolean] 表示是否深拷贝，默认<span class="literal">false</span> 浅拷贝</span><br><span class="line">当提供两个或多个对象参数时，其他对象的属性将合并到目标对象。</span><br><span class="line">var obj1 = &#123;a: 1, b: 2, c: &#123;d: 4, e: 5&#125;&#125;;</span><br><span class="line">var obj2 = &#123;c: &#123;g: 7&#125;, d: 8&#125;;</span><br><span class="line">$.extend(obj1,obj2);</span><br><span class="line">console.log(obj1);</span><br><span class="line"></span><br><span class="line">Object.assign(obj1,obj2);</span><br><span class="line">console.log(obj1);</span><br><span class="line"></span><br><span class="line">如果只提供一个参数对象，则表示省略了target参数。在这种情况下，jQuery对象本身被假定为目标。</span><br><span class="line">通过这样做，您可以向jQuery名称空间添加新功能。这对于希望向JQuery添加新方法的插件非常有用。</span><br><span class="line">$.extend(&#123;</span><br><span class="line">    fly:<span class="function"><span class="title">function</span></span> ()&#123;</span><br><span class="line">        alert(<span class="string">'I can fly'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line">$.fly();</span><br><span class="line"></span><br><span class="line">$.fn.extend()方法</span><br><span class="line">jQuery源码如下:</span><br><span class="line">jQuery.fn = jQuery.prototype = &#123;</span><br><span class="line">    constructor: jQuery,</span><br><span class="line">    ......</span><br><span class="line"></span><br><span class="line">jQuery.fn = jQuery.prototype  // 原型对象</span><br><span class="line">jQuery.fn.extend = jQuery.prototype.extend</span><br><span class="line">$.fn.extend扩展的是 jQuery 实例对象的方法</span><br><span class="line">$.fn.extend(&#123;</span><br><span class="line">    rclick:<span class="keyword">function</span> (fn)&#123;</span><br><span class="line">        $(this).mousedown(<span class="keyword">function</span> (e)&#123;</span><br><span class="line">            <span class="keyword">if</span> (e.which == 3) &#123;</span><br><span class="line">                fn();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line">$(<span class="string">'#box'</span>).rclick(<span class="function"><span class="title">function</span></span> ()&#123;</span><br><span class="line">    alert(<span class="string">'右键点击'</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>插件概述<br>JQ插件是以 jQuery 的核心代码为基础，编写出符合一定规范的应用程序。也就是说，插 件也是 jQuery 代码，通过 js 文件引入的方式植入即可。 插件的种类很多，主要大致可以分为：UI 类、表单及验证类、输入类、特效类、Ajax 类、滑动类、图形图像类、导航类、综合工具类、动画类等等。<br>引入插件的步骤，基本如下：<br>1.必须先引入 jquery.js 文件，而且在所有插件之前引入；<br>2.引入插件；<br>3.引入插件的周边，比如皮肤、中文包等。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/11/02/jQuery%E4%B8%8A/" rel="next" title="jQuery上">
+                <i class="fa fa-chevron-left"></i> jQuery上
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://c-ssl.duitang.com/uploads/item/201411/21/20141121082939_QJUjE.thumb.700_0.jpeg"
+                alt="CRK" />
+            
+              <p class="site-author-name" itemprop="name">CRK</p>
+              <p class="site-description motion-element" itemprop="description">这个人很懒，什么都没有留下</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%20%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#jQuery事件"><span class="nav-number">1.</span> <span class="nav-text">jQuery事件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#事件绑定及移除"><span class="nav-number">1.1.</span> <span class="nav-text">事件绑定及移除</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#合成事件"><span class="nav-number">2.</span> <span class="nav-text">合成事件:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事件对象-…"><span class="nav-number">3.</span> <span class="nav-text">事件对象 {…}</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#转换："><span class="nav-number">4.</span> <span class="nav-text">转换：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#符冲突问题"><span class="nav-number">5.</span> <span class="nav-text">$符冲突问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jQuery-AJAX"><span class="nav-number">6.</span> <span class="nav-text">jQuery AJAX</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jsonp："><span class="nav-number">7.</span> <span class="nav-text">jsonp：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jQuery扩展-插件开发接口"><span class="nav-number">8.</span> <span class="nav-text">jQuery扩展 ( 插件开发接口 )</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">CRK</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
