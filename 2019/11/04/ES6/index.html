@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="背景介绍ECMAScript 6.0（以下简称 ES6）是 JavaScript 语言的下一代标准，已经在 2015 年 6 月正式发布了。它的目标，是使得 JavaScript 语言可以用来编写复杂的大型应用程序，成为企业级开发语言。 ECMAScript 和 JavaScript 的关系是，前者是后者的规格，后者是前者的一种实现（另外的 ECMAScript 方言还有 Jscript 和 Ac">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES6">
+<meta property="og:url" content="&#x2F;2019&#x2F;11&#x2F;04&#x2F;ES6&#x2F;index.html">
+<meta property="og:site_name" content="陈礽奎的个人博客">
+<meta property="og:description" content="背景介绍ECMAScript 6.0（以下简称 ES6）是 JavaScript 语言的下一代标准，已经在 2015 年 6 月正式发布了。它的目标，是使得 JavaScript 语言可以用来编写复杂的大型应用程序，成为企业级开发语言。 ECMAScript 和 JavaScript 的关系是，前者是后者的规格，后者是前者的一种实现（另外的 ECMAScript 方言还有 Jscript 和 Ac">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-11-04T12:53:19.383Z">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="/2019/11/04/ES6/"/>
+
+
+
+
+
+  <title>ES6 | 陈礽奎的个人博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">陈礽奎的个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+            
+            日程表
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="/2019/11/04/ES6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CRK">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://c-ssl.duitang.com/uploads/item/201411/21/20141121082939_QJUjE.thumb.700_0.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陈礽奎的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">ES6</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-04T20:10:48+08:00">
+                2019-11-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a>背景介绍</h3><p>ECMAScript 6.0（以下简称 ES6）是 JavaScript 语言的下一代标准，已经在 2015 年 6 月正式发布了。它的目标，是使得 JavaScript 语言可以用来编写复杂的大型应用程序，成为企业级开发语言。</p>
+<p>ECMAScript 和 JavaScript 的关系是，前者是后者的规格，后者是前者的一种实现（另外的 ECMAScript 方言还有 Jscript 和 ActionScript）。日常场合，这两个词是可以互换的。</p>
+<a id="more"></a>
+<h4 id="1-不一样的变量声明：const和let"><a href="#1-不一样的变量声明：const和let" class="headerlink" title="1.不一样的变量声明：const和let"></a>1.不一样的变量声明：const和let</h4><hr>
+<p>ES6推荐使用let声明局部变量，相比之前的var（无论声明在何处，都会被视为声明在函数的最顶部）<br>let表示声明变量，而const表示声明常量，两者都为块级作用域；const 声明的变量都会被认为是常量，意思就是它的值被设置完成后就不能再修改了：<br>如果const的是一个对象，对象所包含的值是可以被修改的。抽象一点儿说，就是对象所指向的地址没有变就行：</p>
+<p>有几个点需要注意：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> 关键词声明的变量不具备变量提升（hoisting）特性</span><br><span class="line"><span class="built_in">let</span> 和 const 声明只在最靠近的一个块中（花括号内）有效</span><br><span class="line">当使用常量 const 声明时，请使用大写变量，如：CAPITAL_CASING</span><br><span class="line">const 在声明时必须被赋值</span><br></pre></td></tr></table></figure>
+<h3 id="模板字面量"><a href="#模板字面量" class="headerlink" title="模板字面量"></a>模板字面量</h3><p>模板字面量本质上是包含嵌入式表达式的字符串字面量.<br>模板字面量用倒引号 ( `` )（而不是单引号 ( ‘’ ) 或双引号( “” )）表示，可以包含用 ${expression} 表示的占位符</p>
+<h3 id="解构赋值"><a href="#解构赋值" class="headerlink" title="解构赋值"></a>解构赋值</h3><p>在ES6中,可以使用解构从数组和对象提取值并赋值给独特的变量</p>
+<p>解构数组的值:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const point = [10, 25, -34];</span><br><span class="line">const [x, y, z] = point;</span><br><span class="line">console.log(x, y, z);</span><br><span class="line">Prints: 10 25 -34</span><br></pre></td></tr></table></figure>
+<p>[]表示被解构的数组, x,y,z表示要将数组中的值存储在其中的变量, 在解构数组是, 还可以忽略值, 例如const[x,,z]=point,忽略y坐标.</p>
+<p>解构对象中的值:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const gemstone = &#123;</span><br><span class="line">  <span class="built_in">type</span>: <span class="string">'quartz'</span>,</span><br><span class="line">  color: <span class="string">'rose'</span>,</span><br><span class="line">  karat: 21.29</span><br><span class="line">&#125;;</span><br><span class="line">const &#123;<span class="built_in">type</span>, color, karat&#125; = gemstone;</span><br><span class="line">console.log(<span class="built_in">type</span>, color, karat);</span><br></pre></td></tr></table></figure>
+<p>花括号 { } 表示被解构的对象，type、color 和 karat 表示要将对象中的属性存储到其中的变量</p>
+<h3 id="对象字面量简写法"><a href="#对象字面量简写法" class="headerlink" title="对象字面量简写法"></a>对象字面量简写法</h3><p>使用和所分配的变量名称相同的名称初始化对象时如果属性名称和所分配的变量名称一样，那么就可以从对象属性中删掉这些重复的变量名称。</p>
+<h4 id="for…of循环"><a href="#for…of循环" class="headerlink" title="for…of循环"></a>for…of循环</h4><p>for…of循环是最新添加到 JavaScript 循环系列中的循环。<br>它结合了其兄弟循环形式 for 循环和 for…in 循环的优势，可以循环任何可迭代（也就是遵守可迭代协议）类型的数据。默认情况下，包含以下数据类型：String、Array、Map 和 Set，注意不包含 Object 数据类型（即 {}）。默认情况下，对象不可迭代。</p>
+<h4 id="for…in循环"><a href="#for…in循环" class="headerlink" title="for…in循环"></a>for…in循环</h4><p>依然需要使用 index 来访问数组的值<br>当你需要向数组中添加额外的方法（或另一个对象）时，for…in 循环会带来很大的麻烦。因为 for…in 循环循环访问所有可枚举的属性，意味着如果向数组的原型中添加任何其他属性，这些属性也会出现在循环中。</p>
+<h4 id="for…of循环-1"><a href="#for…of循环-1" class="headerlink" title="for…of循环"></a>for…of循环</h4><p>for…of 循环用于循环访问任何可迭代的数据类型。<br>for…of 循环的编写方式和 for…in 循环的基本一样，只是将 in 替换为 of，可以忽略索引<br>for…of 循环还具有其他优势，解决了 for 和 for…in 循环的不足之处。你可以随时停止或退出 for…of 循环。</p>
+<h3 id="展开运算符"><a href="#展开运算符" class="headerlink" title="展开运算符"></a>展开运算符</h3><p>展开运算符（用三个连续的点 (…) 表示）是 ES6 中的新概念，使你能够将字面量对象展开为多个元素<br>展开运算符的一个用途是结合数组。</p>
+<p>如果你需要结合多个数组，在有展开运算符之前，必须使用 Array的 concat() 方法。</p>
+<h4 id="剩余参数-可变参数"><a href="#剩余参数-可变参数" class="headerlink" title="剩余参数(可变参数)"></a>剩余参数(可变参数)</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">使用展开运算符将数组展开为多个元素, 使用剩余参数可以将多个元素绑定到一个数组中.</span><br><span class="line">剩余参数也用三个连续的点 ( ... ) 表示，使你能够将不定数量的元素表示为数组.</span><br><span class="line"></span><br><span class="line">用途1: 将变量赋数组值时:</span><br><span class="line"></span><br><span class="line">const order = [20.17, 18.67, 1.50, <span class="string">"cheese"</span>, <span class="string">"eggs"</span>, <span class="string">"milk"</span>, <span class="string">"bread"</span>];</span><br><span class="line">const [total, subtotal, tax, ...items] = order;</span><br><span class="line">console.log(total, subtotal, tax, items);</span><br><span class="line">用途2: 可变参数函数</span><br><span class="line">对于参数不固定的函数,ES6之前是使用参数对象(arguments)处理:</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">sum</span></span>() &#123;</span><br><span class="line">  <span class="built_in">let</span> total = 0;  </span><br><span class="line">  <span class="keyword">for</span>(const argument of arguments) &#123;</span><br><span class="line">    total += argument;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">return</span> total;</span><br><span class="line">&#125;</span><br><span class="line">在ES6中使用剩余参数运算符则更为简洁,可读性提高:</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> sum(...nums) &#123;</span><br><span class="line">  <span class="built_in">let</span> total = 0;  </span><br><span class="line">  <span class="keyword">for</span>(const num of nums) &#123;</span><br><span class="line">    total += num;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">return</span> total;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="ES6箭头函数"><a href="#ES6箭头函数" class="headerlink" title="ES6箭头函数"></a>ES6箭头函数</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">普通函数可以是函数声明或者函数表达式, 但是箭头函数始终都是表达式, 全程是箭头函数表达式, 因此因此仅在表达式有效时才能使用，包括：</span><br><span class="line"></span><br><span class="line">存储在变量中，</span><br><span class="line">当做参数传递给函数，</span><br><span class="line">存储在对象的属性中。</span><br><span class="line">const greet = name =&gt; `Hello <span class="variable">$&#123;name&#125;</span>!`;</span><br><span class="line">可以如下调用:</span><br><span class="line"></span><br><span class="line">greet(<span class="string">'Asser'</span>);</span><br><span class="line">如果函数的参数只有一个,不需要使用()包起来,但是只有一个或者多个, 则必须需要将参数列表放在圆括号内:</span><br><span class="line"></span><br><span class="line">// 空参数列表需要括号</span><br><span class="line">const sayHi = () =&gt; console.log(<span class="string">'Hello Udacity Student!'</span>);</span><br><span class="line"></span><br><span class="line">// 多个参数需要括号</span><br><span class="line">const orderIceCream = (flavor, cone) =&gt; console.log(`Here<span class="string">'s your $&#123;flavor&#125; ice cream in a $&#123;cone&#125; cone.`);</span></span><br><span class="line"><span class="string">orderIceCream('</span>chocolate<span class="string">', '</span>waffle<span class="string">');</span></span><br><span class="line"><span class="string">一般箭头函数都只有一个表达式作为函数主题:</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">const upperizedNames = ['</span>Farrin<span class="string">', '</span>Kagure<span class="string">', '</span>Asser<span class="string">'].map(</span></span><br><span class="line"><span class="string">  name =&gt; name.toUpperCase()</span></span><br><span class="line"><span class="string">);</span></span><br><span class="line"><span class="string">这种函数表达式形式称为简写主体语法:</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">在函数主体周围没有花括号,</span></span><br><span class="line"><span class="string">自动返回表达式</span></span><br><span class="line"><span class="string">但是如果箭头函数的主体内需要多行代码, 则需要使用常规主体语法:</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">它将函数主体放在花括号内</span></span><br><span class="line"><span class="string">需要使用 return 语句来返回内容。</span></span><br></pre></td></tr></table></figure>
+<h3 id="javascript标准函数this"><a href="#javascript标准函数this" class="headerlink" title="javascript标准函数this"></a>javascript标准函数this</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">new 对象</span><br><span class="line">const mySundae = new Sundae(<span class="string">'Chocolate'</span>, [<span class="string">'Sprinkles'</span>, <span class="string">'Hot Fudge'</span>]);</span><br><span class="line">sundae这个构造函数内的this的值是实例对象, 因为他使用new被调用.</span><br><span class="line"></span><br><span class="line">指定的对象</span><br><span class="line">const result = obj1.printName.call(obj2);</span><br><span class="line">函数使用call/apply被调用,this的值指向指定的obj2,因为call()第一个参数明确设置this的指向</span><br><span class="line"></span><br><span class="line">上下`文对象</span><br><span class="line">data.teleport();</span><br><span class="line">函数是对象的方法, this指向就是那个对象,此处this就是指向data.</span><br><span class="line"></span><br><span class="line">全局对象或 undefined</span><br><span class="line">teleport();</span><br><span class="line">此处是this指向全局对象,在严格模式下,指向undefined.</span><br></pre></td></tr></table></figure>
+<h3 id="箭头函数和this"><a href="#箭头函数和this" class="headerlink" title="箭头函数和this"></a>箭头函数和this</h3><p>对于普通函数, this的值基于函数如何被调用, 对于箭头函数,this的值基于函数周围的上下文, 换句话说,this的值和函数外面的this的值是一样的.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">IceCream</span></span>() &#123;</span><br><span class="line">    this.scoops = 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 为 IceCream 添加 addScoop 方法</span><br><span class="line">IceCream.prototype.addScoop = <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">        this.scoops++;</span><br><span class="line">        console.log(<span class="string">'scoop added!'</span>);</span><br><span class="line">        console.log(this.scoops); // undefined+1=NaN</span><br><span class="line">        console.log(dessert.scoops); //0</span><br><span class="line">    &#125;, 500);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">----------</span><br><span class="line"></span><br><span class="line">标题</span><br><span class="line"></span><br><span class="line">const dessert = new IceCream();</span><br><span class="line">dessert.addScoop();</span><br></pre></td></tr></table></figure>
+<p>传递给 setTimeout() 的函数被调用时没用到 new、call() 或 apply()，也没用到上下文对象。意味着函数内的 this 的值是全局对象，不是 dessert 对象。实际上发生的情况是，创建了新的 scoops 变量（默认值为 undefined），然后递增（undefined + 1 结果为 NaN）;<br>解决此问题的方式之一是使用闭包(closure):</p>
+<h3 id="Classes-（类）in-ES6"><a href="#Classes-（类）in-ES6" class="headerlink" title="Classes （类）in ES6"></a>Classes （类）in ES6</h3><p>如果你喜欢面向对象编程（OOP），那么你将喜爱这个特性。以后写一个类和继承将变得跟在facebook上写一个评论那么容易。</p>
+<p>类的创建和使用真是一件令人头疼的事情在过去的ES5中，因为没有一个关键字class （它被保留，但是什么也不能做）。在此之上，大量的继承模型像pseudo classical, classical, functional 更加增加了混乱，JavaScript 之间的宗教战争只会更加火上浇油。</p>
+<p>用ES5写一个类，有很多种方法，这里就先不说了。现在就来看看如何用ES6写一个类吧。ES6没有用函数, 而是使用原型实现类。我们创建一个类baseModel ，并且在这个类里定义了一个constructor 和一个 getName()方法：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">class baseModel &#123;</span><br><span class="line">  constructor(options, data) &#123; // class constructor，node.js 5.6暂时不支持options = &#123;&#125;, data = []这样传参</span><br><span class="line">    this.name = <span class="string">'Base'</span>;</span><br><span class="line">    this.url = <span class="string">'http://azat.co/api'</span>;</span><br><span class="line">    this.data = data;</span><br><span class="line">    this.options = options;</span><br><span class="line">   &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="title">getName</span></span>() &#123; // class method</span><br><span class="line">        console.log(`Class name: <span class="variable">$&#123;this.name&#125;</span>`);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意我们对options 和data使用了默认参数值。此外方法名也不需要加function关键字，而且冒号(：)也不需要了。另外一个大的区别就是你不需要分配属性this。现在设置一个属性的值，只需简单的在构造函数中分配。</p>
+<p>AccountModel 从类baseModel 中继承而来:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">class AccountModel extends baseModel &#123;</span><br><span class="line">    constructor(options, data) &#123;</span><br></pre></td></tr></table></figure>
+
+<p>为了调用父级构造函数，可以毫不费力的唤起super()用参数传递：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">       super(&#123;private: <span class="literal">true</span>&#125;, [<span class="string">'32113123123'</span>, <span class="string">'524214691'</span>]); //call the parent method with super</span><br><span class="line">   this.name = <span class="string">'Account Model'</span>;</span><br><span class="line">   this.url +=<span class="string">'/accounts/'</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果你想做些更好玩的，你可以把 accountData 设置成一个属性：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">    get <span class="function"><span class="title">accountsData</span></span>() &#123; //calculated attribute getter</span><br><span class="line">    // ... make XHR</span><br><span class="line">        <span class="built_in">return</span> this.data;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>那么，你如何调用他们呢？它是非常容易的：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> accounts = new AccountModel(5);</span><br><span class="line">accounts.getName();</span><br><span class="line">console.log(<span class="string">'Data is %s'</span>, accounts.accountsData);</span><br></pre></td></tr></table></figure>
+
+<p>结果令人惊讶，输出是：</p>
+<p>Class name: Account Model</p>
+<p>Data is  32113123123,524214691</p>
+<h3 id="ES6总结"><a href="#ES6总结" class="headerlink" title="ES6总结"></a>ES6总结</h3><p>这里还有许多ES6的其它特性你可能会使用到，排名不分先后：</p>
+<p>1、全新的Math, Number, String, Array 和 Object 方法</p>
+<p>2、二进制和八进制数据类型</p>
+<p>3、默认参数不定参数扩展运算符</p>
+<p>4、Symbols符号</p>
+<p>5、tail调用</p>
+<p>6、Generators (生成器)</p>
+<p>7、New data structures like Map and Set(新的数据构造对像MAP和set)</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/11/02/jQuery%E4%B8%8B/" rel="next" title="jQuery下">
+                <i class="fa fa-chevron-left"></i> jQuery下
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://c-ssl.duitang.com/uploads/item/201411/21/20141121082939_QJUjE.thumb.700_0.jpeg"
+                alt="CRK" />
+            
+              <p class="site-author-name" itemprop="name">CRK</p>
+              <p class="site-description motion-element" itemprop="description">这个人很懒，什么都没有留下</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%20%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#背景介绍"><span class="nav-number">1.</span> <span class="nav-text">背景介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-不一样的变量声明：const和let"><span class="nav-number">1.1.</span> <span class="nav-text">1.不一样的变量声明：const和let</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模板字面量"><span class="nav-number">2.</span> <span class="nav-text">模板字面量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解构赋值"><span class="nav-number">3.</span> <span class="nav-text">解构赋值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对象字面量简写法"><span class="nav-number">4.</span> <span class="nav-text">对象字面量简写法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#for…of循环"><span class="nav-number">4.1.</span> <span class="nav-text">for…of循环</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#for…in循环"><span class="nav-number">4.2.</span> <span class="nav-text">for…in循环</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#for…of循环-1"><span class="nav-number">4.3.</span> <span class="nav-text">for…of循环</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#展开运算符"><span class="nav-number">5.</span> <span class="nav-text">展开运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#剩余参数-可变参数"><span class="nav-number">5.1.</span> <span class="nav-text">剩余参数(可变参数)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ES6箭头函数"><span class="nav-number">6.</span> <span class="nav-text">ES6箭头函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#javascript标准函数this"><span class="nav-number">7.</span> <span class="nav-text">javascript标准函数this</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#箭头函数和this"><span class="nav-number">8.</span> <span class="nav-text">箭头函数和this</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Classes-（类）in-ES6"><span class="nav-number">9.</span> <span class="nav-text">Classes （类）in ES6</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ES6总结"><span class="nav-number">10.</span> <span class="nav-text">ES6总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">CRK</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
