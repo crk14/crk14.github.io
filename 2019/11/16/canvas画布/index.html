@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1234&amp;lt;canvas&amp;gt;标签&amp;lt;canvas id=&quot;myCanvas&quot; width=&quot;200&quot; height=&quot;00&quot;&amp;gt;&amp;lt;&#x2F;canvas&amp;gt;canvas元素自身有两个属性：width和height还拥有HTML5所有主要属性，比如class和id IE 678不支持标签">
+<meta property="og:type" content="article">
+<meta property="og:title" content="canvas画布">
+<meta property="og:url" content="&#x2F;2019&#x2F;11&#x2F;16&#x2F;canvas%E7%94%BB%E5%B8%83&#x2F;index.html">
+<meta property="og:site_name" content="陈礽奎的个人博客">
+<meta property="og:description" content="1234&amp;lt;canvas&amp;gt;标签&amp;lt;canvas id=&quot;myCanvas&quot; width=&quot;200&quot; height=&quot;00&quot;&amp;gt;&amp;lt;&#x2F;canvas&amp;gt;canvas元素自身有两个属性：width和height还拥有HTML5所有主要属性，比如class和id IE 678不支持标签">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-11-16T09:20:08.171Z">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="/2019/11/16/canvas画布/"/>
+
+
+
+
+
+  <title>canvas画布 | 陈礽奎的个人博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">陈礽奎的个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="/2019/11/16/canvas%E7%94%BB%E5%B8%83/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CRK">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://www.17qq.com/img_qqtouxiang/11308981.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陈礽奎的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">canvas画布</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-16T16:57:49+08:00">
+                2019-11-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;canvas&gt;标签</span><br><span class="line">&lt;canvas id=<span class="string">"myCanvas"</span> width=<span class="string">"200"</span> height=<span class="string">"00"</span>&gt;&lt;/canvas&gt;</span><br><span class="line">canvas元素自身有两个属性：width和height</span><br><span class="line">还拥有HTML5所有主要属性，比如class和id</span><br></pre></td></tr></table></figure>
+<h4 id="IE-678不支持标签"><a href="#IE-678不支持标签" class="headerlink" title="IE 678不支持标签"></a>IE 678不支持<canvas>标签</h4><a id="more"></a>
+<h3 id="主要步骤"><a href="#主要步骤" class="headerlink" title="主要步骤"></a>主要步骤</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//每个画布都必须要有一个context（上下文）的定义，如下面代码所示：</span><br><span class="line">var ctx = cvs.getContext(<span class="string">"2d"</span>);</span><br><span class="line">ctx.beginPath() ：开始一个路径</span><br><span class="line">ctx.moveTo(x,y)： 路径移到画布中的指定点 , 即起点</span><br><span class="line">ctx.lineTo(x,y) ：添加一个新点，画线</span><br><span class="line">......</span><br><span class="line">ctx.closePath() ：关闭绘制路径</span><br><span class="line">ctx.fillStyle：用来设置填充颜色</span><br><span class="line">ctx.fill() ：填充已定义好的路径</span><br><span class="line">ctx.lineWidth：画线的宽度</span><br><span class="line">ctx.strokeStyle：用来设置描边颜色</span><br><span class="line">ctx.stroke() ：绘制已定义好的路径</span><br></pre></td></tr></table></figure>
+<h3 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">绘制矩形的方法：</span><br><span class="line">rect(x,y,w,h)</span><br><span class="line">x、y为起始坐标，w、h为矩形的宽、高</span><br><span class="line">支持这么写：</span><br><span class="line">ctx.fillRect(x,y,w,h)   及   ctx.strokeRect(x,y,w,h)</span><br><span class="line"></span><br><span class="line">绘制圆形的方法：</span><br><span class="line">arc(x,y,r,sa,ea,<span class="literal">true</span>/<span class="literal">false</span>)</span><br><span class="line">x、y为圆心坐标，r为半径，</span><br><span class="line">sa、ea分别为起始角度和结束角度，</span><br><span class="line"><span class="literal">true</span>是逆时针画圆，<span class="literal">false</span>是顺时针画圆（默认）；</span><br><span class="line">360度为2PI弧度，1度就是2PI/360=PI/180弧度，</span><br><span class="line">90度就是2PI/360*90=PI/2弧度(其他的角度自行计算)</span><br><span class="line">贝塞尔曲线</span><br><span class="line">quadraticCurveTo (cx,cy,ex,ey)</span><br><span class="line">二次贝塞尔曲线，一个控制点，一个结束点</span><br><span class="line"></span><br><span class="line">bezierCurveTo (cx1,cy1,cx2,cy2,ex,ey)</span><br><span class="line">三次贝塞尔曲线，两个控制点，一个结束点</span><br><span class="line">绘制文字</span><br><span class="line">fillText(text,x,y,maxWidth): 填充绘制</span><br><span class="line">text表示文字      x、y为坐标</span><br><span class="line">maxWidth可选，为文字最大宽度，防止文字溢出</span><br><span class="line"></span><br><span class="line">strokeText(text,x,y,maxWidth): 描边绘制</span><br><span class="line">text表示文字      x、y为坐标</span><br><span class="line">maxWidth可选，为文字最大宽度，防止文字溢出</span><br><span class="line">常用属性设置：</span><br><span class="line">font 文本内容的当前字体属性</span><br><span class="line">示例: ctx.font = <span class="string">'bold 60px 微软雅黑'</span>;</span><br><span class="line"></span><br><span class="line">textAlign 文本内容的当前对齐方式</span><br><span class="line">示例: ctx.textAlign=“left/center/right”;</span><br><span class="line"></span><br><span class="line">textBaseline 绘制文本时使用的当前文本基线</span><br><span class="line">示例: ctx.textBaseline=“ top/middle/ bottom ”;</span><br></pre></td></tr></table></figure>
+<h4 id="清除画布"><a href="#清除画布" class="headerlink" title="清除画布"></a>清除画布</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ctx.clearRect(x,y,width,height)</span><br><span class="line">x : 清除起点横坐标</span><br><span class="line">y : 清除起点纵坐标</span><br><span class="line">width : 清除长度</span><br><span class="line">height : 清除高度</span><br><span class="line">示例：ctx.clearRect(0,0,cvs.width,cvs.height);</span><br></pre></td></tr></table></figure>
+<h4 id="图形阴影"><a href="#图形阴影" class="headerlink" title="图形阴影"></a>图形阴影</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">shadowColor：设置阴影颜色</span><br><span class="line">shadowBlur：设置阴影模糊级别</span><br><span class="line">shadowOffsetX：设置阴影在x轴上距离图形的距离</span><br><span class="line">shadowOffsetY：设置阴影在y轴上距离图形的距离</span><br></pre></td></tr></table></figure>
+<h4 id="图形组合方式"><a href="#图形组合方式" class="headerlink" title="图形组合方式"></a>图形组合方式</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">globalCompositeOperation属性，控制图形的组合方式</span><br><span class="line">ctx.globalCompositeOperation=<span class="string">"type"</span>;</span><br><span class="line"><span class="built_in">type</span>的值：</span><br><span class="line">    ：<span class="built_in">source</span>-over (默认值)</span><br><span class="line">    ：<span class="built_in">source</span>-in</span><br><span class="line">    ：<span class="built_in">source</span>-out</span><br><span class="line">    ：<span class="built_in">source</span>-atop</span><br><span class="line">    ：destination-over</span><br><span class="line">    ：destination-in</span><br><span class="line">     :  destination-out</span><br><span class="line">     :  destination-atop </span><br><span class="line">    ：lighter </span><br><span class="line">    ：xor</span><br><span class="line">    ：copy</span><br><span class="line"></span><br><span class="line"><span class="built_in">source</span>-over：默认值，表示新图覆盖在旧图之上</span><br><span class="line"><span class="built_in">source</span>-atop：只绘制旧图和重叠的部分，其他透明</span><br><span class="line"><span class="built_in">source</span>-in：只绘制新图的重叠部分，其他透明</span><br><span class="line"><span class="built_in">source</span>-out：只绘制新图，重叠部分和旧图透明</span><br><span class="line">destination-over：表示旧图覆盖在新图之上</span><br><span class="line">destination-atop：只绘制新图和重叠的部分，其他透明</span><br><span class="line">destination-in：只绘制旧图的重叠部分，其他透明</span><br><span class="line">destination-out：只绘制旧图，重叠部分和新图透明</span><br><span class="line">lighter：旧图与新图都绘制，重叠部分混色处理</span><br><span class="line">xor：旧图和新图重叠处做透明处理</span><br><span class="line">copy：只绘制新图形，不绘制旧图形</span><br></pre></td></tr></table></figure>
+<h3 id="图像的处理"><a href="#图像的处理" class="headerlink" title="图像的处理"></a>图像的处理</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">绘制固定宽高的图像：</span><br><span class="line">    drawImage(img,x,y,w,h)</span><br><span class="line">    img：图片</span><br><span class="line">    x：图片横坐标的起始值</span><br><span class="line">    y：图片纵坐标的起始值</span><br><span class="line">    w：在画布中图片显示的宽度</span><br><span class="line">    h：在画布中图片显示的高度</span><br><span class="line"></span><br><span class="line">剪切图像，在画布上定位被剪切部分：</span><br><span class="line">    drawImage(img,x,y,w,h,rx,ry,rw,rh)</span><br><span class="line">    img：图片</span><br><span class="line">    x、y：源图片的坐标</span><br><span class="line">    w、h：在源图片上裁剪的宽、高</span><br><span class="line">    rx、ry：显示在画布中的坐标</span><br><span class="line">    rw、rh：显示在画布中的宽、高</span><br></pre></td></tr></table></figure>
+<h4 id="图像平铺"><a href="#图像平铺" class="headerlink" title="图像平铺"></a>图像平铺</h4> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">createPattern(img,<span class="built_in">type</span>)</span><br><span class="line"> img：图片</span><br><span class="line"> <span class="built_in">type</span>：repeat整个画布平铺</span><br><span class="line">            repeat-x/y在x/y轴方向上平铺</span><br><span class="line">            no-repeat不平铺</span><br></pre></td></tr></table></figure>
+<h4 id="图像的裁剪：clip（）"><a href="#图像的裁剪：clip（）" class="headerlink" title="图像的裁剪：clip（）"></a>图像的裁剪：clip（）</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">配合路径使用，先绘制好路径，然后调用clip方法</span><br><span class="line">注意：一旦剪切了某个区域，则所有之后的绘图都会被限制在被剪切的区域内（不能访问画布上的其他区域）。</span><br><span class="line">ctx.rect(50,50,300,120);</span><br><span class="line">ctx.stroke();</span><br><span class="line">ctx.clip();//剪切矩形区域</span><br><span class="line">ctx.fillstyle = <span class="string">"green"</span>;//,30绘制绿色矩形</span><br><span class="line">ctx,fillRect(0,0,300,120)</span><br></pre></td></tr></table></figure>
+<h4 id="像素处理"><a href="#像素处理" class="headerlink" title="像素处理"></a>像素处理</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">getImageData(x,y,w,h)：可以获取指定区域内的像素点的数据；</span><br><span class="line">    x:canvas的x轴坐标    y:canvas的y轴坐标</span><br><span class="line">    w:指定区域的宽度       h:指定区域的高度</span><br><span class="line">putImageData(imgdata,x,y)：getImageData返回的像素数据点imgdata填充到画布上面，从</span><br><span class="line">    x、y点开始填充；</span><br><span class="line">注: 服务器环境运行</span><br></pre></td></tr></table></figure>
+<h4 id="图像输出"><a href="#图像输出" class="headerlink" title="图像输出"></a>图像输出</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">canvas.toDataURL( <span class="built_in">type</span> , args ):</span><br><span class="line">为canvas的方法，用来返回一个url地址，将canvas画布转化为一张图像；</span><br><span class="line">图像是基于Base64编码的 , 如果不指定两个参数，无参数调用该方法，转换的图像格式默认为png格式 。</span><br><span class="line">•<span class="built_in">type</span>:图像格式，image/png  image/jpeg等</span><br><span class="line">•args:可选参数。如果<span class="built_in">type</span>为image/jpeg，则args可以是0和1之间的值，以指定图像的品质。</span><br><span class="line">注: 服务器环境运行</span><br></pre></td></tr></table></figure>
+<h4 id="其他方法："><a href="#其他方法：" class="headerlink" title="其他方法："></a>其他方法：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">scale(w,h) 缩放当前绘图:</span><br><span class="line">w: 缩放绘图的宽度   h: 缩放绘图的高度</span><br><span class="line">rotate(angle) 旋转当前绘图</span><br><span class="line">1°等于Math.PI/180    5°=5*Math.PI/180</span><br><span class="line">translate(x,y) 重新映射画布上的 (0,0) 位置</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">save() 保存canvas的状态</span><br><span class="line">restore() 恢复canvas的状态</span><br><span class="line">绘制复杂图形必不可少的方法，分别用来保存、恢复canvas的状态，无参数；</span><br></pre></td></tr></table></figure>
+
+<h4 id="canvas交互"><a href="#canvas交互" class="headerlink" title="canvas交互"></a>canvas交互</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">isPointInPath(x , y)</span><br><span class="line">    测试给定的坐标点是否位于当前路径之内  </span><br><span class="line">    返回 <span class="literal">true</span> 或 <span class="literal">false</span></span><br><span class="line">    x : canvas的x轴坐标</span><br><span class="line">    y : canvas的y轴坐标</span><br><span class="line">示例：</span><br><span class="line">    <span class="keyword">if</span> (ctx.isPointInPath(x , y)) &#123; ... &#125;;</span><br><span class="line"></span><br><span class="line">注: isPointInPath方法只对当前路径有效</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/11/04/ES6/" rel="next" title="ES6">
+                <i class="fa fa-chevron-left"></i> ES6
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://www.17qq.com/img_qqtouxiang/11308981.jpeg"
+                alt="CRK" />
+            
+              <p class="site-author-name" itemprop="name">CRK</p>
+              <p class="site-description motion-element" itemprop="description">一个前端学习路上的萌新</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#IE-678不支持标签"><span class="nav-number">1.</span> <span class="nav-text">IE 678不支持标签</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主要步骤"><span class="nav-number"></span> <span class="nav-text">主要步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用方法"><span class="nav-number"></span> <span class="nav-text">常用方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#清除画布"><span class="nav-number">1.</span> <span class="nav-text">清除画布</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#图形阴影"><span class="nav-number">2.</span> <span class="nav-text">图形阴影</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#图形组合方式"><span class="nav-number">3.</span> <span class="nav-text">图形组合方式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图像的处理"><span class="nav-number"></span> <span class="nav-text">图像的处理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#图像平铺"><span class="nav-number">1.</span> <span class="nav-text">图像平铺</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#图像的裁剪：clip（）"><span class="nav-number">2.</span> <span class="nav-text">图像的裁剪：clip（）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#像素处理"><span class="nav-number">3.</span> <span class="nav-text">像素处理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#图像输出"><span class="nav-number">4.</span> <span class="nav-text">图像输出</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其他方法："><span class="nav-number">5.</span> <span class="nav-text">其他方法：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#canvas交互"><span class="nav-number">6.</span> <span class="nav-text">canvas交互</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">CRK</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
