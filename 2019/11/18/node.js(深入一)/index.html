@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1.nodejs 出现时间2019前端-&amp;gt;全端(全栈)-&amp;gt;大前端 2.deno   未来代替nodejs产物3.nodejs 内置核心模块 http(要使用HTTP服务器和客户端)  https(基于TSL&#x2F;SSL的HTTP协议，单独模块)  fs(用于模仿标准POSIX函数的方式与文件系统进行交互)  url(用于处理与解析URL)  path(提供与处理文件路径和目录路径的实用工具">
+<meta property="og:type" content="article">
+<meta property="og:title" content="node.js(深入一)">
+<meta property="og:url" content="&#x2F;2019&#x2F;11&#x2F;18&#x2F;node.js(%E6%B7%B1%E5%85%A5%E4%B8%80)&#x2F;index.html">
+<meta property="og:site_name" content="陈礽奎的个人博客">
+<meta property="og:description" content="1.nodejs 出现时间2019前端-&amp;gt;全端(全栈)-&amp;gt;大前端 2.deno   未来代替nodejs产物3.nodejs 内置核心模块 http(要使用HTTP服务器和客户端)  https(基于TSL&#x2F;SSL的HTTP协议，单独模块)  fs(用于模仿标准POSIX函数的方式与文件系统进行交互)  url(用于处理与解析URL)  path(提供与处理文件路径和目录路径的实用工具">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-11-18T13:25:28.059Z">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="/2019/11/18/node.js(深入一)/"/>
+
+
+
+
+
+  <title>node.js(深入一) | 陈礽奎的个人博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">陈礽奎的个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="/2019/11/18/node.js(%E6%B7%B1%E5%85%A5%E4%B8%80)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CRK">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://www.17qq.com/img_qqtouxiang/11308981.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陈礽奎的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">node.js(深入一)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-18T20:35:19+08:00">
+                2019-11-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="1-nodejs-出现时间"><a href="#1-nodejs-出现时间" class="headerlink" title="1.nodejs 出现时间"></a>1.nodejs 出现时间</h3><p>2019<br>前端-&gt;全端(全栈)-&gt;大前端</p>
+<h3 id="2-deno-未来代替nodejs产物"><a href="#2-deno-未来代替nodejs产物" class="headerlink" title="2.deno   未来代替nodejs产物"></a>2.deno   未来代替nodejs产物</h3><h3 id="3-nodejs-内置核心模块"><a href="#3-nodejs-内置核心模块" class="headerlink" title="3.nodejs 内置核心模块"></a>3.nodejs 内置核心模块</h3><ol>
+<li><p>http(要使用HTTP服务器和客户端)</p>
+</li>
+<li><p>https(基于TSL/SSL的HTTP协议，单独模块)</p>
+</li>
+<li><p>fs(用于模仿标准POSIX函数的方式与文件系统进行交互)</p>
+</li>
+<li><p>url(用于处理与解析URL)</p>
+</li>
+<li><p>path(提供与处理文件路径和目录路径的实用工具)</p>
+<h3 id="4-node中没有-DOM-和-BOM"><a href="#4-node中没有-DOM-和-BOM" class="headerlink" title="4.node中没有 DOM 和 BOM"></a>4.node中没有 DOM 和 BOM</h3><a id="more"></a>
+<h3 id="5-js中全局对象是window-，-node中全局对象是global"><a href="#5-js中全局对象是window-，-node中全局对象是global" class="headerlink" title="5.js中全局对象是window ， node中全局对象是global"></a>5.js中全局对象是window ， node中全局对象是global</h3><h3 id="6-node文件需要如何运行"><a href="#6-node文件需要如何运行" class="headerlink" title="6.node文件需要如何运行"></a>6.node文件需要如何运行</h3><p>通过cmd,powerShell(终端)   在文件夹上路径点击后输入cmd可调用cmd<br>使用node命令来运行</p>
+<h3 id="7-npm-全局安装的-工具模块在哪里可以找到"><a href="#7-npm-全局安装的-工具模块在哪里可以找到" class="headerlink" title="7.npm 全局安装的 工具模块在哪里可以找到"></a>7.npm 全局安装的 工具模块在哪里可以找到</h3><p>C:\Users\Administrator.DESKTOP-VOMEVJ2\AppData\Roaming\npm</p>
+<h3 id="8-res-write-响应中文时，出现乱码问题"><a href="#8-res-write-响应中文时，出现乱码问题" class="headerlink" title="8. res.write() 响应中文时，出现乱码问题"></a>8. res.write() 响应中文时，出现乱码问题</h3></li>
+</ol>
+<p>在 res.write() 之前，先 调用 res.writeHead() 设置响应头，Content-Type: text/html; charset=utf-8</p>
+<h3 id="9-nodejs-启动的服务，访问html页面，发现css不起作用"><a href="#9-nodejs-启动的服务，访问html页面，发现css不起作用" class="headerlink" title="9. nodejs 启动的服务，访问html页面，发现css不起作用"></a>9. nodejs 启动的服务，访问html页面，发现css不起作用</h3><p>nodejs 启动的服务，不想以前的 apache. nginx 或者本地直接双击点开那种。</p>
+<p>以前那种的，url地址，是直接通过文件路径来组织。<br>但是当前这个nodejs启动的服务，url地址都是我们自己来定义的。</p>
+<h3 id="10-通过-live-server-工具模块，对电脑中某个文件件做web服务。会自动提供一个-8080-的端口，然后这个文件夹中的文件访问方式，是以前那种根据文件名来组织url的方式"><a href="#10-通过-live-server-工具模块，对电脑中某个文件件做web服务。会自动提供一个-8080-的端口，然后这个文件夹中的文件访问方式，是以前那种根据文件名来组织url的方式" class="headerlink" title="10. 通过 live-server 工具模块，对电脑中某个文件件做web服务。会自动提供一个 8080 的端口，然后这个文件夹中的文件访问方式，是以前那种根据文件名来组织url的方式"></a>10. 通过 live-server 工具模块，对电脑中某个文件件做web服务。会自动提供一个 8080 的端口，然后这个文件夹中的文件访问方式，是以前那种根据文件名来组织url的方式</h3><ol>
+<li><p>全局安装  npm install -g live-server</p>
+</li>
+<li><p>在需要处理的文件夹下面，运行 live-server 命令即可</p>
+</li>
+</ol>
+<blockquote>
+<p>@param  记录传递给一个函数的参数。别名</p>
+</blockquote>
+<ul>
+<li>arg</li>
+<li>argument<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 获取str中key的值</span></span><br><span class="line"><span class="comment"> * @param &#123;String&#125; key key  </span></span><br><span class="line"><span class="comment"> * @param &#123;String&#125; str key1=value&amp;key2=value2</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">//@param &#123;类型&#125; 变量声明    @param为注释某个变量声明的类型</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>nodejs 导出自定义模块方法</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> name = <span class="string">'66'</span>,</span><br><span class="line"><span class="keyword">const</span> fn = <span class="function"><span class="params">()</span>=&gt;</span>&#123;&#125;</span><br><span class="line"><span class="built_in">module</span>.exports=&#123;name,fn&#125; <span class="comment">//键值对一样是可以简写</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>nodejs 导入模块方法  const fn = require(‘./fn.js’) .js可以省略</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="处理跨域问题-nodejs属于后台"><a href="#处理跨域问题-nodejs属于后台" class="headerlink" title="处理跨域问题(nodejs属于后台)"></a>处理跨域问题(nodejs属于后台)</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">res.writeHead(<span class="number">200</span>, &#123;</span><br><span class="line">    <span class="string">'Access-Control-Allow-Origin'</span>: <span class="string">'*'</span>,</span><br><span class="line">    <span class="string">'Content-Type'</span>: <span class="string">'text/html;charset=utf-8'</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>通过 nodemon 工具来实现 nodejs 服务在修改之后自动重新启动 安装后node命令变成nodemon</p>
+</blockquote>
+<h4 id="通过fs-readFile-异步的；来读取文件内容"><a href="#通过fs-readFile-异步的；来读取文件内容" class="headerlink" title="通过fs.readFile() 异步的；来读取文件内容"></a>通过fs.readFile() 异步的；来读取文件内容</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">fs.readFile(<span class="string">'./views/index.html'</span>, (error, data) =&gt; &#123; <span class="comment">//第一个参数为文件路径，第二个参数为回调函数 error为错误是</span></span><br><span class="line">        <span class="keyword">if</span> (error) &#123;</span><br><span class="line">          res.write(<span class="string">'error'</span>) <span class="comment">//用于输出数据也可返回前端数据</span></span><br><span class="line">          res.end()   <span class="comment">//结束当前请求</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          res.write(data)</span><br><span class="line">          res.end()</span><br><span class="line"> &#125;</span><br><span class="line"><span class="comment">//通过fs.readFileSync()来获取文件内容，这是个同步方法。不需要通过回调去获取数据。而且直接返回数据</span></span><br><span class="line"> <span class="keyword">const</span> data = fs.readFileSync(<span class="string">'./views/style.css'</span>);</span><br><span class="line">res.write(data)</span><br><span class="line">res.end()</span><br></pre></td></tr></table></figure>
+<h4 id="模拟后端处理前端ajax请求发送数据后返回"><a href="#模拟后端处理前端ajax请求发送数据后返回" class="headerlink" title="模拟后端处理前端ajax请求发送数据后返回"></a>模拟后端处理前端ajax请求发送数据后返回</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>)  <span class="comment">//起服务器必备</span></span><br><span class="line"><span class="keyword">const</span> server = http.createServer(<span class="function">(<span class="params">req,res</span>) =&gt;</span>&#123;  <span class="comment">//调用http的createServer 方法来创建 服务实例</span></span><br><span class="line">    <span class="comment">// 处理跨域问题</span></span><br><span class="line">    res.writeHead(<span class="number">200</span>,&#123;</span><br><span class="line">        <span class="string">'Access-Control-Allow-Origin'</span>:<span class="string">'*'</span>,</span><br><span class="line">        <span class="string">'Content-Type'</span>:<span class="string">'text/html;charset=utf-8'</span></span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">if</span>(req.url !== <span class="string">'/favicon.ico'</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(req.url === <span class="string">'/login'</span>)&#123;</span><br><span class="line">           <span class="comment">//得到前端过来的username与password的值</span></span><br><span class="line">           <span class="keyword">let</span> raw = <span class="string">''</span>;<span class="comment">//用来接收前端传递过来的参数</span></span><br><span class="line">           req.on(<span class="string">'data'</span>,(chunk)=&gt;&#123;</span><br><span class="line">               <span class="comment">//这里事件就是前端请求时请求内容的数据，如果传递的数据很多的话，这个事件会触发多次，每次里面的chunk是这个数据的一小部分</span></span><br><span class="line">               raw +=chunk</span><br><span class="line">           &#125;)</span><br><span class="line">           req.on(<span class="string">'end'</span>,()=&gt;&#123;</span><br><span class="line">               <span class="keyword">let</span> obj= &#123;&#125;;</span><br><span class="line">               <span class="keyword">let</span> arr = raw.split(<span class="string">'&amp;'</span>);</span><br><span class="line">               arr.forEach( <span class="function"><span class="params">str</span> =&gt;</span>&#123;</span><br><span class="line">                   <span class="keyword">let</span> key = str.split(<span class="string">'='</span>)[<span class="number">0</span>]</span><br><span class="line">                   <span class="keyword">let</span> value = str.split(<span class="string">'='</span>)[<span class="number">1</span>]</span><br><span class="line">                   <span class="comment">//decodeURIComponent 解码</span></span><br><span class="line">                   obj[key] = <span class="built_in">decodeURIComponent</span>(value)</span><br><span class="line">               &#125;)</span><br><span class="line">               <span class="built_in">console</span>.log(obj)</span><br><span class="line">               <span class="comment">//判断当前用户是否在我users数组中</span></span><br><span class="line">               <span class="keyword">let</span> user = users.find(<span class="function"><span class="params">user</span> =&gt;</span>&#123;</span><br><span class="line">                   <span class="keyword">return</span> user.username === obj.username</span><br><span class="line">               &#125;)</span><br><span class="line">               <span class="keyword">if</span>(!user)&#123;</span><br><span class="line">                   res.write(<span class="string">'用户名不存在'</span>)</span><br><span class="line">                   res.end()</span><br><span class="line">                   <span class="keyword">return</span></span><br><span class="line">               &#125;</span><br><span class="line">               <span class="comment">//判断密码是否一致</span></span><br><span class="line">               <span class="keyword">if</span>(user.password === obj.password)&#123;</span><br><span class="line">                   res.end(<span class="string">'登录成功'</span>)</span><br><span class="line">                   res.end()</span><br><span class="line">               &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                   res.write(<span class="string">'密码错误'</span>)</span><br><span class="line">                   res.end()</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(req.url.indexOf(<span class="string">'/search'</span>) &gt; <span class="number">-1</span>)&#123;</span><br><span class="line">            <span class="comment">//判断前端传递过来的参数username是什么</span></span><br><span class="line">            <span class="comment">//解析url地址</span></span><br><span class="line">            <span class="keyword">let</span> obj = &#123;&#125;</span><br><span class="line">            <span class="keyword">let</span> str = req.url.split(<span class="string">'?'</span>)[<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">let</span> arr = str.split(<span class="string">'&amp;'</span>)</span><br><span class="line">            arr.forEach(<span class="function"><span class="params">item</span> =&gt;</span>&#123;</span><br><span class="line">                <span class="keyword">let</span> key = item.split(<span class="string">'='</span>)[<span class="number">0</span>]</span><br><span class="line">                <span class="keyword">let</span> value = item.split(<span class="string">'='</span>)[<span class="number">1</span>]</span><br><span class="line">                obj[key] = <span class="built_in">decodeURIComponent</span>(value)</span><br><span class="line">            &#125;)</span><br><span class="line">            <span class="keyword">let</span> username = obj.username</span><br><span class="line">            <span class="keyword">let</span> arr1 = users.filter(<span class="function"><span class="params">item</span> =&gt;</span>&#123;</span><br><span class="line">                <span class="comment">// return item.username === username</span></span><br><span class="line">                <span class="keyword">return</span> item.username.indexOf(username)&gt;<span class="number">-1</span></span><br><span class="line">            &#125;)</span><br><span class="line">            <span class="keyword">if</span>(!username)&#123;</span><br><span class="line">                arr1  = users</span><br><span class="line">            &#125;</span><br><span class="line">            res.write(<span class="built_in">JSON</span>.stringify(arr1))</span><br><span class="line">            res.end()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">//调用server的listen方法来监听端口号</span></span><br><span class="line">server.listen(<span class="number">9090</span>)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'启动成功'</span>);</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/11/16/canvas%E7%94%BB%E5%B8%83/" rel="next" title="canvas画布">
+                <i class="fa fa-chevron-left"></i> canvas画布
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://www.17qq.com/img_qqtouxiang/11308981.jpeg"
+                alt="CRK" />
+            
+              <p class="site-author-name" itemprop="name">CRK</p>
+              <p class="site-description motion-element" itemprop="description">一个前端学习路上的萌新</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-nodejs-出现时间"><span class="nav-number">1.</span> <span class="nav-text">1.nodejs 出现时间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-deno-未来代替nodejs产物"><span class="nav-number">2.</span> <span class="nav-text">2.deno   未来代替nodejs产物</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-nodejs-内置核心模块"><span class="nav-number">3.</span> <span class="nav-text">3.nodejs 内置核心模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-node中没有-DOM-和-BOM"><span class="nav-number">4.</span> <span class="nav-text">4.node中没有 DOM 和 BOM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-js中全局对象是window-，-node中全局对象是global"><span class="nav-number">5.</span> <span class="nav-text">5.js中全局对象是window ， node中全局对象是global</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-node文件需要如何运行"><span class="nav-number">6.</span> <span class="nav-text">6.node文件需要如何运行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-npm-全局安装的-工具模块在哪里可以找到"><span class="nav-number">7.</span> <span class="nav-text">7.npm 全局安装的 工具模块在哪里可以找到</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-res-write-响应中文时，出现乱码问题"><span class="nav-number">8.</span> <span class="nav-text">8. res.write() 响应中文时，出现乱码问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-nodejs-启动的服务，访问html页面，发现css不起作用"><span class="nav-number">9.</span> <span class="nav-text">9. nodejs 启动的服务，访问html页面，发现css不起作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-通过-live-server-工具模块，对电脑中某个文件件做web服务。会自动提供一个-8080-的端口，然后这个文件夹中的文件访问方式，是以前那种根据文件名来组织url的方式"><span class="nav-number">10.</span> <span class="nav-text">10. 通过 live-server 工具模块，对电脑中某个文件件做web服务。会自动提供一个 8080 的端口，然后这个文件夹中的文件访问方式，是以前那种根据文件名来组织url的方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#处理跨域问题-nodejs属于后台"><span class="nav-number">10.1.</span> <span class="nav-text">处理跨域问题(nodejs属于后台)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#通过fs-readFile-异步的；来读取文件内容"><span class="nav-number">10.2.</span> <span class="nav-text">通过fs.readFile() 异步的；来读取文件内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#模拟后端处理前端ajax请求发送数据后返回"><span class="nav-number">10.3.</span> <span class="nav-text">模拟后端处理前端ajax请求发送数据后返回</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">CRK</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
