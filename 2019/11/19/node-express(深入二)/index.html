@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="nodejs 框架 express(最早出现，推荐)  koa  thinkjs  adoninjs  nestjs express 快速实现一个web服务 先创建一个项目  初始化这个项目，生成一个package.json文件npm init -y  下载安装这个项目依赖的模块npm install –save express  创建一个server.js文件，开始写代码">
+<meta property="og:type" content="article">
+<meta property="og:title" content="node-express(深入二)">
+<meta property="og:url" content="&#x2F;2019&#x2F;11&#x2F;19&#x2F;node-express(%E6%B7%B1%E5%85%A5%E4%BA%8C)&#x2F;index.html">
+<meta property="og:site_name" content="陈礽奎的个人博客">
+<meta property="og:description" content="nodejs 框架 express(最早出现，推荐)  koa  thinkjs  adoninjs  nestjs express 快速实现一个web服务 先创建一个项目  初始化这个项目，生成一个package.json文件npm init -y  下载安装这个项目依赖的模块npm install –save express  创建一个server.js文件，开始写代码">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-11-19T13:27:25.682Z">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="/2019/11/19/node-express(深入二)/"/>
+
+
+
+
+
+  <title>node-express(深入二) | 陈礽奎的个人博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">陈礽奎的个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="/2019/11/19/node-express(%E6%B7%B1%E5%85%A5%E4%BA%8C)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CRK">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://www.17qq.com/img_qqtouxiang/11308981.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陈礽奎的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">node-express(深入二)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-19T20:42:40+08:00">
+                2019-11-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="nodejs-框架"><a href="#nodejs-框架" class="headerlink" title="nodejs 框架"></a>nodejs 框架</h1><ol>
+<li><p>express(最早出现，推荐)</p>
+</li>
+<li><p>koa</p>
+</li>
+<li><p>thinkjs</p>
+</li>
+<li><p>adoninjs</p>
+</li>
+<li><p>nestjs</p>
+<h2 id="express-快速实现一个web服务"><a href="#express-快速实现一个web服务" class="headerlink" title="express 快速实现一个web服务"></a>express 快速实现一个web服务</h2></li>
+<li><p>先创建一个项目</p>
+</li>
+<li><p>初始化这个项目，生成一个package.json文件<br>npm init -y</p>
+</li>
+<li><p>下载安装这个项目依赖的模块<br>npm install –save express</p>
+</li>
+<li><p>创建一个server.js文件，开始写代码</p>
+<a id="more"></a>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. 引入 express</span></span><br><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. 创建实例</span></span><br><span class="line"><span class="keyword">const</span> server = express()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 3. 设置项目使用的何种模板引擎与使用那个文件夹作为模板页面的存放路径</span></span><br><span class="line">server.get(<span class="string">'/about'</span>, (req, res) =&gt; &#123;</span><br><span class="line">  res.render(<span class="string">'about'</span>)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 4. 监听</span></span><br><span class="line">server.listen(<span class="number">8080</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="淘宝镜像"><a href="#淘宝镜像" class="headerlink" title="淘宝镜像"></a>淘宝镜像</h2><blockquote>
+<p>一、cnpm</p>
+</blockquote>
+</li>
+</ol>
+<ol>
+<li><p>npm install -g cnpm –registry=<a href="https://registry.npm.taobao.org">https://registry.npm.taobao.org</a></p>
+</li>
+<li><p>后续需要使用 npm 安装模块的时候，将 npm 修改为 cnpm 即可</p>
+<blockquote>
+<p>二、换源(推荐)</p>
+</blockquote>
+</li>
+<li><p>先查看当前电脑的npm的源地址是多少<br>npm config get registry</p>
+</li>
+<li><p>如果要更换为 淘宝镜像的源<br>npm config set registry <a href="https://registry.npm.taobao.org">https://registry.npm.taobao.org</a></p>
+</li>
+<li><p>后续安装 模块，直接使用 npm 即可。</p>
+<h2 id="npm-脚本"><a href="#npm-脚本" class="headerlink" title="npm 脚本"></a>npm 脚本</h2></li>
+<li><p>在哪里可以看到当前项目的npm script<br>package.json  scripts</p>
+</li>
+<li><p>如何运行脚本</p>
+<p>npm run &lt;脚本名字&gt;</p>
+<p>PS： 如果脚本名字是 start 的话，可以省略 run<br>   npm start</p>
+<h2 id="请求模拟工具-接口模拟工具"><a href="#请求模拟工具-接口模拟工具" class="headerlink" title="请求模拟工具 || 接口模拟工具"></a>请求模拟工具 || 接口模拟工具</h2></li>
+</ol>
+<p>现在有一个post的请求需要请求。通过浏览器直接在地址栏输入地址的方式是不可以的。</p>
+<p>可以通过弄一个 from 表单，或者弄一段 ajax 的代码，来发送这个 post 请求。</p>
+<p>但是对于后端来说。这就比较麻烦。</p>
+<p>所以，推出请求模拟工具</p>
+<ol>
+<li>postman</li>
+<li>Insomnia</li>
+</ol>
+<h1 id="路径处理"><a href="#路径处理" class="headerlink" title="路径处理"></a>路径处理</h1><h2 id="两个全局变量"><a href="#两个全局变量" class="headerlink" title="两个全局变量"></a>两个全局变量</h2><ol>
+<li>__dirname      当前文件所在的目录的绝对路径</li>
+<li>__filename     当前文件的绝对路径</li>
+</ol>
+<h2 id="NodeJS-内置的-path-模块"><a href="#NodeJS-内置的-path-模块" class="headerlink" title="NodeJS 内置的 path 模块"></a>NodeJS 内置的 path 模块</h2><ol>
+<li>path.resolve(…path)  推荐使用</li>
+<li>path.join(…path)</li>
+</ol>
+<p>PS: 这两种的区别</p>
+<ol>
+<li><p>join() 只是简单的对多个路径参数做合并。而 resolve() 中，如果有某个 根路径的参数，这个根路径参数前面的参数将会被忽略掉。</p>
+</li>
+<li><p>resolve() 总是会返回绝对路径。而join()就得到参数是怎样。</p>
+</li>
+</ol>
+<h2 id="利用res-render-方法实现动态页面"><a href="#利用res-render-方法实现动态页面" class="headerlink" title="利用res.render()方法实现动态页面"></a>利用res.render()方法实现动态页面</h2><p>提供一个动态参数的url地址<br><a href="http://localhost:8080/hello/李威">http://localhost:8080/hello/李威</a><br>渲染到浏览器的是一个html页面。这个html中只有一个 <h1>欢迎，xxx</h1></p>
+<ol>
+<li><p>新创建一个 express-02</p>
+</li>
+<li><p>项目初始化<br>npm init -y</p>
+</li>
+<li><p>安装项目需要的依赖</p>
+<ol>
+<li>express</li>
+<li>ejs</li>
+</ol>
+<p>npm install –save express ejs</p>
+</li>
+<li><p>写代码</p>
+<ol>
+<li>需要通过 express 的实例的 set(‘view engine’, ‘xxx’) 来设置当前项目使用哪种模板引擎</li>
+<li>需要通过 express 的实例的 set(‘views’, ‘xxx’) 来设置当前项目中模板页面的存放路径</li>
+<li>后续需要渲染模板页面的地方，就可以使用 res.render() 来操作</li>
+</ol>
+</li>
+</ol>
+<h2 id="express-中-request"><a href="#express-中-request" class="headerlink" title="express 中 request"></a>express 中 request</h2><blockquote>
+<p>Express 帮我们在 request 对象上，做了一些封装，新增了如下一些常用属性or方法</p>
+</blockquote>
+<ol>
+<li>req.query：获取URL的查询参数串 (用于get)</li>
+<li>req.body: 获取请求主体（post数据，需要设置中间件函数 json与urlencode）<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//让代码支持req.body需要写下面两行代码</span></span><br><span class="line">server.use(express.json())</span><br><span class="line">server.use(express.urlencoded(&#123;<span class="attr">extended</span>:<span class="literal">true</span>&#125;))</span><br></pre></td></tr></table></figure></li>
+<li>req.cookies：获取Cookies (需要使用 cookie-parser 中间件)<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 让代码支持req.cookie属性，需要使用cookie-parser中间件，</span></span><br><span class="line"><span class="comment">//步骤 安装》当前文件引入》使用express实例的use方法使用它</span></span><br><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>)</span><br><span class="line"><span class="keyword">const</span> cookieParser = <span class="built_in">require</span>(<span class="string">'cookie-parser'</span>)</span><br><span class="line"><span class="keyword">const</span> server = express();</span><br><span class="line">server.use(cookieParser())</span><br></pre></td></tr></table></figure></li>
+<li>req.hostname / req.ip：获取主机名和IP地址</li>
+<li>req.params：获取路由的parameters</li>
+<li>req.path：获取请求路径</li>
+<li>req.protocol：获取协议类型</li>
+<li>req.get()：获取指定的HTTP请求头</li>
+</ol>
+<h2 id="express-中-response"><a href="#express-中-response" class="headerlink" title="express 中 response"></a>express 中 response</h2><blockquote>
+<p>Express 帮我们在 response 对象上，做了一些封装，新增了如下一些常用属性or方法</p>
+</blockquote>
+<ol>
+<li>res.set()：设置HTTP头，传入object可以一次设置多个头</li>
+<li>res.status()：设置HTTP状态码</li>
+<li>res.send()：传送HTTP响应</li>
+<li>res.redirect()：设置响应的Location HTTP头，并且设置状态码302</li>
+<li>res.json()：传送JSON响应</li>
+<li>res.cookie(name，value [，option])：设置Cookie<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">res.cookie(<span class="string">'name'</span>, <span class="string">'李威'</span>, &#123; <span class="attr">maxAge</span>: <span class="number">1000</span> * <span class="number">60</span> * <span class="number">10</span> &#125;)</span><br></pre></td></tr></table></figure></li>
+<li>res.clearCookie()：清除参数Cookie</li>
+<li>res.download()：传送指定路径的文件</li>
+<li>res.sendFile(path [，options] [，fn])：传送指定路径的文件 -会自动根据文件extension设定Content-Type</li>
+<li>res.render(view [, locals] [, callback]) 渲染一个view<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// res.render('模板页面文字', '需要传递到这个模板页面上的数据')</span></span><br><span class="line"> res.render(<span class="string">'welcome'</span>, &#123;</span><br><span class="line">   name: req.params.name,</span><br><span class="line">   isLogin: <span class="literal">false</span>, <span class="comment">// 是否登录</span></span><br><span class="line">   frusts: [</span><br><span class="line">     &#123; <span class="attr">name</span>: <span class="string">'Apple'</span> &#125;,</span><br><span class="line">     &#123; <span class="attr">name</span>: <span class="string">'Orange'</span> &#125;,</span><br><span class="line">     &#123; <span class="attr">name</span>: <span class="string">'Banana'</span> &#125;</span><br><span class="line">   ]</span><br><span class="line"> &#125;)</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+<h2 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h2><h3 id="静态资源文件托管"><a href="#静态资源文件托管" class="headerlink" title="静态资源文件托管"></a>静态资源文件托管</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">express.static()</span><br></pre></td></tr></table></figure>
+<h3 id="生成器（脚手架工具）"><a href="#生成器（脚手架工具）" class="headerlink" title="生成器（脚手架工具）"></a>生成器（脚手架工具）</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 全局安装</span></span><br><span class="line">npm install express-generator -g</span><br><span class="line"><span class="comment">// 生成项目</span></span><br><span class="line">express --view=ejs myapp</span><br></pre></td></tr></table></figure>
+<h3 id="EJS-模板引擎"><a href="#EJS-模板引擎" class="headerlink" title="EJS 模板引擎"></a>EJS 模板引擎</h3><p>官网 - <a href="https://ejs.bootcss.com/">https://ejs.bootcss.com/</a></p>
+<blockquote>
+<p>“E” 代表 “effective”，即【高效】。EJS 是一套简单的模板语言，帮你利用普通的 JavaScript 代码生成 HTML 页面。EJS 没有如何组织内容的教条；也没有再造一套迭代和控制流语法；有的只是普通的 JavaScript 代码而已。</p>
+</blockquote>
+<p>作者：Elvmx<br>链接：<a href="https://www.jianshu.com/p/78035197e51c">https://www.jianshu.com/p/78035197e51c</a><br>来源：简书<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+<h3 id="EJS-模板引擎-常用标签"><a href="#EJS-模板引擎-常用标签" class="headerlink" title="EJS 模板引擎 - 常用标签"></a>EJS 模板引擎 - 常用标签</h3><ol>
+<li>&lt;% %&gt; 流程控制标签</li>
+<li>&lt;%= %&gt; 输出标签 (会对 HTML 代码转义)</li>
+<li>&lt;%- %&gt; 输出标签 (不对 HTML 代码转义)</li>
+<li>&lt;%# %&gt; 注释标签</li>
+<li>&lt;%% 会输出 ‘&lt;%’</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">h1</span>&gt;</span>欢迎，<span class="tag">&lt;<span class="name">%=</span> <span class="attr">name</span> %&gt;</span> <span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">%</span> <span class="attr">if</span> (<span class="attr">isLogin</span>) &#123; %&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span>&gt;</span>退出登录<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">%</span> &#125; <span class="attr">else</span> &#123; %&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span>&gt;</span>登录<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">%</span> &#125; %&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">    &lt;% for (var i = 0; i &lt; frusts.length; i++) &#123; %&gt;</span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">%=</span> <span class="attr">frusts</span>[<span class="attr">i</span>]<span class="attr">.name</span> %&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">%</span> &#125; %&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">&lt;!-- include() 引入公用模板 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">%-</span> <span class="attr">include</span>('<span class="attr">.</span>/<span class="attr">common</span>/<span class="attr">footer.ejs</span>') %&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="js代码"><a href="#js代码" class="headerlink" title="js代码"></a>js代码</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">server.get(<span class="string">'/hello/:name'</span>, (req, res) =&gt; &#123;</span><br><span class="line">  <span class="comment">// res.render('模板页面文字', '需要传递到这个模板页面上的数据')</span></span><br><span class="line">  res.render(<span class="string">'welcome'</span>, &#123;</span><br><span class="line">    name: req.params.name,</span><br><span class="line">    isLogin: <span class="literal">false</span>, <span class="comment">// 是否登录</span></span><br><span class="line">    frusts: [</span><br><span class="line">      &#123; <span class="attr">name</span>: <span class="string">'Apple'</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">name</span>: <span class="string">'Orange'</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">name</span>: <span class="string">'Banana'</span> &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="中间件"><a href="#中间件" class="headerlink" title="中间件"></a>中间件</h2><blockquote>
+<p>中间件的概念，在一起请求与响应的周期中。它一般都是在请求与响应的周期中对request对象或response做修改。</p>
+</blockquote>
+<blockquote>
+<p>一个中间件其实就是一个函数，这个函数接收到3个参数，分别是 req、res、next。next()是让整个的流程往下面继续执行的。如果你不调用的话，这次的请求响应就直接断开了。</p>
+</blockquote>
+<p>请求 -&gt; 中间件1 -&gt; 中间件2 - 中间件3 -&gt; 响应</p>
+<ol>
+<li>express.json()</li>
+<li>express.urlencode()</li>
+<li>cookieParser()</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/11/18/node.js(%E6%B7%B1%E5%85%A5%E4%B8%80)/" rel="next" title="node.js(深入一)">
+                <i class="fa fa-chevron-left"></i> node.js(深入一)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://www.17qq.com/img_qqtouxiang/11308981.jpeg"
+                alt="CRK" />
+            
+              <p class="site-author-name" itemprop="name">CRK</p>
+              <p class="site-description motion-element" itemprop="description">一个前端学习路上的萌新</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#nodejs-框架"><span class="nav-number">1.</span> <span class="nav-text">nodejs 框架</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#express-快速实现一个web服务"><span class="nav-number">1.1.</span> <span class="nav-text">express 快速实现一个web服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#淘宝镜像"><span class="nav-number">1.2.</span> <span class="nav-text">淘宝镜像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#npm-脚本"><span class="nav-number">1.3.</span> <span class="nav-text">npm 脚本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#请求模拟工具-接口模拟工具"><span class="nav-number">1.4.</span> <span class="nav-text">请求模拟工具 || 接口模拟工具</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#路径处理"><span class="nav-number">2.</span> <span class="nav-text">路径处理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#两个全局变量"><span class="nav-number">2.1.</span> <span class="nav-text">两个全局变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NodeJS-内置的-path-模块"><span class="nav-number">2.2.</span> <span class="nav-text">NodeJS 内置的 path 模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#利用res-render-方法实现动态页面"><span class="nav-number">2.3.</span> <span class="nav-text">利用res.render()方法实现动态页面</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-number">3.</span> <span class="nav-text">欢迎，xxx</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#express-中-request"><span class="nav-number">3.1.</span> <span class="nav-text">express 中 request</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#express-中-response"><span class="nav-number">3.2.</span> <span class="nav-text">express 中 response</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#路由"><span class="nav-number">3.3.</span> <span class="nav-text">路由</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#静态资源文件托管"><span class="nav-number">3.3.1.</span> <span class="nav-text">静态资源文件托管</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生成器（脚手架工具）"><span class="nav-number">3.3.2.</span> <span class="nav-text">生成器（脚手架工具）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EJS-模板引擎"><span class="nav-number">3.3.3.</span> <span class="nav-text">EJS 模板引擎</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EJS-模板引擎-常用标签"><span class="nav-number">3.3.4.</span> <span class="nav-text">EJS 模板引擎 - 常用标签</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#js代码"><span class="nav-number">3.3.4.1.</span> <span class="nav-text">js代码</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#中间件"><span class="nav-number">3.4.</span> <span class="nav-text">中间件</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">CRK</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
