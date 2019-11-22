@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="使用mongoose 来操作数据库步骤 安装 mongoose 这个 package  1npm install --save mongoose  建立 mongoose 与 mongodb 的链接  项目根目录下创建一个 conf 的文件夹。 这个文件夹中提供一个 db.js 文件 写 db.js   创建 models 文件夹，这个文件夹中存放的是 集合 相关的文件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于express与mongoose实现前后端不分离项目">
+<meta property="og:url" content="&#x2F;2019&#x2F;11&#x2F;22&#x2F;%E5%9F%BA%E4%BA%8Eexpress%E4%B8%8Emongoose%E5%AE%9E%E7%8E%B0%E5%89%8D%E5%90%8E%E7%AB%AF%E4%B8%8D%E5%88%86%E7%A6%BB%E9%A1%B9%E7%9B%AE&#x2F;index.html">
+<meta property="og:site_name" content="陈礽奎的个人博客">
+<meta property="og:description" content="使用mongoose 来操作数据库步骤 安装 mongoose 这个 package  1npm install --save mongoose  建立 mongoose 与 mongodb 的链接  项目根目录下创建一个 conf 的文件夹。 这个文件夹中提供一个 db.js 文件 写 db.js   创建 models 文件夹，这个文件夹中存放的是 集合 相关的文件">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-11-22T13:48:31.233Z">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="/2019/11/22/基于express与mongoose实现前后端不分离项目/"/>
+
+
+
+
+
+  <title>基于express与mongoose实现前后端不分离项目 | 陈礽奎的个人博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">陈礽奎的个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="/2019/11/22/%E5%9F%BA%E4%BA%8Eexpress%E4%B8%8Emongoose%E5%AE%9E%E7%8E%B0%E5%89%8D%E5%90%8E%E7%AB%AF%E4%B8%8D%E5%88%86%E7%A6%BB%E9%A1%B9%E7%9B%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CRK">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://www.17qq.com/img_qqtouxiang/11308981.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陈礽奎的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">基于express与mongoose实现前后端不分离项目</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-22T20:58:16+08:00">
+                2019-11-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="使用mongoose-来操作数据库"><a href="#使用mongoose-来操作数据库" class="headerlink" title="使用mongoose 来操作数据库"></a>使用mongoose 来操作数据库</h1><h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ol>
+<li>安装 mongoose 这个 package</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save mongoose</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li><p>建立 mongoose 与 mongodb 的链接</p>
+<ol>
+<li>项目根目录下创建一个 conf 的文件夹。</li>
+<li>这个文件夹中提供一个 db.js 文件</li>
+<li>写 db.js</li>
+</ol>
+</li>
+<li><p>创建 models 文件夹，这个文件夹中存放的是 集合 相关的文件</p>
+<a id="more"></a>
+<blockquote>
+<p>db.js代码</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 用来链接 mongodb 数据库的文件</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 1. 引入 mongoose</span></span><br><span class="line"><span class="keyword">const</span> mongoose = <span class="built_in">require</span>(<span class="string">'mongoose'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. 定义链接的地址</span></span><br><span class="line"><span class="keyword">const</span> uri = <span class="string">'mongodb://127.0.0.1:27017/express'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 3. 通过 mongoose.connect() 去链接，方法返回的是一个 promise 对象</span></span><br><span class="line">mongoose</span><br><span class="line">  .connect(uri, &#123;</span><br><span class="line">    useNewUrlParser: <span class="literal">true</span>,</span><br><span class="line">    useUnifiedTopology: <span class="literal">true</span></span><br><span class="line">  &#125;)</span><br><span class="line">  .then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 链接成功</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'数据库链接成功'</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">  .catch(<span class="function"><span class="params">error</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 链接失败</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'数据库链接失败'</span>)</span><br><span class="line">    <span class="built_in">console</span>.log(error)</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 4. 将已经链接到 mongodb 的 mongoose 模块给暴露出去在其他位置使用</span></span><br><span class="line"><span class="built_in">module</span>.exports = mongoose</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>models文件下存放定义数据表的js</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. 引入之前已经链接到mongodb数据库的mongoose模块</span></span><br><span class="line"><span class="keyword">const</span> mongoose = <span class="built_in">require</span>(<span class="string">"../conf/db"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. 实例化一个 schema (描述表的结构的东西)</span></span><br><span class="line"><span class="keyword">const</span> schema = <span class="keyword">new</span> mongoose.Schema(&#123;</span><br><span class="line">  <span class="comment">// 键值对，key-&gt;表的字段名 value-&gt;这个字段的类型</span></span><br><span class="line">  title: &#123;  </span><br><span class="line">    type: <span class="built_in">String</span>,</span><br><span class="line">    required: <span class="literal">true</span></span><br><span class="line">  &#125;, <span class="comment">// 文章标题</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 3. 通过 mongoose.model() 生成当前 post 的model</span></span><br><span class="line"><span class="comment">//    第一个参数，是我们的表名的单数形式</span></span><br><span class="line"><span class="keyword">const</span> model = mongoose.model(<span class="string">"post"</span>, schema);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 4. 暴露出去</span></span><br><span class="line"><span class="built_in">module</span>.exports = model;</span><br></pre></td></tr></table></figure>
+<h2 id="在存放用户密码是使用-bcryptjs-来加密"><a href="#在存放用户密码是使用-bcryptjs-来加密" class="headerlink" title="在存放用户密码是使用 bcryptjs  来加密"></a>在存放用户密码是使用 bcryptjs  来加密</h2></li>
+<li><p>安装</p>
+</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save bcryptjs</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><p>使用它</p>
+<ol>
+<li>bcryptjs.hash(password, 加密强度（1-12）)</li>
+<li>bcryptjs.compare(password, hashPassword)</li>
+</ol>
+</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> bcryptjs = <span class="built_in">require</span>(<span class="string">'bcryptjs'</span>) <span class="comment">//引入</span></span><br><span class="line">password: <span class="keyword">await</span> bcryptjs.hash(password, <span class="number">12</span>) <span class="comment">//加密 第一个传需要加密参数</span></span><br><span class="line"><span class="comment">//第二参数传加密等级  12位最高</span></span><br><span class="line"><span class="keyword">await</span> bcryptjs.compare(password, user.password)</span><br><span class="line"><span class="comment">//第一参数传用户输入密码 第二个参数传数据库的密码</span></span><br><span class="line"><span class="comment">//compare 这方法有返回值 true为相同 false为错误</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="路由中间件"><a href="#路由中间件" class="headerlink" title="路由中间件"></a>路由中间件</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// req.body的中间件</span></span><br><span class="line">app.use(express.json())</span><br><span class="line">app.use(express.urlencoded(&#123; <span class="attr">extended</span>: <span class="literal">true</span> &#125;))</span><br><span class="line"><span class="comment">//使用req内置中间件事，之间调用，执行完后还执行后面代码</span></span><br><span class="line"><span class="comment">//自定义中间件</span></span><br><span class="line"><span class="keyword">const</span> auth = <span class="function">(<span class="params">req,res,next</span>)=&gt;</span>&#123;</span><br><span class="line">    next()<span class="comment">//只有这个代码生效后才执行后面代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="基于session的用户认证"><a href="#基于session的用户认证" class="headerlink" title="基于session的用户认证"></a>基于session的用户认证</h2><blockquote>
+<p>可以实现除了登录与注册之外，其他的 url 访问都需要有登录状态。</p>
+</blockquote>
+<p>如果没有登录直接去访问比如文章列表页的话，会自动将你打回到登录页面。</p>
+<h3 id="session"><a href="#session" class="headerlink" title="session"></a>session</h3><p>session 与 cookie 可以看成是一套东西</p>
+<p>认证流程：</p>
+<ol>
+<li><p>用户提交登录，验证完用户的登录之后，创建一个 session.session 中存放着当前登录用户的一些基本信息比如（用户 ID、用户名）。然后将 session 相对应的 cookie 给写入客户端</p>
+</li>
+<li><p>后续请求，都会自动在请求头中携带上 cookie. 后端根据这个 cookie 来查找之前的 session。看是否能够找到或者是否过期。如果能找到 session 并且没有过期说明用户是登录状态，否则用户没有登录。</p>
+</li>
+</ol>
+<h3 id="express-session"><a href="#express-session" class="headerlink" title="express-session"></a>express-session</h3><ol>
+<li>安装它</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save express-session</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>当成中间件来使用它</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> session = <span class="built_in">require</span>(<span class="string">'express-session'</span>)</span><br><span class="line"><span class="comment">//设置session中间件</span></span><br><span class="line">app.use(</span><br><span class="line">    session(&#123;</span><br><span class="line">        <span class="comment">//选项配置</span></span><br><span class="line">        resave:<span class="literal">true</span>,</span><br><span class="line">        saveUninitialized:<span class="literal">true</span>,</span><br><span class="line">        secret:<span class="string">'sdaadad'</span>,</span><br><span class="line">        cookie:&#123;          <span class="comment">//设置cookie过期时间</span></span><br><span class="line">            maxAge:<span class="number">60</span>*<span class="number">1000</span>*<span class="number">24</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">)</span><br><span class="line">        <span class="comment">//用户验证通过</span></span><br><span class="line">        <span class="comment">//1.给session上添加一些用户信息</span></span><br><span class="line">        req.session.userInfo = &#123;</span><br><span class="line">            userId:user._id,</span><br><span class="line">            username:user.username</span><br><span class="line">        &#125;</span><br><span class="line">        res.redirect(redirect)</span><br></pre></td></tr></table></figure>
+<h2 id="实现绑定posts与users数据库之间的绑定"><a href="#实现绑定posts与users数据库之间的绑定" class="headerlink" title="实现绑定posts与users数据库之间的绑定"></a>实现绑定posts与users数据库之间的绑定</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">let</span> posts = [];</span><br><span class="line"> _posts.forEach(<span class="keyword">async</span> post =&gt; &#123;</span><br><span class="line">   <span class="keyword">let</span> obj = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(post));  <span class="comment">//可以深拷贝吧字符串对象转为可以操作的对象</span></span><br><span class="line">   <span class="comment">// 1. 取出每篇文章的用户Id</span></span><br><span class="line">   <span class="keyword">let</span> userId = post.user;</span><br><span class="line">   <span class="comment">// 2. 根据这个用户Id去获取相应的用户信息</span></span><br><span class="line">   <span class="keyword">let</span> user = <span class="keyword">await</span> UserModel.findById(userId);</span><br><span class="line"></span><br><span class="line">   obj.user = user;</span><br><span class="line"></span><br><span class="line">   posts.push(obj);</span><br><span class="line"> &#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="图片上传"><a href="#图片上传" class="headerlink" title="图片上传"></a>图片上传</h2><ol>
+<li>图片上传需要使用 multer 模块</li>
+<li>如果要做文件上传，form 表单的 enctype 属性需要设置为 multipart/form-data</li>
+<li>文件上传，请求方式，必须是 POST</li>
+</ol>
+<h2 id="multer-模块"><a href="#multer-模块" class="headerlink" title="multer 模块"></a>multer 模块</h2><ol>
+<li>安装</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save multer</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>配置 multer</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 哪里要用，放哪里 routes/post.js</span></span><br><span class="line"><span class="keyword">const</span> multer = <span class="built_in">require</span>(<span class="string">"multer"</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> upload = multer(&#123;</span><br><span class="line">  <span class="comment">// 配置</span></span><br><span class="line">  dest: <span class="string">"临时文件的上传路径"</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>在具体需要用到文件上传功能的路由代码上，使用上面的 upload 对象上某个中间件函数</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// routes/post.js</span></span><br><span class="line"></span><br><span class="line">router.post(<span class="string">"/store"</span>, upload.single(<span class="string">"文件的name名字"</span>), (req, res) =&gt; &#123;&#125;);</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li><p>做完第 3 步处理之后，在第 3 步的路由回调函数中，就可以使用 req.file 去获取到文件的信息</p>
+</li>
+<li><p>后续处理</p>
+<h3 id="需要html的form表单进行特殊设置"><a href="#需要html的form表单进行特殊设置" class="headerlink" title="需要html的form表单进行特殊设置"></a>需要html的form表单进行特殊设置</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- form里必须加上 enctype="multipart/form-data" 属性 method必须设为"POST" --&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"/posts/postss"</span> <span class="attr">method</span>=<span class="string">"POST"</span> <span class="attr">enctype</span>=<span class="string">"multipart/form-data"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"file-box"</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"span"</span>&gt;</span>更换头像<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">name</span>=<span class="string">"headc"</span> <span class="attr">class</span>=<span class="string">"form-control headc"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"确定"</span> <span class="attr">class</span>=<span class="string">"input"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<blockquote>
+<p>js后续处理代码</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//更换头像处理</span></span><br><span class="line">router.post(<span class="string">'/postss'</span>,upload.single(<span class="string">'headc'</span>), <span class="keyword">async</span> (req, res)=&gt;&#123;</span><br><span class="line">    <span class="comment">// 获取登录用户的username</span></span><br><span class="line">    <span class="keyword">let</span> username = req.userInfo.username</span><br><span class="line">    <span class="keyword">const</span> fileData = fs.readFileSync(</span><br><span class="line">        path.resolve(__dirname,<span class="string">"../uploads"</span>,req.file.filename)</span><br><span class="line">    );</span><br><span class="line"></span><br><span class="line">    <span class="comment">//2.构建一个路径，piblic目录下的路径</span></span><br><span class="line">    <span class="keyword">const</span> filename = <span class="keyword">new</span> <span class="built_in">Date</span>().getTime() + <span class="string">'-'</span> + req.file.originalname</span><br><span class="line">    <span class="keyword">const</span> filePath = path.resolve(__dirname,<span class="string">'../piblic/'</span>,filename)</span><br><span class="line">    <span class="comment">//3.写文件</span></span><br><span class="line">    fs.writeFileSync(filePath,fileData)</span><br><span class="line">    <span class="keyword">let</span> headc = <span class="string">`http://localhost:8080/<span class="subst">$&#123;filename&#125;</span>`</span></span><br><span class="line">    <span class="comment">// 存储在users库的每个账号的headc属性上，其他页面只有查找该用户的headc属性就是取到该可以直接访问的网址，渲染该图片</span></span><br><span class="line">    <span class="keyword">await</span> UserModel.updateOne(&#123;<span class="attr">username</span>:username&#125;,&#123;<span class="attr">headc</span>:headc&#125;)</span><br><span class="line">    res.redirect(<span class="string">'/posts'</span>)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">//其他页面</span></span><br><span class="line"><span class="comment">//文章列表页面</span></span><br><span class="line">router.get(<span class="string">'/'</span>, <span class="keyword">async</span> (req, res) =&gt; &#123;</span><br><span class="line">       <span class="comment">//当前用户的登录姓名</span></span><br><span class="line">    <span class="keyword">let</span> username = req.userInfo.username</span><br><span class="line">    <span class="comment">// 去查找当前用户名的users库中对象</span></span><br><span class="line">     <span class="keyword">const</span> _user = <span class="keyword">await</span> UserModel.findOne(&#123;username&#125;)</span><br><span class="line">    <span class="keyword">let</span> headc = _user.headc</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/11/19/node-express(%E6%B7%B1%E5%85%A5%E4%BA%8C)/" rel="next" title="node-express(深入二)">
+                <i class="fa fa-chevron-left"></i> node-express(深入二)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://www.17qq.com/img_qqtouxiang/11308981.jpeg"
+                alt="CRK" />
+            
+              <p class="site-author-name" itemprop="name">CRK</p>
+              <p class="site-description motion-element" itemprop="description">一个前端学习路上的萌新</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#使用mongoose-来操作数据库"><span class="nav-number">1.</span> <span class="nav-text">使用mongoose 来操作数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#步骤"><span class="nav-number">1.1.</span> <span class="nav-text">步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在存放用户密码是使用-bcryptjs-来加密"><span class="nav-number">1.2.</span> <span class="nav-text">在存放用户密码是使用 bcryptjs  来加密</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#路由中间件"><span class="nav-number">1.3.</span> <span class="nav-text">路由中间件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基于session的用户认证"><span class="nav-number">1.4.</span> <span class="nav-text">基于session的用户认证</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#session"><span class="nav-number">1.4.1.</span> <span class="nav-text">session</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#express-session"><span class="nav-number">1.4.2.</span> <span class="nav-text">express-session</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现绑定posts与users数据库之间的绑定"><span class="nav-number">1.5.</span> <span class="nav-text">实现绑定posts与users数据库之间的绑定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图片上传"><span class="nav-number">1.6.</span> <span class="nav-text">图片上传</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#multer-模块"><span class="nav-number">1.7.</span> <span class="nav-text">multer 模块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#需要html的form表单进行特殊设置"><span class="nav-number">1.7.1.</span> <span class="nav-text">需要html的form表单进行特殊设置</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">CRK</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
