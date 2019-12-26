@@ -230,6 +230,1014 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="/2019/12/25/vue%20Router%20%E4%B8%8Evuex/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CRK">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://www.17qq.com/img_qqtouxiang/11308981.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陈礽奎的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/25/vue%20Router%20%E4%B8%8Evuex/" itemprop="url">vue Router 与vuex</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-25T10:21:07+08:00">
+                2019-12-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="1-12-3总结"><a href="#1-12-3总结" class="headerlink" title="1. 12.3总结"></a>1. 12.3总结</h2><p>   Vue Router 导航守卫</p>
+<p>   vue-router 提供的导航守卫主要用来通过跳转或取消的方式守卫导航。有多种机会植入路由导航过程中：全局的, 单个路由独享的, 或者组件级的。</p>
+<p>   记住参数或查询的改变并不会触发进入/离开的导航守卫。你可以通过观察 $route 对象来应对这些变化，或使用 beforeRouteUpdate 的组件内守卫。</p>
+<p>   全局守卫<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/12/25/vue%20Router%20%E4%B8%8Evuex/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="/2019/12/25/vue-cli/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CRK">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://www.17qq.com/img_qqtouxiang/11308981.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陈礽奎的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/25/vue-cli/" itemprop="url">vue-cli</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-25T10:21:05+08:00">
+                2019-12-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><h2 id="1-新学两修饰符"><a href="#1-新学两修饰符" class="headerlink" title="1. 新学两修饰符"></a>1. 新学两修饰符</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- <span class="number">1.</span> <span class="string">`native修饰符 可以实现在一个组件的根元素上直接监听一个原生事件`</span></span><br><span class="line">  <span class="number">2.</span> <span class="string">`sync修饰符 主要用户传递prop数据的时候，子组件要修改这个prop的一种语法糖`</span></span><br><span class="line"></span><br><span class="line">&lt;!-- <span class="xml"><span class="tag">&lt;<span class="name">hello</span> <span class="attr">:name</span>=<span class="string">"username"</span> @<span class="attr">update:name</span>=<span class="string">"username = $event"</span>&gt;</span><span class="tag">&lt;/<span class="name">hello</span>&gt;</span></span> 等于下面--&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">// &lt;hello :name.sync="username"&gt;&lt;/hello&gt;</span></span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/12/25/vue-cli/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="/2019/12/25/vue%E8%A1%A5%E5%85%85/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CRK">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://www.17qq.com/img_qqtouxiang/11308981.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陈礽奎的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/25/vue%E8%A1%A5%E5%85%85/" itemprop="url">vue补充</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-25T10:21:03+08:00">
+                2019-12-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="Vue-router如何进行参数传递"><a href="#Vue-router如何进行参数传递" class="headerlink" title="Vue-router如何进行参数传递"></a>Vue-router如何进行参数传递</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 父组件： 编程式导航写入对象&#123; name: '', params:&#123;&#125;&#125;</span></span><br><span class="line"></span><br><span class="line">&lt;router-link to=<span class="string">"/需要跳转的路由路径/需要传递的参数"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 路由配置文件中传递：&#123; path: '/adc/:num'，name:'abc', component: abc&#125;</span></span><br><span class="line"><span class="comment">// 子组件： this.$route.params来获取</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="vuex"><a href="#vuex" class="headerlink" title="vuex"></a>vuex</h2><p>是vue.js应用的状态管理器加库<br>当组件过多时需要vuex类似库来管理的数据，可以解决组件之间的数据获取<br>可以在组件通过this.$store.state来获取在vuex写入或其他组件传入的信息<br>通过方法mapMutaions来设置改变state里的数据<br>mapActios方法可以异步下也能改变设置state里的数据<br>marGetters方法可以获取vuex中经过计算的数据</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/12/25/vue%E8%A1%A5%E5%85%85/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="/2019/12/25/vue%E4%BB%8B%E7%BB%8D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CRK">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://www.17qq.com/img_qqtouxiang/11308981.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陈礽奎的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/25/vue%E4%BB%8B%E7%BB%8D/" itemprop="url">vue介绍</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-25T10:21:01+08:00">
+                2019-12-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="计算属性能实现的效果，用方法或者监听都能实现。"><a href="#计算属性能实现的效果，用方法或者监听都能实现。" class="headerlink" title="计算属性能实现的效果，用方法或者监听都能实现。"></a>计算属性能实现的效果，用方法或者监听都能实现。</h2><ol>
+<li>跟方法比较，会节省性能，因为计算属性有缓存。</li>
+<li>跟监听比较，更方便，代码书写更顺畅。</li>
+</ol>
+<h2 id="v-if-和-v-show-有什么区别"><a href="#v-if-和-v-show-有什么区别" class="headerlink" title="v-if 和 v-show 有什么区别"></a>v-if 和 v-show 有什么区别</h2><ol>
+<li><p>v-if 才是真正的条件渲染，条件为ture时渲染，条件为false时销毁。而 v-show 只是简单的控制元素的css样式来做到显示隐藏</p>
+</li>
+<li><p>v-if 有更大的切换开销，v-show 有更大的初始渲染开销。所以一般需要做频繁的切换的元素就可以使用 v-show 来控制。其余就可以使用 v-if</p>
+</li>
+<li><p>v-if 有配套的 v-else v-else-if 。 而 v-show 只是孤零零的一个。</p>
+</li>
+<li><p>v-if 可以配合 template 去使用。而 v-show 不能。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/12/25/vue%E4%BB%8B%E7%BB%8D/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="/2019/12/25/vue%E8%B7%AF%E7%94%B1%E6%80%BB%E7%BB%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CRK">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://www.17qq.com/img_qqtouxiang/11308981.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陈礽奎的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/25/vue%E8%B7%AF%E7%94%B1%E6%80%BB%E7%BB%93/" itemprop="url">vue路由总结</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-25T10:20:59+08:00">
+                2019-12-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="vue路由总结"><a href="#vue路由总结" class="headerlink" title="vue路由总结"></a>vue路由总结</h1><p>vue-router 是 vue 官方提供的一套 路由插件，能够帮我们实现单页面应用。<br>单页面应用<br>什么是单页面应用（Single Page Application | SPA）<br>整个项目只有一个 html 文件的，然后页面的跳转不会刷新页面的，就是单页面应用<br>什么是多页面应用<br>项目中有多个 html 文件的，页面之间的跳转是通过 a 标签或者 location.href 的方式，<br>页面跳转会刷新浏览器，就是多页面应用<br>为什么现在会使用单页面应用呢<br>为了使 h5 网站像原生 app 贴近，比如实现页面的转场动画。这时就出现了单页面应用。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/12/25/vue%E8%B7%AF%E7%94%B1%E6%80%BB%E7%BB%93/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="/2019/12/25/vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%87%BD%E6%95%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CRK">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://www.17qq.com/img_qqtouxiang/11308981.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陈礽奎的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/25/vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%87%BD%E6%95%B0/" itemprop="url">vue生命周期函数</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-25T10:20:57+08:00">
+                2019-12-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h1><p>什么叫做vue的生命周期<br>一个vue的实例在它创建到销毁的一系列过程，就叫做生命周期<br>什么是生命周期钩子函数<br>在vue实例的生命周期中，某个特定时刻会自动触发的函数，就叫做生命周期的钩子函数<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/12/25/vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%87%BD%E6%95%B0/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="/2019/12/25/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CRK">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://www.17qq.com/img_qqtouxiang/11308981.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陈礽奎的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/25/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" itemprop="url">正则表达式</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-25T10:20:54+08:00">
+                2019-12-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 正则表达式其实就是一种规则，其实把正则称作规则表达式更为恰当</span></span><br><span class="line">  <span class="comment">// 正则表达式作用于字符串 查找 替换 检测等等操作</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 常见的正则内容</span></span><br><span class="line">  <span class="comment">// 数字的集合 [0-9] 表示0到9的任意一个数字 =&gt; (0|1|2|...|9)</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 字母的集合 [a-zA-Z] 表示任意一个字母</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// [a-z]</span></span><br><span class="line">  <span class="comment">// [A-Z]</span></span><br><span class="line">  <span class="comment">// [a-zA-Z]</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 特殊符号 ^表示开头</span></span><br><span class="line">  <span class="comment">//         $表示结尾</span></span><br><span class="line">  <span class="comment">//         *表示0次或多次</span></span><br><span class="line">  <span class="comment">//         +表示一次或多次</span></span><br><span class="line">  <span class="comment">//         ?表示0次或1次</span></span><br><span class="line">  <span class="comment">//         [0-9]&#123;n&#125;表示次数 表示0到9出现n次</span></span><br><span class="line">  <span class="comment">//         [0-9]&#123;n,m&#125; 表示0到9出现最少n次 最多m次</span></span><br><span class="line">  <span class="comment">//         [0-9]+  表示0到9出现一次以上</span></span><br><span class="line">  <span class="comment">//         a|b  表示或者是a或者是b</span></span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/12/25/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="/2019/12/25/webpack/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CRK">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://www.17qq.com/img_qqtouxiang/11308981.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陈礽奎的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/25/webpack/" itemprop="url">webpack</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-25T10:16:02+08:00">
+                2019-12-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="webpack"><a href="#webpack" class="headerlink" title="webpack"></a>webpack</h1><p>现代化前端最流行的一款 构建打包工具<br>前端构建打包工具的发展历史<br>grunt<br>gulp<br>fis<br>webpack<br>…<br>webpack 打包构建原理<br>基于某个入口文件，分析这个文件中的依赖。然后继续往下寻找依赖的依赖。循环往复，最后没有依赖了，把找到的全部都打包到一起。<br>webpack 核心<br>entry (入口)<br>output (出口)<br>loaders (转换器) - webpack 将依赖都看成是一个一个的模块。但是默认情况只能识别 js与json 两种格式的模块。如果想要打包图片、样式等资源的话，就需要相应的loader转换器来进行转换操作，转换之后webpack才能识别。<br>plugins (插件) - 有一些操作转换器也实现不了，这时就可以交给插件来实现。比如说要将某个文件直接复制到出口里面等操作。<br>mode (打包模式 4.x 版本之后提供的) - 开发 | 生产<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/12/25/webpack/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="/2019/12/25/Hook%E4%B8%8Eredux/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -490,1051 +1498,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="/2019/12/25/Redux/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="CRK">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://www.17qq.com/img_qqtouxiang/11308981.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="陈礽奎的个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/12/25/Redux/" itemprop="url">Redux</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-25T10:08:30+08:00">
-                2019-12-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="hooks"><a href="#hooks" class="headerlink" title="hooks"></a>hooks</h1><p>Hook 是 React 16.8 的新增特性。它可以让你在不编写 class 的情况下使用 state 以及其他的 React 特性。</p>
-<h2 id="基础Hook"><a href="#基础Hook" class="headerlink" title="基础Hook"></a>基础Hook</h2><ol>
-<li>useState       钩上state</li>
-<li>useEffect      钩上生命周期函数<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. componentDidMount</span></span><br><span class="line"><span class="comment">// 2. componentDidUpdate</span></span><br><span class="line"><span class="comment">// 给 effect 函数里面再返回一个函数，返回的函数会在组件销毁之前执行</span></span><br><span class="line"><span class="comment">// 给 useEffect 传递第二个参数，是一个数组，数组中写上需要监听的数据</span></span><br><span class="line"><span class="comment">// 将 useEffect 第二个参数，设置为空数组即可在挂载时只触发一次</span></span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/12/25/Redux/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="/2019/11/22/%E5%9F%BA%E4%BA%8Eexpress%E4%B8%8Emongoose%E5%AE%9E%E7%8E%B0%E5%89%8D%E5%90%8E%E7%AB%AF%E4%B8%8D%E5%88%86%E7%A6%BB%E9%A1%B9%E7%9B%AE/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="CRK">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://www.17qq.com/img_qqtouxiang/11308981.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="陈礽奎的个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/22/%E5%9F%BA%E4%BA%8Eexpress%E4%B8%8Emongoose%E5%AE%9E%E7%8E%B0%E5%89%8D%E5%90%8E%E7%AB%AF%E4%B8%8D%E5%88%86%E7%A6%BB%E9%A1%B9%E7%9B%AE/" itemprop="url">基于express与mongoose实现前后端不分离项目</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-22T20:58:16+08:00">
-                2019-11-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="使用mongoose-来操作数据库"><a href="#使用mongoose-来操作数据库" class="headerlink" title="使用mongoose 来操作数据库"></a>使用mongoose 来操作数据库</h1><h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ol>
-<li>安装 mongoose 这个 package</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save mongoose</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li><p>建立 mongoose 与 mongodb 的链接</p>
-<ol>
-<li>项目根目录下创建一个 conf 的文件夹。</li>
-<li>这个文件夹中提供一个 db.js 文件</li>
-<li>写 db.js</li>
-</ol>
-</li>
-<li><p>创建 models 文件夹，这个文件夹中存放的是 集合 相关的文件</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/11/22/%E5%9F%BA%E4%BA%8Eexpress%E4%B8%8Emongoose%E5%AE%9E%E7%8E%B0%E5%89%8D%E5%90%8E%E7%AB%AF%E4%B8%8D%E5%88%86%E7%A6%BB%E9%A1%B9%E7%9B%AE/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="/2019/11/19/node-express(%E6%B7%B1%E5%85%A5%E4%BA%8C)/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="CRK">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://www.17qq.com/img_qqtouxiang/11308981.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="陈礽奎的个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/19/node-express(%E6%B7%B1%E5%85%A5%E4%BA%8C)/" itemprop="url">node-express(深入二)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-19T20:42:40+08:00">
-                2019-11-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="nodejs-框架"><a href="#nodejs-框架" class="headerlink" title="nodejs 框架"></a>nodejs 框架</h1><ol>
-<li><p>express(最早出现，推荐)</p>
-</li>
-<li><p>koa</p>
-</li>
-<li><p>thinkjs</p>
-</li>
-<li><p>adoninjs</p>
-</li>
-<li><p>nestjs</p>
-<h2 id="express-快速实现一个web服务"><a href="#express-快速实现一个web服务" class="headerlink" title="express 快速实现一个web服务"></a>express 快速实现一个web服务</h2></li>
-<li><p>先创建一个项目</p>
-</li>
-<li><p>初始化这个项目，生成一个package.json文件<br>npm init -y</p>
-</li>
-<li><p>下载安装这个项目依赖的模块<br>npm install –save express</p>
-</li>
-<li><p>创建一个server.js文件，开始写代码</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/11/19/node-express(%E6%B7%B1%E5%85%A5%E4%BA%8C)/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="/2019/11/18/node.js(%E6%B7%B1%E5%85%A5%E4%B8%80)/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="CRK">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://www.17qq.com/img_qqtouxiang/11308981.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="陈礽奎的个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/18/node.js(%E6%B7%B1%E5%85%A5%E4%B8%80)/" itemprop="url">node.js(深入一)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-18T20:35:19+08:00">
-                2019-11-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="1-nodejs-出现时间"><a href="#1-nodejs-出现时间" class="headerlink" title="1.nodejs 出现时间"></a>1.nodejs 出现时间</h3><p>2009<br>前端-&gt;全端(全栈)-&gt;大前端</p>
-<h3 id="2-deno-未来代替nodejs产物"><a href="#2-deno-未来代替nodejs产物" class="headerlink" title="2.deno   未来代替nodejs产物"></a>2.deno   未来代替nodejs产物</h3><h3 id="3-nodejs-内置核心模块"><a href="#3-nodejs-内置核心模块" class="headerlink" title="3.nodejs 内置核心模块"></a>3.nodejs 内置核心模块</h3><ol>
-<li><p>http(要使用HTTP服务器和客户端)</p>
-</li>
-<li><p>https(基于TSL/SSL的HTTP协议，单独模块)</p>
-</li>
-<li><p>fs(用于模仿标准POSIX函数的方式与文件系统进行交互)</p>
-</li>
-<li><p>url(用于处理与解析URL)</p>
-</li>
-<li><p>path(提供与处理文件路径和目录路径的实用工具)</p>
-<h3 id="4-node中没有-DOM-和-BOM"><a href="#4-node中没有-DOM-和-BOM" class="headerlink" title="4.node中没有 DOM 和 BOM"></a>4.node中没有 DOM 和 BOM</h3>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/11/18/node.js(%E6%B7%B1%E5%85%A5%E4%B8%80)/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="/2019/11/16/canvas%E7%94%BB%E5%B8%83/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="CRK">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://www.17qq.com/img_qqtouxiang/11308981.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="陈礽奎的个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/16/canvas%E7%94%BB%E5%B8%83/" itemprop="url">canvas画布</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-16T16:57:49+08:00">
-                2019-11-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;canvas&gt;标签</span><br><span class="line">&lt;canvas id=<span class="string">"myCanvas"</span> width=<span class="string">"200"</span> height=<span class="string">"00"</span>&gt;&lt;/canvas&gt;</span><br><span class="line">canvas元素自身有两个属性：width和height</span><br><span class="line">还拥有HTML5所有主要属性，比如class和id</span><br></pre></td></tr></table></figure>
-<h4 id="IE-678不支持标签"><a href="#IE-678不支持标签" class="headerlink" title="IE 678不支持标签"></a>IE 678不支持<canvas>标签</h4>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/11/16/canvas%E7%94%BB%E5%B8%83/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="/2019/11/04/ES6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="CRK">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://www.17qq.com/img_qqtouxiang/11308981.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="陈礽奎的个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/04/ES6/" itemprop="url">ES6</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-04T20:10:48+08:00">
-                2019-11-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a>背景介绍</h3><p>ECMAScript 6.0（以下简称 ES6）是 JavaScript 语言的下一代标准，已经在 2015 年 6 月正式发布了。它的目标，是使得 JavaScript 语言可以用来编写复杂的大型应用程序，成为企业级开发语言。</p>
-<p>ECMAScript 和 JavaScript 的关系是，前者是后者的规格，后者是前者的一种实现（另外的 ECMAScript 方言还有 Jscript 和 ActionScript）。日常场合，这两个词是可以互换的。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/11/04/ES6/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="/2019/11/02/jQuery%E4%B8%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="CRK">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://www.17qq.com/img_qqtouxiang/11308981.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="陈礽奎的个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/02/jQuery%E4%B8%8B/" itemprop="url">jQuery下</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-02T17:22:20+08:00">
-                2019-11-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="jQuery事件"><a href="#jQuery事件" class="headerlink" title="jQuery事件"></a>jQuery事件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">blur()</span><br><span class="line">focus()</span><br><span class="line">click()</span><br><span class="line">dblclick()</span><br><span class="line">keyup()</span><br><span class="line">keydown()</span><br><span class="line">mouseenter()</span><br><span class="line">mouseleave()</span><br><span class="line">mouseover()</span><br><span class="line">mouseout()</span><br><span class="line">mousedown()</span><br><span class="line">mousemove()</span><br><span class="line">mouseup()</span><br><span class="line">change()</span><br><span class="line">select()</span><br><span class="line">submit()</span><br><span class="line">scroll()</span><br><span class="line">resize()</span><br><span class="line">ready()</span><br><span class="line">load()</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/11/02/jQuery%E4%B8%8B/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="/2019/11/02/jQuery%E4%B8%8A/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="CRK">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://www.17qq.com/img_qqtouxiang/11308981.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="陈礽奎的个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/02/jQuery%E4%B8%8A/" itemprop="url">jQuery上</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-02T17:14:35+08:00">
-                2019-11-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="jQuery简介"><a href="#jQuery简介" class="headerlink" title="jQuery简介"></a>jQuery简介</h3><p>jQuery也就是JavaScript和查询（Query）即 辅助JavaScript开发的类库。<br>jQuery是一个兼容多浏览器的javascript库。</p>
-<h4 id="jQuery的优点：轻量级、强大的选择器、出色的DOM操作、可靠的事件处理机制、完善的Ajax、出色的浏览器兼容性、便捷的链式操作、丰富的插件支持、完善的文档、学习成本低、开源-等等"><a href="#jQuery的优点：轻量级、强大的选择器、出色的DOM操作、可靠的事件处理机制、完善的Ajax、出色的浏览器兼容性、便捷的链式操作、丰富的插件支持、完善的文档、学习成本低、开源-等等" class="headerlink" title="jQuery的优点：轻量级、强大的选择器、出色的DOM操作、可靠的事件处理机制、完善的Ajax、出色的浏览器兼容性、便捷的链式操作、丰富的插件支持、完善的文档、学习成本低、开源 等等"></a>jQuery的优点：轻量级、强大的选择器、出色的DOM操作、可靠的事件处理机制、完善的Ajax、出色的浏览器兼容性、便捷的链式操作、丰富的插件支持、完善的文档、学习成本低、开源 等等</h4><h4 id="jQuery使用"><a href="#jQuery使用" class="headerlink" title="jQuery使用"></a>jQuery使用</h4><p>进入jQuery官网或其他平台下载jQuery文件，并且引入页面：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span> src=<span class="string">"js/jquery-1.8.3.min.js"</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<p>注意：2.0及之后的版本，不再兼容 IE 6 7 8</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/11/02/jQuery%E4%B8%8A/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">&lt;i class=&quot;fa fa-angle-right&quot;&gt;&lt;&#x2F;i&gt;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">&lt;i class=&quot;fa fa-angle-right&quot;&gt;&lt;&#x2F;i&gt;</a>
   </nav>
 
 
@@ -1584,7 +1552,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

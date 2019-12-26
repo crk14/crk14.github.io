@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="vue路由总结vue-router 是 vue 官方提供的一套 路由插件，能够帮我们实现单页面应用。单页面应用什么是单页面应用（Single Page Application | SPA）整个项目只有一个 html 文件的，然后页面的跳转不会刷新页面的，就是单页面应用什么是多页面应用项目中有多个 html 文件的，页面之间的跳转是通过 a 标签或者 location.href 的方式，页面跳转会刷">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue路由总结">
+<meta property="og:url" content="&#x2F;2019&#x2F;12&#x2F;25&#x2F;vue%E8%B7%AF%E7%94%B1%E6%80%BB%E7%BB%93&#x2F;index.html">
+<meta property="og:site_name" content="陈礽奎的个人博客">
+<meta property="og:description" content="vue路由总结vue-router 是 vue 官方提供的一套 路由插件，能够帮我们实现单页面应用。单页面应用什么是单页面应用（Single Page Application | SPA）整个项目只有一个 html 文件的，然后页面的跳转不会刷新页面的，就是单页面应用什么是多页面应用项目中有多个 html 文件的，页面之间的跳转是通过 a 标签或者 location.href 的方式，页面跳转会刷">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-12-26T01:35:49.224Z">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="/2019/12/25/vue路由总结/"/>
+
+
+
+
+
+  <title>vue路由总结 | 陈礽奎的个人博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">陈礽奎的个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="/2019/12/25/vue%E8%B7%AF%E7%94%B1%E6%80%BB%E7%BB%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CRK">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://www.17qq.com/img_qqtouxiang/11308981.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陈礽奎的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">vue路由总结</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-25T10:20:59+08:00">
+                2019-12-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="vue路由总结"><a href="#vue路由总结" class="headerlink" title="vue路由总结"></a>vue路由总结</h1><p>vue-router 是 vue 官方提供的一套 路由插件，能够帮我们实现单页面应用。<br>单页面应用<br>什么是单页面应用（Single Page Application | SPA）<br>整个项目只有一个 html 文件的，然后页面的跳转不会刷新页面的，就是单页面应用<br>什么是多页面应用<br>项目中有多个 html 文件的，页面之间的跳转是通过 a 标签或者 location.href 的方式，<br>页面跳转会刷新浏览器，就是多页面应用<br>为什么现在会使用单页面应用呢<br>为了使 h5 网站像原生 app 贴近，比如实现页面的转场动画。这时就出现了单页面应用。<br> <a id="more"></a></p>
+<h1 id="vue-项目中-vue-router-的使用"><a href="#vue-项目中-vue-router-的使用" class="headerlink" title="vue 项目中 vue-router 的使用"></a>vue 项目中 vue-router 的使用</h1><p>安装</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install --save vue-router</span><br><span class="line"><span class="comment">// 在页面的某个位置选择一个坑，用来切换路由页面</span></span><br><span class="line">&lt;router-view&gt;<span class="xml"><span class="tag">&lt;/<span class="name">router-view</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p>在 src 下面创建一个 router.js 文件。这个文件中去实例化 vue-router 的实例对象，并配置上路由的规则。<br>需要在 main.js 中，new Vue() 的地方，配置一个 router 选项，选项的值，就是第 3 步中暴露出来的路由的实例<br>详情页会出现的问题<br>当从a商品的详情页面直接进入了b商品的详情页面，会发现页面数据没有更新的问题。<br>原因是 Vue 把当前的详情页面路由页面组件给缓存了，也就是这个详情组件没有销毁，也就不会重新创建<br>解决这个问题的方法有两个：<br>监听 $route 是否有变化<br>…. （使用一个路由钩子函数）<br>编程式导航<br>用 js 的方式来实现跳转，而不是 router-link<br>需要用到的是 $router (路由实例对象)。它身上有一些方法</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$router.push()      普通 router-link 的跳转</span><br><span class="line">$router.replace()   重定向跳转</span><br><span class="line">$router.back()      后退</span><br><span class="line">$router.forward()   前进</span><br><span class="line">$router.go()        前进或后退    go(<span class="number">-1</span>)</span><br><span class="line">$route</span><br></pre></td></tr></table></figure>
+<p>当我们在vue项目中使用了 vue-router 。这时，当前项目的每一个vue组件，都会自动获取到一个 $route 数据。这个数据中存放的是匹配当前路由的信息对象。<br>可以通过它，得到当前的动态路由参数 Params 或 查询参数 Query 。<br>history与hash两者区别<br>url地址表现不同，hash有#号，history 没有<br>实现原理不同，hash的原理是通过监听onhashchange事件。<br>history原理是基于html5中新增的history相关的api来实现的，hisotry.push() history.replace() window.onpopstate<br>上线之后的表现不同，hash不会有问题，而history可能会出现404的问题，需要服务端那边做配置处理<br>$router 和 $route的区别<br>router是VueRouter的一个对象，通过Vue.use(VueRouter)和VueRouter构造函数得到一个router的实例对象，这个对象中是一个全局的对象，他包含了所有的路由包含了许多关键的对象和属性。<br>route是一个跳转的路由对象，每一个路由都会有一个route对象，是一个局部的对象，可以获取对应的name,path,params,query等<br>   $route.path<br>  字符串，等于当前路由对象的路径，会被解析为绝对路径，如 “/home/news” 。<br>   $route.params<br>  对象，包含路由中的动态片段和全匹配片段的键值对<br>   $route.query<br>  对象，包含路由中查询参数的键值对。例如，对于 /home/news/detail/01?favorite=yes ，会得到$route.query.favorite == ‘yes’ 。<br>   $route.router<br>  路由规则所属的路由器（以及其所属的组件）。<br>   $route.matched<br>  数组，包含当前匹配的路径中所包含的所有片段所对应的配置参数对象。<br>   $route.name<br>  当前路径的名字，如果没有使用具名路径，则名字为空。</p>
+<h1 id="axios解决跨域问题"><a href="#axios解决跨域问题" class="headerlink" title="axios解决跨域问题"></a>axios解决跨域问题</h1><p>安装</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">npm install --save axios</span><br><span class="line">引入</span><br><span class="line"><span class="keyword">import</span> axios <span class="keyword">from</span> <span class="string">'axios'</span></span><br><span class="line">使用方法</span><br><span class="line"><span class="keyword">get</span>请求axios.<span class="keyword">get</span>(url[, config])</span><br><span class="line">post请求axios.post(url[, data[, config]])</span><br><span class="line">通用请求axios(config)，通过向 axios 传递相关配置config对象来创建请求</span><br><span class="line">axios(&#123;</span><br><span class="line"> methods: <span class="string">'post'</span>,</span><br><span class="line"> url: <span class="string">'http://jsonplaceholder.typicode.com/users'</span>,</span><br><span class="line"> data: &#123;</span><br><span class="line"> name: <span class="string">'qiurx'</span></span><br><span class="line">&#125;)</span><br><span class="line">.then(<span class="function"><span class="keyword">function</span> (<span class="params">response</span>) </span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(response);</span><br><span class="line">&#125;)</span><br><span class="line">.catch(<span class="function"><span class="keyword">function</span> (<span class="params">error</span>) </span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(error);</span><br><span class="line">&#125;)</span><br><span class="line">在vue-cli中跨域配置</span><br><span class="line">在项目跟目录下新建一个vue.config.js</span><br><span class="line">该文件可作用于当前项目的一些配置设置，可以设置 webpack 、多页面、正向代理、</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line"> devServer: &#123;</span><br><span class="line">   proxy: <span class="string">'http://movie.miguvideo.com'</span></span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">在url中吧前面域名端口换成<span class="string">'http://localhost:8080/lovev/miguMovie/data/</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/12/25/vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%87%BD%E6%95%B0/" rel="next" title="vue生命周期函数">
+                <i class="fa fa-chevron-left"></i> vue生命周期函数
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/12/25/vue%E4%BB%8B%E7%BB%8D/" rel="prev" title="vue介绍">
+                vue介绍 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://www.17qq.com/img_qqtouxiang/11308981.jpeg"
+                alt="CRK" />
+            
+              <p class="site-author-name" itemprop="name">CRK</p>
+              <p class="site-description motion-element" itemprop="description">一个前端学习路上的萌新</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#vue路由总结"><span class="nav-number">1.</span> <span class="nav-text">vue路由总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#vue-项目中-vue-router-的使用"><span class="nav-number">2.</span> <span class="nav-text">vue 项目中 vue-router 的使用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#axios解决跨域问题"><span class="nav-number">3.</span> <span class="nav-text">axios解决跨域问题</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">CRK</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

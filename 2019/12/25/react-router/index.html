@@ -79,17 +79,15 @@
 
 
 
-<meta name="description" content="第一天写博客百度">
+<meta name="description" content="React路由前端路由，为了实现单页面应用程序  react-router react-router-dom (react-router 的高级版本)  比方说 react-router 中有一个 Link 组件。而 react-router-dom 中除了 Link 外，还提供了 NavLink">
 <meta property="og:type" content="article">
-<meta property="og:title" content="FirstNight">
-<meta property="og:url" content="&#x2F;2019&#x2F;11&#x2F;02&#x2F;FirstNight&#x2F;index.html">
+<meta property="og:title" content="react-router">
+<meta property="og:url" content="&#x2F;2019&#x2F;12&#x2F;25&#x2F;react-router&#x2F;index.html">
 <meta property="og:site_name" content="陈礽奎的个人博客">
-<meta property="og:description" content="第一天写博客百度">
+<meta property="og:description" content="React路由前端路由，为了实现单页面应用程序  react-router react-router-dom (react-router 的高级版本)  比方说 react-router 中有一个 Link 组件。而 react-router-dom 中除了 Link 外，还提供了 NavLink">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https:&#x2F;&#x2F;ss0.bdstatic.com&#x2F;70cFvHSh_Q1YnxGkpoWK1HF6hhy&#x2F;it&#x2F;u=702257389,1274025419&amp;fm=27&amp;gp=0.jpg">
-<meta property="og:updated_time" content="2019-11-02T06:20:08.165Z">
+<meta property="og:updated_time" content="2019-12-26T01:08:28.742Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https:&#x2F;&#x2F;ss0.bdstatic.com&#x2F;70cFvHSh_Q1YnxGkpoWK1HF6hhy&#x2F;it&#x2F;u=702257389,1274025419&amp;fm=27&amp;gp=0.jpg">
 
 
 
@@ -119,13 +117,13 @@
 
 
 
-  <link rel="canonical" href="/2019/11/02/FirstNight/"/>
+  <link rel="canonical" href="/2019/12/25/react-router/"/>
 
 
 
 
 
-  <title>FirstNight | 陈礽奎的个人博客</title>
+  <title>react-router | 陈礽奎的个人博客</title>
   
 
 
@@ -232,7 +230,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="/2019/11/02/FirstNight/">
+    <link itemprop="mainEntityOfPage" href="/2019/12/25/react-router/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="CRK">
@@ -249,7 +247,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">FirstNight</h1>
+          <h1 class="post-title" itemprop="name headline">react-router</h1>
         
 
         <div class="post-meta">
@@ -261,8 +259,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-02T10:46:10+08:00">
-                2019-11-02
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-25T10:09:59+08:00">
+                2019-12-25
               </time>
             
 
@@ -299,7 +297,61 @@
       
 
       
-        <h1 id="第一天写博客"><a href="#第一天写博客" class="headerlink" title="第一天写博客"></a>第一天写博客</h1><p><img src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=702257389,1274025419&fm=27&gp=0.jpg" alt="blockchain" title="区块链"><br><a href="http://baidu.com">百度</a></p>
+        <h1 id="React路由"><a href="#React路由" class="headerlink" title="React路由"></a>React路由</h1><p>前端路由，为了实现单页面应用程序</p>
+<ol>
+<li>react-router</li>
+<li>react-router-dom (react-router 的高级版本)</li>
+</ol>
+<p>比方说 react-router 中有一个 Link 组件。而 react-router-dom 中除了 Link 外，还提供了 NavLink<br> <a id="more"></a></p>
+<h2 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h2><ol>
+<li><p>安装依赖</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save react-router-dom | yarn add react-router-dom</span><br></pre></td></tr></table></figure></li>
+<li><p>不需要创建路由规则之类的文件，而是直接使用 它所提供的一些组件</p>
+<ol>
+<li>HashRouter     （hash模式）</li>
+<li>BrowserRouter   (history模式)<br>这两个组件是路由的实例组件，只需要选择一个放置在项目的根上面（最外层）</li>
+</ol>
+</li>
+<li><p>在某个位置放置一个 Route 组件，给 Route 组件设置 path 与 component 属性。这个组件既可以看成是路由的规则，又是路由的坑</p>
+</li>
+</ol>
+<h1 id="Switch"><a href="#Switch" class="headerlink" title="Switch"></a>Switch</h1><p>使用 Switch 包裹住一些 Route 组件，这时这些 Route 组件将只能匹配上一个。</p>
+<h1 id="Route-组件"><a href="#Route-组件" class="headerlink" title="Route 组件"></a>Route 组件</h1><h2 id="path"><a href="#path" class="headerlink" title="path"></a>path</h2><p>路由路径。一般都以 / 开头</p>
+<h2 id="component"><a href="#component" class="headerlink" title="component"></a>component</h2><p>规定渲染那种路由页面组件</p>
+<h2 id="exact"><a href="#exact" class="headerlink" title="exact"></a>exact</h2><p>精准匹配，只有 url 地址与 path 属性完全一致时，这个规则才生效</p>
+<h2 id="render"><a href="#render" class="headerlink" title="render"></a>render</h2><ol>
+<li>render 与 component 与 children 只能选择一个。</li>
+<li>值是一个函数，函数需要返回 react 元素（jsx）</li>
+</ol>
+<h2 id="children"><a href="#children" class="headerlink" title="children"></a>children</h2><ol>
+<li><p>Route 组件不管有没有匹配 path。 都会渲染的模板内容</p>
+</li>
+<li><p>接收一个函数，函数中会自动接收到一个对象（路由信息对象 $route）<br> 这个对象有三个属性分别是：</p>
+<ol>
+<li>history</li>
+<li>match</li>
+<li>location</li>
+</ol>
+<h1 id="路由页面组件"><a href="#路由页面组件" class="headerlink" title="路由页面组件"></a>路由页面组件</h1><p>跟路由相关的组件就称为路由页面组件。</p>
+</li>
+</ol>
+<p>路由页面组件会自动接收到3个prop</p>
+<ol>
+<li>history</li>
+<li>location</li>
+<li>match</li>
+</ol>
+<p>location 可以获取 ? 号传参<br>match 可以获取 动态参数<br>history 可以实现编程式导航</p>
+<h1 id="withRouter"><a href="#withRouter" class="headerlink" title="withRouter"></a>withRouter</h1><p>不是路由页面组件的普通组件，经withRouter(普通组件),方法后，返回一个含有history   location match 3个参数的props</p>
+<h1 id="Link-的-to-属性，可以是-字符串方式也可是对象方式"><a href="#Link-的-to-属性，可以是-字符串方式也可是对象方式" class="headerlink" title="Link 的 to 属性，可以是 字符串方式也可是对象方式"></a>Link 的 to 属性，可以是 字符串方式也可是对象方式</h1><ol>
+<li>pathname：代表链接路径的字符串。</li>
+<li>search：查询参数的字符串表示形式。</li>
+<li>hash：要放入网址中的哈希，例如#a-hash。</li>
+<li>state：组件传参下去location。</li>
+</ol>
+<h1 id="useParams"><a href="#useParams" class="headerlink" title="useParams"></a>useParams</h1><p>这是个方法，执行后会返回一个对象，里面有URL参数   可以获取动态路由参数</p>
+<h1 id="Redirect"><a href="#Redirect" class="headerlink" title="Redirect"></a>Redirect</h1><p>重定向组件  接受to 参数， 可以字符串之间路径，也可是对象跟Link组件 to属性一致</p>
+<h1 id="别名-as"><a href="#别名-as" class="headerlink" title="别名  as  :"></a>别名  as  :</h1><p>普通对象解构赋值时，解出属性可以使用：别名，别名可一代表该属性<br>其它看似解构赋值，但原理不是的可以用as 别名代表该属性（组件）</p>
 
       
     </div>
@@ -324,14 +376,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2019/12/25/Redux/" rel="next" title="Redux">
+                <i class="fa fa-chevron-left"></i> Redux
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/11/02/hello-world/" rel="prev" title="Hello World">
-                Hello World <i class="fa fa-chevron-right"></i>
+              <a href="/2019/12/25/react-redux/" rel="prev" title="react-redux">
+                react-redux <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -450,7 +506,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第一天写博客"><span class="nav-number">1.</span> <span class="nav-text">第一天写博客</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#React路由"><span class="nav-number">1.</span> <span class="nav-text">React路由</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用方式"><span class="nav-number">1.1.</span> <span class="nav-text">使用方式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Switch"><span class="nav-number">2.</span> <span class="nav-text">Switch</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Route-组件"><span class="nav-number">3.</span> <span class="nav-text">Route 组件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#path"><span class="nav-number">3.1.</span> <span class="nav-text">path</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#component"><span class="nav-number">3.2.</span> <span class="nav-text">component</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#exact"><span class="nav-number">3.3.</span> <span class="nav-text">exact</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#render"><span class="nav-number">3.4.</span> <span class="nav-text">render</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#children"><span class="nav-number">3.5.</span> <span class="nav-text">children</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#路由页面组件"><span class="nav-number">4.</span> <span class="nav-text">路由页面组件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#withRouter"><span class="nav-number">5.</span> <span class="nav-text">withRouter</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Link-的-to-属性，可以是-字符串方式也可是对象方式"><span class="nav-number">6.</span> <span class="nav-text">Link 的 to 属性，可以是 字符串方式也可是对象方式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#useParams"><span class="nav-number">7.</span> <span class="nav-text">useParams</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Redirect"><span class="nav-number">8.</span> <span class="nav-text">Redirect</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#别名-as"><span class="nav-number">9.</span> <span class="nav-text">别名  as  :</span></a></li></ol></div>
             
 
           </div>

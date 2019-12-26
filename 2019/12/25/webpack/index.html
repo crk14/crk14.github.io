@@ -79,17 +79,15 @@
 
 
 
-<meta name="description" content="第一天写博客百度">
+<meta name="description" content="webpack现代化前端最流行的一款 构建打包工具前端构建打包工具的发展历史gruntgulpfiswebpack…webpack 打包构建原理基于某个入口文件，分析这个文件中的依赖。然后继续往下寻找依赖的依赖。循环往复，最后没有依赖了，把找到的全部都打包到一起。webpack 核心entry (入口)output (出口)loaders (转换器) - webpack 将依赖都看成是一个一个的模">
 <meta property="og:type" content="article">
-<meta property="og:title" content="FirstNight">
-<meta property="og:url" content="&#x2F;2019&#x2F;11&#x2F;02&#x2F;FirstNight&#x2F;index.html">
+<meta property="og:title" content="webpack">
+<meta property="og:url" content="&#x2F;2019&#x2F;12&#x2F;25&#x2F;webpack&#x2F;index.html">
 <meta property="og:site_name" content="陈礽奎的个人博客">
-<meta property="og:description" content="第一天写博客百度">
+<meta property="og:description" content="webpack现代化前端最流行的一款 构建打包工具前端构建打包工具的发展历史gruntgulpfiswebpack…webpack 打包构建原理基于某个入口文件，分析这个文件中的依赖。然后继续往下寻找依赖的依赖。循环往复，最后没有依赖了，把找到的全部都打包到一起。webpack 核心entry (入口)output (出口)loaders (转换器) - webpack 将依赖都看成是一个一个的模">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https:&#x2F;&#x2F;ss0.bdstatic.com&#x2F;70cFvHSh_Q1YnxGkpoWK1HF6hhy&#x2F;it&#x2F;u=702257389,1274025419&amp;fm=27&amp;gp=0.jpg">
-<meta property="og:updated_time" content="2019-11-02T06:20:08.165Z">
+<meta property="og:updated_time" content="2019-12-26T01:31:46.014Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https:&#x2F;&#x2F;ss0.bdstatic.com&#x2F;70cFvHSh_Q1YnxGkpoWK1HF6hhy&#x2F;it&#x2F;u=702257389,1274025419&amp;fm=27&amp;gp=0.jpg">
 
 
 
@@ -119,13 +117,13 @@
 
 
 
-  <link rel="canonical" href="/2019/11/02/FirstNight/"/>
+  <link rel="canonical" href="/2019/12/25/webpack/"/>
 
 
 
 
 
-  <title>FirstNight | 陈礽奎的个人博客</title>
+  <title>webpack | 陈礽奎的个人博客</title>
   
 
 
@@ -232,7 +230,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="/2019/11/02/FirstNight/">
+    <link itemprop="mainEntityOfPage" href="/2019/12/25/webpack/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="CRK">
@@ -249,7 +247,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">FirstNight</h1>
+          <h1 class="post-title" itemprop="name headline">webpack</h1>
         
 
         <div class="post-meta">
@@ -261,8 +259,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-02T10:46:10+08:00">
-                2019-11-02
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-25T10:16:02+08:00">
+                2019-12-25
               </time>
             
 
@@ -299,7 +297,8 @@
       
 
       
-        <h1 id="第一天写博客"><a href="#第一天写博客" class="headerlink" title="第一天写博客"></a>第一天写博客</h1><p><img src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=702257389,1274025419&fm=27&gp=0.jpg" alt="blockchain" title="区块链"><br><a href="http://baidu.com">百度</a></p>
+        <h1 id="webpack"><a href="#webpack" class="headerlink" title="webpack"></a>webpack</h1><p>现代化前端最流行的一款 构建打包工具<br>前端构建打包工具的发展历史<br>grunt<br>gulp<br>fis<br>webpack<br>…<br>webpack 打包构建原理<br>基于某个入口文件，分析这个文件中的依赖。然后继续往下寻找依赖的依赖。循环往复，最后没有依赖了，把找到的全部都打包到一起。<br>webpack 核心<br>entry (入口)<br>output (出口)<br>loaders (转换器) - webpack 将依赖都看成是一个一个的模块。但是默认情况只能识别 js与json 两种格式的模块。如果想要打包图片、样式等资源的话，就需要相应的loader转换器来进行转换操作，转换之后webpack才能识别。<br>plugins (插件) - 有一些操作转换器也实现不了，这时就可以交给插件来实现。比如说要将某个文件直接复制到出口里面等操作。<br>mode (打包模式 4.x 版本之后提供的) - 开发 | 生产<br> <a id="more"></a></p>
+<h1 id="webpack-简单使用-查看文档的指南部分"><a href="#webpack-简单使用-查看文档的指南部分" class="headerlink" title="webpack 简单使用 (查看文档的指南部分)"></a>webpack 简单使用 (查看文档的指南部分)</h1><p>创建 webpack-demo<br>初始化<br>安装 webpack  webpack-cli<br>运行 webpack 命令来打包<br>一、全局安装了 webpack 之后，可以直接在项目下使用 webpack 命令即可。<br>二、项目的本地安装<br>./node_modules/.bin/webpack<br>使用 npx webpack<br>npm 脚本方式<br>默认的入口文件是： src/index.js<br>默认的出口文件是： dist/main.js<br>如果你的入口文件或出口文件不是默认的文件的话。<br>可以通过  –entry 选项来告诉它使用哪个入口文件<br>         –output 选项来告诉它使用哪个出口文件<br>不推荐使用选项的方式来控制，推荐是用配置文件的方式：(webpack.config.js)<br>一、自动帮我们生成 dist / index.html<br>使用一款插件，html-webpack-plugin<br>安装插件<br>npm install –save-dev html-webpack-plugin<br>配置插件<br>plugins: [<br> new HtmlWebpackPlugin({<br>   // 可以传递一个template选项，来控制使用哪个模板页面来生成<br>   template: path.resolve(<strong>dirname, ‘./public/index.html’)<br>})<br>]<br>二、将public文件夹里面的内容直接复制到dist文件夹中。<br>使用一款插件，copy-webpack-plugin<br>安装插件<br>npm install –save-dev copy-webpack-plugin<br>配置插件<br>plugins: [<br> new CopyWebpackPlugin([<br>  {<br>     // 将 public 文件夹中的文件内容，全部拷贝至 出口文件夹中<br>     from: path.resolve(</strong>dirname, ‘./public’)<br>  }<br>])<br>]<br>三、引入css样式<br>需要两个转换器：style-loader | css-loader<br>css-loader: 将css文件转换成 webpack 能够识别的模块文件<br>style-loader: 将css写入到html页面的style标签中<br>安装需要的转换器<br>npm install -D style-loader css-loader<br>配置转换器规则<br> module: {<br>   // 转换器的配置，规则<br>   rules: [<br>    {<br>       test: /.css$/,<br>       // 多个转换器使用时，需要按照倒序的写法<br>       use: [‘style-loader’, ‘css-loader’]<br>    }<br>  ]<br>},<br>四、引入scss样式<br>除了 style-loader | css-loader 之外还需要 sass-loader | node-sass(这玩意安装可能会想死)<br>五、引入less样式<br>除了 style-loader | css-loader 之外还需要 less-loader | less<br>六、引入图片<br>使用 url-loader 的转换器</p>
 
       
     </div>
@@ -324,14 +323,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2019/12/25/Hook%E4%B8%8Eredux/" rel="next" title="Hook与redux">
+                <i class="fa fa-chevron-left"></i> Hook与redux
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/11/02/hello-world/" rel="prev" title="Hello World">
-                Hello World <i class="fa fa-chevron-right"></i>
+              <a href="/2019/12/25/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" rel="prev" title="正则表达式">
+                正则表达式 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -450,7 +453,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第一天写博客"><span class="nav-number">1.</span> <span class="nav-text">第一天写博客</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#webpack"><span class="nav-number">1.</span> <span class="nav-text">webpack</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#webpack-简单使用-查看文档的指南部分"><span class="nav-number">2.</span> <span class="nav-text">webpack 简单使用 (查看文档的指南部分)</span></a></li></ol></div>
             
 
           </div>

@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Vue-router如何进行参数传递123456&#x2F;&#x2F; 父组件： 编程式导航写入对象&amp;#123; name: &amp;apos;&amp;apos;, params:&amp;#123;&amp;#125;&amp;#125;&amp;lt;router-link to=&quot;&#x2F;需要跳转的路由路径&#x2F;需要传递的参数&quot;&#x2F;&#x2F; 路由配置文件中传递：&amp;#123; path: &amp;apos;&#x2F;adc&#x2F;:num&amp;apos;，name:&amp;apos;abc&amp;apos;, component: abc&amp;#125;&#x2F;&#x2F; 子组件：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue补充">
+<meta property="og:url" content="&#x2F;2019&#x2F;12&#x2F;25&#x2F;vue%E8%A1%A5%E5%85%85&#x2F;index.html">
+<meta property="og:site_name" content="陈礽奎的个人博客">
+<meta property="og:description" content="Vue-router如何进行参数传递123456&#x2F;&#x2F; 父组件： 编程式导航写入对象&amp;#123; name: &amp;apos;&amp;apos;, params:&amp;#123;&amp;#125;&amp;#125;&amp;lt;router-link to=&quot;&#x2F;需要跳转的路由路径&#x2F;需要传递的参数&quot;&#x2F;&#x2F; 路由配置文件中传递：&amp;#123; path: &amp;apos;&#x2F;adc&#x2F;:num&amp;apos;，name:&amp;apos;abc&amp;apos;, component: abc&amp;#125;&#x2F;&#x2F; 子组件：">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-12-26T02:09:51.855Z">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="/2019/12/25/vue补充/"/>
+
+
+
+
+
+  <title>vue补充 | 陈礽奎的个人博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">陈礽奎的个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="/2019/12/25/vue%E8%A1%A5%E5%85%85/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CRK">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://www.17qq.com/img_qqtouxiang/11308981.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陈礽奎的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">vue补充</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-25T10:21:03+08:00">
+                2019-12-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Vue-router如何进行参数传递"><a href="#Vue-router如何进行参数传递" class="headerlink" title="Vue-router如何进行参数传递"></a>Vue-router如何进行参数传递</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 父组件： 编程式导航写入对象&#123; name: '', params:&#123;&#125;&#125;</span></span><br><span class="line"></span><br><span class="line">&lt;router-link to=<span class="string">"/需要跳转的路由路径/需要传递的参数"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 路由配置文件中传递：&#123; path: '/adc/:num'，name:'abc', component: abc&#125;</span></span><br><span class="line"><span class="comment">// 子组件： this.$route.params来获取</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="vuex"><a href="#vuex" class="headerlink" title="vuex"></a>vuex</h2><p>是vue.js应用的状态管理器加库<br>当组件过多时需要vuex类似库来管理的数据，可以解决组件之间的数据获取<br>可以在组件通过this.$store.state来获取在vuex写入或其他组件传入的信息<br>通过方法mapMutaions来设置改变state里的数据<br>mapActios方法可以异步下也能改变设置state里的数据<br>marGetters方法可以获取vuex中经过计算的数据</p>
+ <a id="more"></a>
+<p>路由中redirect和alias的区别？<br>redirect: 重定向<br>用户访问/home是会跳转/index页面 url显示/index<br>alias:别名<br>用户访问/home是跳转/home 页面显示/home    还可通过/h访问 页面显示/h</p>
+<p> 使用 Vue.directive()定义全局的指令v-focus<br>     参数1：指令的名称，注意，在定义的时候，指令的名称前面不需要加 v- 前缀,<br>     但是：在调用的时候，必须在指令名称前加上v-前缀来进行调用<br>  参数2：是一个对象，这个对象身上有一些指令相关的函数，这些函数可以在特定的阶段，执行相关的操作</p>
+<p>params传参 需要在 路由配置 path /:id 这样就不会丢参</p>
+<h2 id="vuex补充-rootState"><a href="#vuex补充-rootState" class="headerlink" title="vuex补充 rootState"></a>vuex补充 rootState</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">getters</span><br><span class="line">getters: &#123;</span><br><span class="line"> hello (state, getters, rootState) &#123;</span><br><span class="line">   <span class="keyword">return</span> state.xxxx.length</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">会自动接受到三个参数，state、getters、rootState</span><br><span class="line">state - 当前的 state 数据</span><br><span class="line">getters - 当前的 getters 数据</span><br><span class="line">rootState - 根 state 数据</span><br><span class="line">mutations</span><br><span class="line">mutations: &#123;</span><br><span class="line"> fn1 (state, payload) &#123;</span><br><span class="line">​</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">​</span><br><span class="line"><span class="keyword">this</span>.$store.commit(<span class="string">'xxx'</span>)</span><br><span class="line"><span class="comment">// 如果你需要传递多个参数的话，那么将 payload 设置为对象的形式</span></span><br><span class="line">actions</span><br><span class="line">actions: &#123;</span><br><span class="line"> fn1 (context, payload) &#123;</span><br><span class="line">​</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">​</span><br><span class="line">​</span><br><span class="line"><span class="keyword">this</span>.$store.dispatch(<span class="string">'xxx'</span>)</span><br><span class="line"><span class="comment">// 如果你需要传递多个参数的话，那么将 payload 设置为对象的形式</span></span><br><span class="line"><span class="comment">// context.rootState 可以获取到根模块的state的数据</span></span><br><span class="line">总结   指令</span><br><span class="line">v-<span class="keyword">if</span></span><br><span class="line">v-show</span><br><span class="line">v-<span class="keyword">else</span></span><br><span class="line">v-<span class="keyword">else</span>-<span class="keyword">if</span></span><br><span class="line">v-bind</span><br><span class="line">v-on</span><br><span class="line">v-model</span><br><span class="line">v-<span class="keyword">for</span></span><br><span class="line">v-once</span><br><span class="line">v-html</span><br><span class="line">v-slot  v2<span class="number">.6</span><span class="number">.0</span></span><br><span class="line">v-pre</span><br><span class="line">v-text</span><br><span class="line">能解决&#123;&#123;&#125;&#125;的闪烁问题</span><br><span class="line">v-cloak</span><br><span class="line">能解决&#123;&#123;&#125;&#125;的闪烁问题</span><br><span class="line">将 v-cloak 放在挂载点元素上。</span><br><span class="line">设置一个 div[v-clock] &#123; <span class="attr">display</span>: none &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="组件通信"><a href="#组件通信" class="headerlink" title="组件通信"></a>组件通信</h2><p>父-&gt;子   props<br>子-&gt;父   $emit<br>兄弟组件之间          找到相同的父级组件<br>更复杂的组件之间      中间事件管理器|中间事件总线|bus(公交车)    || vuex<br>中间事件管理器，其实就是一个发布订阅者模式。在 vue 中我们可以通过实例化一个空的vue实例对象来操作<br>路由页面组件之间      vuex<br>特殊情况 (不要直接去修改人家的数据)<br>$root      能够获取到根组件的实例对象<br>$parent    能够获取到父组件的实例对象<br>$children  能够获取到子组件的实例对象集合<br>$refs  能够获取到子组件或者元素，<br>    如果是子组件的话，得到的就是子组件的实例对象<br>    如果是元素的话，得到的就是元素的DOM对象</p>
+<ol>
+<li>先给子组件或者元素做一个标记，通过 ref 属性。ref=”box”</li>
+<li>这时就可以通过 this.$refs.box 去获取到了。<br>过滤器<br>如果需要对数据做一些格式化的操作，就可以使用过滤器了。<br>需求：<br>有一个 price = 10, 需要在页面上显示为 $10<br>有一个 str = ‘abc’, 需要在页面上显示为 Abc || ABC<br>有一个 date = 123123123123, 需要在页面上显示为 2019-12-04 12:03:56<br>使用<br>在 filters 选项中定义好 过滤器<br>通过 管道符号去使用过滤器即可<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// &#123;&#123; msg | 过滤器的名字 &#125;&#125;</span></span><br><span class="line"><span class="comment">// ​</span></span><br><span class="line"><span class="comment">// &lt;div :id="msg | 过滤器的名字"&gt;&lt;/div&gt;</span></span><br><span class="line"><span class="comment">// 过滤器传参</span></span><br><span class="line"><span class="comment">// toUpperCase 这个过滤器能够接受第二个参数，isAll 值是 Boolean 类型，为true是就全部转大写，否则只首字母大写</span></span><br><span class="line"><span class="comment">// 过滤器链式调用</span></span><br><span class="line"><span class="comment">// &#123;&#123; msg | 过滤器1 | 过滤器2 | 过滤器3 &#125;&#125;</span></span><br><span class="line"><span class="comment">// 全局过滤器，</span></span><br><span class="line"><span class="comment">// filters 选项设置的过滤器是局部过滤器，想要实现一个全局过滤器的话，使用</span></span><br><span class="line"><span class="comment">// Vue.filter('过滤器名字', () =&gt; &#123;</span></span><br><span class="line"><span class="comment">// &#125;)</span></span><br><span class="line"><span class="comment">// 动态组件</span></span><br><span class="line"><span class="comment">// vue 内置了一款 component 组件，可以通过设置这个组件的 is 属性为某个组件的名字，从而实现用某个组件去替换这个动态组件的模板内容</span></span><br><span class="line"><span class="comment">// 在使用路由中，组件标签也可使用is属性</span></span><br><span class="line"><span class="comment">// 属性代理</span></span><br><span class="line"><span class="comment">//  ES5 Object.defineProperty() 实现数据代理</span></span><br><span class="line"><span class="comment">//  Object.defineProperty(要代理的对象，要代理的属性，配置项)</span></span><br><span class="line"><span class="comment">// 3 Vue实现数据双向绑定的原理：Object.defineProperty()</span></span><br><span class="line"><span class="comment">//  vue实现数据双向绑定主要是：采用数据劫持结合发布者-订阅者模式的方式，通过 Object.defineProperty() 来劫持各个属性的setter，getter，在数据变动时发布消息给订阅者，触发相应监听回调。当把一个普通 Javascript 对象传给 Vue 实例来作为它的 data 选项时，Vue 将遍历它的属性，用 Object.defineProperty() 将它们转为 getter/setter。用户看不到 getter/setter，但是在内部它们让 Vue追踪依赖，在属性被访问和修改时通知变化。</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/12/25/vue%E4%BB%8B%E7%BB%8D/" rel="next" title="vue介绍">
+                <i class="fa fa-chevron-left"></i> vue介绍
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/12/25/vue-cli/" rel="prev" title="vue-cli">
+                vue-cli <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://www.17qq.com/img_qqtouxiang/11308981.jpeg"
+                alt="CRK" />
+            
+              <p class="site-author-name" itemprop="name">CRK</p>
+              <p class="site-description motion-element" itemprop="description">一个前端学习路上的萌新</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Vue-router如何进行参数传递"><span class="nav-number">1.</span> <span class="nav-text">Vue-router如何进行参数传递</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#vuex"><span class="nav-number">1.1.</span> <span class="nav-text">vuex</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vuex补充-rootState"><span class="nav-number">1.2.</span> <span class="nav-text">vuex补充 rootState</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#组件通信"><span class="nav-number">1.3.</span> <span class="nav-text">组件通信</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">CRK</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

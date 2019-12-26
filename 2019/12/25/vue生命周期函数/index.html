@@ -79,17 +79,15 @@
 
 
 
-<meta name="description" content="第一天写博客百度">
+<meta name="description" content="生命周期什么叫做vue的生命周期一个vue的实例在它创建到销毁的一系列过程，就叫做生命周期什么是生命周期钩子函数在vue实例的生命周期中，某个特定时刻会自动触发的函数，就叫做生命周期的钩子函数">
 <meta property="og:type" content="article">
-<meta property="og:title" content="FirstNight">
-<meta property="og:url" content="&#x2F;2019&#x2F;11&#x2F;02&#x2F;FirstNight&#x2F;index.html">
+<meta property="og:title" content="vue生命周期函数">
+<meta property="og:url" content="&#x2F;2019&#x2F;12&#x2F;25&#x2F;vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%87%BD%E6%95%B0&#x2F;index.html">
 <meta property="og:site_name" content="陈礽奎的个人博客">
-<meta property="og:description" content="第一天写博客百度">
+<meta property="og:description" content="生命周期什么叫做vue的生命周期一个vue的实例在它创建到销毁的一系列过程，就叫做生命周期什么是生命周期钩子函数在vue实例的生命周期中，某个特定时刻会自动触发的函数，就叫做生命周期的钩子函数">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https:&#x2F;&#x2F;ss0.bdstatic.com&#x2F;70cFvHSh_Q1YnxGkpoWK1HF6hhy&#x2F;it&#x2F;u=702257389,1274025419&amp;fm=27&amp;gp=0.jpg">
-<meta property="og:updated_time" content="2019-11-02T06:20:08.165Z">
+<meta property="og:updated_time" content="2019-12-26T01:34:06.860Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https:&#x2F;&#x2F;ss0.bdstatic.com&#x2F;70cFvHSh_Q1YnxGkpoWK1HF6hhy&#x2F;it&#x2F;u=702257389,1274025419&amp;fm=27&amp;gp=0.jpg">
 
 
 
@@ -119,13 +117,13 @@
 
 
 
-  <link rel="canonical" href="/2019/11/02/FirstNight/"/>
+  <link rel="canonical" href="/2019/12/25/vue生命周期函数/"/>
 
 
 
 
 
-  <title>FirstNight | 陈礽奎的个人博客</title>
+  <title>vue生命周期函数 | 陈礽奎的个人博客</title>
   
 
 
@@ -232,7 +230,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="/2019/11/02/FirstNight/">
+    <link itemprop="mainEntityOfPage" href="/2019/12/25/vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%87%BD%E6%95%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="CRK">
@@ -249,7 +247,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">FirstNight</h1>
+          <h1 class="post-title" itemprop="name headline">vue生命周期函数</h1>
         
 
         <div class="post-meta">
@@ -261,8 +259,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-02T10:46:10+08:00">
-                2019-11-02
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-25T10:20:57+08:00">
+                2019-12-25
               </time>
             
 
@@ -299,7 +297,8 @@
       
 
       
-        <h1 id="第一天写博客"><a href="#第一天写博客" class="headerlink" title="第一天写博客"></a>第一天写博客</h1><p><img src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=702257389,1274025419&fm=27&gp=0.jpg" alt="blockchain" title="区块链"><br><a href="http://baidu.com">百度</a></p>
+        <h1 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h1><p>什么叫做vue的生命周期<br>一个vue的实例在它创建到销毁的一系列过程，就叫做生命周期<br>什么是生命周期钩子函数<br>在vue实例的生命周期中，某个特定时刻会自动触发的函数，就叫做生命周期的钩子函数<br> <a id="more"></a></p>
+<h1 id="生命周期的钩子函数："><a href="#生命周期的钩子函数：" class="headerlink" title="生命周期的钩子函数："></a>生命周期的钩子函数：</h1><p>beforeCreate     实例创建之前<br>拿不到数据与方法<br>拿不到真实的dom对象, this.$el<br>created          实例创建成功<br>拿不到真实的dom对象, this.$el<br>能够拿到数据与方法<br>调用方法，发送异步请求等等。<br>beforeMount      实例挂载之前<br>拿不到真实的dom对象, this.$el<br>mounted          实例挂载完成<br>能够获取到真是的DOM对象，this.$el 有值了<br>调用方法，发送异步请求等等。<br>beforeUpdate     实例更新之前<br>获取当前的数据的是话是旧数据<br>updated          实例更新完成<br>真实DOM也更新完成。<br>beforeDestroy    实例销毁之前<br>清除定时器<br>清除全局绑定的滚动条事件<br>清理工作<br>destroyed        实例销毁完成<br>分为三个阶段<br>挂载（初始）阶段<br>beforeCreate     实例创建之前<br>created          实例创建成功<br>beforeMount      实例挂载之前<br>mounted          实例挂载完成<br>更新阶段<br>beforeUpdate     实例更新之前<br>updated          实例更新完成<br>销毁阶段<br>beforeDestroy    实例销毁之前<br>destroyed        实例销毁完成<br>问题与解决方法<br>如果让 Swiper 组件更加可配置<br>通过 props 来控制，<br>多次调用 Swiper 组件时，发现 小圆点 不更新的问题<br>原因是 new Swiper() 时传递的是 css 选择器的方式 new Swiper(‘.swiper-container’)。会导致同一个 Swiper 组件 被 初始化了多次。<br>解决方法：new Swiper(this.$el)<br>Swiper 轮播图的数据是由调用者来通过 prop 传递下来的。同步的数据传递是没有问题的。但是如果调用者传递的数据是在 ajax 请求到之后再更新的话，就会出现轮播图滑动不了的问题<br>原因是：ajax 是异步的，等到数据更新时，Swiper 组件已经实例化了。<br>解决方法是：<br>调用者解决<br>在调用 Swiper 组件时，通过 v-if 来做控制，等数据拿到之后再去使用 Swiper<br>提供者解决<br>updated 生命周期钩子函数来处理，（数据更新并且真实 DOM 已经更新的时候触发）<br>但是 updated 这个生命周期的钩子函数会不管什么数据更新，都会触发。带来的问题就是性能考虑方法<br>2. 使用 watch 去监听那个数据。这时发现监听的回调函数执行之后，其实真实DOM还没有更新<br>​<br>      1. setTimeout<br>      2. this.$nextTick()</p>
 
       
     </div>
@@ -324,14 +323,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2019/12/25/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" rel="next" title="正则表达式">
+                <i class="fa fa-chevron-left"></i> 正则表达式
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/11/02/hello-world/" rel="prev" title="Hello World">
-                Hello World <i class="fa fa-chevron-right"></i>
+              <a href="/2019/12/25/vue%E8%B7%AF%E7%94%B1%E6%80%BB%E7%BB%93/" rel="prev" title="vue路由总结">
+                vue路由总结 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -450,7 +453,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第一天写博客"><span class="nav-number">1.</span> <span class="nav-text">第一天写博客</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#生命周期"><span class="nav-number">1.</span> <span class="nav-text">生命周期</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#生命周期的钩子函数："><span class="nav-number">2.</span> <span class="nav-text">生命周期的钩子函数：</span></a></li></ol></div>
             
 
           </div>

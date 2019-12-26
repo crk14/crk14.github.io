@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="123456789101112131415161718192021&#x2F;&#x2F; 正则表达式其实就是一种规则，其实把正则称作规则表达式更为恰当  &#x2F;&#x2F; 正则表达式作用于字符串 查找 替换 检测等等操作  &#x2F;&#x2F; 常见的正则内容  &#x2F;&#x2F; 数字的集合 [0-9] 表示0到9的任意一个数字 =&amp;gt; (0|1|2|...|9)  &#x2F;&#x2F; 字母的集合 [a-zA-Z] 表示任意一个字母  &#x2F;&#x2F; [a-z]  &#x2F;&#x2F; [">
+<meta property="og:type" content="article">
+<meta property="og:title" content="正则表达式">
+<meta property="og:url" content="&#x2F;2019&#x2F;12&#x2F;25&#x2F;%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F&#x2F;index.html">
+<meta property="og:site_name" content="陈礽奎的个人博客">
+<meta property="og:description" content="123456789101112131415161718192021&#x2F;&#x2F; 正则表达式其实就是一种规则，其实把正则称作规则表达式更为恰当  &#x2F;&#x2F; 正则表达式作用于字符串 查找 替换 检测等等操作  &#x2F;&#x2F; 常见的正则内容  &#x2F;&#x2F; 数字的集合 [0-9] 表示0到9的任意一个数字 =&amp;gt; (0|1|2|...|9)  &#x2F;&#x2F; 字母的集合 [a-zA-Z] 表示任意一个字母  &#x2F;&#x2F; [a-z]  &#x2F;&#x2F; [">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-12-26T01:30:47.586Z">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="/2019/12/25/正则表达式/"/>
+
+
+
+
+
+  <title>正则表达式 | 陈礽奎的个人博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">陈礽奎的个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="/2019/12/25/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CRK">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://www.17qq.com/img_qqtouxiang/11308981.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陈礽奎的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">正则表达式</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-25T10:20:54+08:00">
+                2019-12-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 正则表达式其实就是一种规则，其实把正则称作规则表达式更为恰当</span></span><br><span class="line">  <span class="comment">// 正则表达式作用于字符串 查找 替换 检测等等操作</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 常见的正则内容</span></span><br><span class="line">  <span class="comment">// 数字的集合 [0-9] 表示0到9的任意一个数字 =&gt; (0|1|2|...|9)</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 字母的集合 [a-zA-Z] 表示任意一个字母</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// [a-z]</span></span><br><span class="line">  <span class="comment">// [A-Z]</span></span><br><span class="line">  <span class="comment">// [a-zA-Z]</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 特殊符号 ^表示开头</span></span><br><span class="line">  <span class="comment">//         $表示结尾</span></span><br><span class="line">  <span class="comment">//         *表示0次或多次</span></span><br><span class="line">  <span class="comment">//         +表示一次或多次</span></span><br><span class="line">  <span class="comment">//         ?表示0次或1次</span></span><br><span class="line">  <span class="comment">//         [0-9]&#123;n&#125;表示次数 表示0到9出现n次</span></span><br><span class="line">  <span class="comment">//         [0-9]&#123;n,m&#125; 表示0到9出现最少n次 最多m次</span></span><br><span class="line">  <span class="comment">//         [0-9]+  表示0到9出现一次以上</span></span><br><span class="line">  <span class="comment">//         a|b  表示或者是a或者是b</span></span><br></pre></td></tr></table></figure>
+ <a id="more"></a>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br></pre></td><td class="code"><pre><span class="line">  <span class="comment">// i表示不区分大小写  g表示全匹配</span></span><br><span class="line"><span class="comment">// 实例化正则对象 new RegExp(pattern[, attributes]);</span></span><br><span class="line">  <span class="comment">// pattern：模式字符串 , attributes: 'g' || 'i'</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> reg = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">'study'</span>, <span class="string">'ig'</span>);</span><br><span class="line">  <span class="built_in">console</span>.log(reg);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 字面量声明 /pattern/ig</span></span><br><span class="line"> <span class="comment">// match 匹配,获取匹配数组   默认匹配一项  匹配不到返回null</span></span><br><span class="line">  <span class="keyword">var</span> str = <span class="string">'656abcd ab545sd ashABj11h bbadd'</span>;</span><br><span class="line">  <span class="keyword">var</span> reg = <span class="regexp">/[a-z]&#123;3,5&#125;[0-9]+/ig</span>;</span><br><span class="line">  <span class="keyword">var</span> res = str.match(reg);</span><br><span class="line">  <span class="comment">// console.log(res);</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="comment">// search 查找,查找匹配数据  返回首次出现的下标，匹配不上就是-1</span></span><br><span class="line">  <span class="keyword">var</span> str = <span class="string">'56abcd ab545sd acdshABj11h bbadd'</span>;</span><br><span class="line">  <span class="keyword">var</span> reg = <span class="regexp">/[0-9]&#123;5&#125;[a-zA-Z]&#123;2&#125;/</span>;</span><br><span class="line">  <span class="keyword">var</span> res = str.search(reg);</span><br><span class="line">  <span class="built_in">console</span>.log(res);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="comment">// replace 替换,替换匹配到的数据  默认替换一个</span></span><br><span class="line">  <span class="keyword">var</span> str = <span class="string">'56abcd ab545sd acdshABj11h bbadd'</span>;</span><br><span class="line">  <span class="keyword">var</span> res = str.replace(<span class="regexp">/a[a-z]&#123;2&#125;[0-9]+/ig</span>, <span class="string">'**'</span>);</span><br><span class="line">  <span class="built_in">console</span>.log(res);</span><br><span class="line"> <span class="keyword">var</span> arr = [<span class="string">'sb'</span>, <span class="string">'nmb'</span>, <span class="string">'习大大'</span>, <span class="string">'nmsl'</span>, <span class="string">'mdzz'</span>];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> oBtn = <span class="built_in">document</span>.querySelector(<span class="string">'#btn'</span>);</span><br><span class="line">  <span class="keyword">var</span> oTxt = <span class="built_in">document</span>.querySelector(<span class="string">'#txt'</span>);</span><br><span class="line"></span><br><span class="line">  oBtn.onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> content = oTxt.value;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> str = arr.join(<span class="string">'|'</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> reg = <span class="keyword">new</span> <span class="built_in">RegExp</span>(str, <span class="string">'ig'</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// console.log(reg);</span></span><br><span class="line"></span><br><span class="line">    content = content.replace(reg, <span class="string">'**'</span>);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(content);</span><br><span class="line"> <span class="comment">// test 验证字符串是否符合规则，返回true||false</span></span><br><span class="line">  <span class="keyword">var</span> str = <span class="string">'sasasa'</span>;</span><br><span class="line">  <span class="keyword">var</span> reg = <span class="regexp">/^(sa)+$/</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> res = reg.test(str);</span><br><span class="line"></span><br><span class="line">  <span class="built_in">console</span>.log(res);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 用户名不能以数字开头  10-20位  只能包含数字字母_$</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> reg = <span class="regexp">/^[a-zA-Z_$][\w$]&#123;9,19&#125;$/</span>;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">console</span>.log(reg.test(<span class="string">'a5454_$@545454'</span>));</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="comment">// exec 查找字符串内是否包含符合规则的字符串，返回数组||null</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> str = <span class="string">'656abcd ab545sd ashABj11h bbadd'</span>;</span><br><span class="line">  <span class="keyword">var</span> reg = <span class="regexp">/[a-z]&#123;3,5&#125;[0-9]+/ig</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> res = reg.exec(str)</span><br><span class="line">  <span class="built_in">console</span>.log(res);</span><br><span class="line"><span class="comment">// \d 匹配一个数字字符，等价于[0-9]</span></span><br><span class="line">  <span class="comment">// \D 匹配一个非数字字符，等价于[^0-9]</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// \w 匹配一个可以组成单词(变量)的字符(包括字母，数字，下划线)</span></span><br><span class="line">  <span class="comment">// 如[\w]匹配"$5.98"中的5，等价于[a-zA-Z0-9_]</span></span><br><span class="line">  <span class="comment">// \W 匹配一个不可以组成单词的字符</span></span><br><span class="line">  <span class="comment">// 如[\W]匹配"$5.98"中的$，等价于[^a-zA-Z0-9_]</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="comment">// \s 匹配一个空白字符，等价于[\n\r\f\t\v]</span></span><br><span class="line">  <span class="comment">// \S 匹配一个非空白字符，等价于[^\n\f\r\t\v]</span></span><br><span class="line"><span class="comment">// 检查邮政编码 // 共6位数字，第一位不能为0</span></span><br><span class="line">  <span class="keyword">var</span> reg = <span class="regexp">/^[1-9][0-9]&#123;5&#125;$/</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> reg = <span class="regexp">/^[1-9]\d&#123;5&#125;$/</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 检查文件压缩包 // xxx.zip||xxx.gz||xxx.rar</span></span><br><span class="line">  <span class="keyword">var</span> reg = <span class="regexp">/^\w+\.(zip|gz|rar)$/</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> reg = <span class="regexp">/^\w+\.(zip|gz|rar)$/</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 电子邮件 xxxxx@xxxx.xxxx  xxx@xx.xx.xx</span></span><br><span class="line">  <span class="comment">// var reg = /^\w+@\w+(\.\w+)+$/;</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> reg = <span class="regexp">/^\w+@\w+\.\w+$/</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> reg = <span class="regexp">/^\w+@\w+(\.\w+)+$/</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 手机号(1开头任意数字)  1(3|5|7|8|4)\d&#123;9&#125;</span></span><br><span class="line">  <span class="comment">// var reg = /^1\d&#123;10&#125;$/</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="comment">// var reg = /^1(3|5|7|8|4)\d&#123;9&#125;$/</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 身份证 // 42 24 22 19660101 5810 // 421087 19890101 121X</span></span><br><span class="line">  <span class="keyword">var</span> reg = <span class="regexp">/^\d&#123;17&#125;(\d|X)$/</span></span><br><span class="line">  <span class="keyword">var</span> reg = <span class="regexp">/^[1-9]\d&#123;5&#125;[19|20]\d&#123;2&#125;\d&#123;7&#125;(\d|X)$/</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 匹配中文 [\u4e00-\u9fa5]</span></span><br><span class="line">  <span class="keyword">var</span> reg = <span class="regexp">/[\u4e00-\u9fa5]/</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 账户名只能使用数字字母下划线，且数字不能开头，长度在6-15之间</span></span><br><span class="line">  <span class="keyword">var</span> reg = <span class="regexp">/^[a-zA-Z_]\w&#123;5,14&#125;$/</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> str = <span class="string">'   abcd adbf  cd  '</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 删除多余空格</span></span><br><span class="line">  <span class="built_in">console</span>.log(str.replace(<span class="regexp">/\s+/g</span>, <span class="string">' '</span>));</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 删除所有的空格</span></span><br><span class="line">  <span class="built_in">console</span>.log(str.replace(<span class="regexp">/\s+/g</span>, <span class="string">''</span>));</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 删除前后的空格</span></span><br><span class="line">  <span class="built_in">console</span>.log(str.replace(<span class="regexp">/^\s+|\s+$/g</span>, <span class="string">''</span>));</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/12/25/webpack/" rel="next" title="webpack">
+                <i class="fa fa-chevron-left"></i> webpack
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/12/25/vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%87%BD%E6%95%B0/" rel="prev" title="vue生命周期函数">
+                vue生命周期函数 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://www.17qq.com/img_qqtouxiang/11308981.jpeg"
+                alt="CRK" />
+            
+              <p class="site-author-name" itemprop="name">CRK</p>
+              <p class="site-description motion-element" itemprop="description">一个前端学习路上的萌新</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">CRK</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

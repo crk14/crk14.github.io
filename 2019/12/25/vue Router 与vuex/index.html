@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1. 12.3总结   Vue Router 导航守卫    vue-router 提供的导航守卫主要用来通过跳转或取消的方式守卫导航。有多种机会植入路由导航过程中：全局的, 单个路由独享的, 或者组件级的。    记住参数或查询的改变并不会触发进入&#x2F;离开的导航守卫。你可以通过观察 $route 对象来应对这些变化，或使用 beforeRouteUpdate 的组件内守卫。    全局守卫">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue Router 与vuex">
+<meta property="og:url" content="&#x2F;2019&#x2F;12&#x2F;25&#x2F;vue%20Router%20%E4%B8%8Evuex&#x2F;index.html">
+<meta property="og:site_name" content="陈礽奎的个人博客">
+<meta property="og:description" content="1. 12.3总结   Vue Router 导航守卫    vue-router 提供的导航守卫主要用来通过跳转或取消的方式守卫导航。有多种机会植入路由导航过程中：全局的, 单个路由独享的, 或者组件级的。    记住参数或查询的改变并不会触发进入&#x2F;离开的导航守卫。你可以通过观察 $route 对象来应对这些变化，或使用 beforeRouteUpdate 的组件内守卫。    全局守卫">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-12-26T01:19:08.239Z">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="/2019/12/25/vue Router 与vuex/"/>
+
+
+
+
+
+  <title>vue Router 与vuex | 陈礽奎的个人博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">陈礽奎的个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="/2019/12/25/vue%20Router%20%E4%B8%8Evuex/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CRK">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://www.17qq.com/img_qqtouxiang/11308981.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陈礽奎的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">vue Router 与vuex</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-25T10:21:07+08:00">
+                2019-12-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="1-12-3总结"><a href="#1-12-3总结" class="headerlink" title="1. 12.3总结"></a>1. 12.3总结</h2><p>   Vue Router 导航守卫</p>
+<p>   vue-router 提供的导航守卫主要用来通过跳转或取消的方式守卫导航。有多种机会植入路由导航过程中：全局的, 单个路由独享的, 或者组件级的。</p>
+<p>   记住参数或查询的改变并不会触发进入/离开的导航守卫。你可以通过观察 $route 对象来应对这些变化，或使用 beforeRouteUpdate 的组件内守卫。</p>
+<p>   全局守卫<br> <a id="more"></a></p>
+<h2 id="1-全局前置守卫"><a href="#1-全局前置守卫" class="headerlink" title="1. 全局前置守卫"></a>1. 全局前置守卫</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">router.beforeEach(<span class="function">(<span class="params">to, <span class="keyword">from</span>, next</span>) =&gt;</span> &#123;</span><br><span class="line"></span><br><span class="line"> <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line"> to: Route: 即将要进入的目标 路由对象</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span>: Route: 当前导航正要离开的路由</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">next: <span class="built_in">Function</span>: 一定要调用该方法来 resolve 这个钩子。执行效果依赖 next 方法的调用参数。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">next(): 进行管道中的下一个钩子。如果全部钩子执行完了，则导航的状态就是 confirmed (确认的)。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">next(<span class="literal">false</span>): 中断当前的导航。如果浏览器的 URL 改变了 (可能是用户手动或者浏览器后退按钮)，那么 URL 地址会重置到 <span class="keyword">from</span> 路由对应的地址。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">next(<span class="string">'/'</span>) 或者 next(&#123; <span class="attr">path</span>: <span class="string">'/'</span> &#125;): 跳转到一个不同的地址。当前的导航被中断，然后进行一个新的导航。你可以向 next 传递任意位置对象，且允许设置诸如 replace: <span class="literal">true</span>、name: <span class="string">'home'</span> 之类的选项以及任何用在 router-link 的 to prop 或 router.push 中的选项。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">next(error): (<span class="number">2.4</span><span class="number">.0</span>+) 如果传入 next 的参数是一个 <span class="built_in">Error</span> 实例，则导航会被终止且该错误会被传递给 router.onError() 注册过的回调。</span><br><span class="line"></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="number">1.</span> <span class="string">`全局解析守卫 router.beforeResol  在导航被确认之前，同时在所有组件内守卫和异步路由组件被解析之后，解析守卫就被调用。`</span></span><br><span class="line"><span class="number">2.</span> <span class="string">`全局后置钩子  不会接受 next 函数也不会改变导航本身：`</span></span><br><span class="line"></span><br><span class="line">router.afterEach(<span class="function">(<span class="params">to, <span class="keyword">from</span></span>) =&gt;</span> &#123;</span><br><span class="line"></span><br><span class="line"> <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="路由独享的守卫"><a href="#路由独享的守卫" class="headerlink" title="路由独享的守卫"></a>路由独享的守卫</h2><p>   你可以在路由配置上直接定义 beforeEnter 守卫： 这些守卫与全局前置守卫的方法参数是一样的。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">routes: [</span><br><span class="line"></span><br><span class="line">  &#123;</span><br><span class="line"></span><br><span class="line">​     path: <span class="string">'/foo'</span>,</span><br><span class="line"></span><br><span class="line">​     component: Foo,</span><br><span class="line"></span><br><span class="line">​     beforeEnter: <span class="function">(<span class="params">to, <span class="keyword">from</span>, next</span>) =&gt;</span> &#123;</span><br><span class="line"></span><br><span class="line">​       <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">​    &#125;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<h2 id="组件内的守卫"><a href="#组件内的守卫" class="headerlink" title="组件内的守卫"></a>组件内的守卫</h2><p>   可以在路由组件内直接定义以下路由导航守卫：<br>   <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">beforeRouteEnter  <span class="comment">// 不能访问组件实例this</span></span><br><span class="line"></span><br><span class="line">beforeRouteUpdate (<span class="number">2.2</span> 新增) <span class="comment">// 可以访问this</span></span><br><span class="line"></span><br><span class="line">beforeRouteLeave</span><br><span class="line"></span><br><span class="line"><span class="comment">// 写在组件暴露出去的对象中</span></span><br><span class="line"></span><br><span class="line">**完整的导航解析流程**</span><br><span class="line"></span><br><span class="line"><span class="number">1.</span> <span class="string">`导航被触发。`</span></span><br><span class="line"><span class="number">2.</span> <span class="string">`在失活的组件里调用离开守卫。`</span></span><br><span class="line"><span class="number">3.</span> <span class="string">`调用全局的 beforeEach 守卫。`</span></span><br><span class="line"><span class="number">4.</span> <span class="string">`在重用的组件里调用 beforeRouteUpdate 守卫 (2.2+)。`</span></span><br><span class="line"><span class="number">5.</span> <span class="string">`在路由配置里调用 beforeEnter。`</span></span><br><span class="line"><span class="number">6.</span> <span class="string">`解析异步路由组件。`</span></span><br><span class="line"><span class="number">7.</span> <span class="string">`在被激活的组件里调用 beforeRouteEnter。`</span></span><br><span class="line"><span class="number">8.</span> <span class="string">`调用全局的 beforeResolve 守卫 (2.5+)。`</span></span><br><span class="line"><span class="number">9.</span> <span class="string">`导航被确认。`</span></span><br><span class="line"><span class="number">10.</span> <span class="string">`调用全局的 afterEach 钩子。`</span></span><br><span class="line"><span class="number">11.</span> <span class="string">`触发 DOM 更新。`</span></span><br><span class="line"><span class="number">12.</span> <span class="string">`用创建好的实例调用 beforeRouteEnter 守卫中传给 next 的回调函数。`</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="vuex"><a href="#vuex" class="headerlink" title="vuex"></a>vuex</h2><blockquote>
+<p>vue 官方提供的状态管理器</p>
+</blockquote>
+<h3 id="使用步骤"><a href="#使用步骤" class="headerlink" title="使用步骤"></a>使用步骤</h3><ol>
+<li><p><code>下载</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save vuex</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>在 src 下创建一个 store/index.js 文件，这个文件就是 仓库的配置文件</code></p>
+</li>
+<li><p><code>需要在 main.js 中引入第2步中暴露出来的仓库的实例对象。并配置在 new Vue() 的地方，通过 store 选项配置。</code></p>
+<h2 id="store-index-js-文件书写示范"><a href="#store-index-js-文件书写示范" class="headerlink" title="store/index.js 文件书写示范"></a>store/index.js 文件书写示范</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. 引入 Vue</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. 引入 Vuex</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> Vuex <span class="keyword">from</span> <span class="string">'vuex'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 3. 调用 Vuex</span></span><br><span class="line"></span><br><span class="line">Vue.use(Vuex)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 4. 实例化 Vuex 的仓库的实例对象</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> store = <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line"></span><br><span class="line"> <span class="comment">// state - 存放的就是仓库的数据</span></span><br><span class="line"></span><br><span class="line"> <span class="comment">//       1. 可以将项目的所有数据都放在仓库的state中，</span></span><br><span class="line"></span><br><span class="line"> <span class="comment">//       2. 没必要这样做，一般存放在仓库的 state 中是需要共享的数据</span></span><br><span class="line"></span><br><span class="line">&#125;,</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="comment">// getters - store 的计算属性，可以对 state 中的数据或者其余 getter 数据做二次计算，并返回一份新数据</span></span><br><span class="line"></span><br><span class="line"> <span class="comment">//       1. 它能修改么？（不能）</span></span><br><span class="line"></span><br><span class="line"> <span class="comment">//       2. 它是根据依赖项的变化自动变化的。</span></span><br><span class="line"></span><br><span class="line"> <span class="comment">//       3. 每个 getter 都会自动接受到 state 参数，这个参数就是当前仓库实例对象的 state 数据</span></span><br><span class="line"></span><br><span class="line"> <span class="comment">//       4. 必须要有返回值</span></span><br><span class="line"></span><br><span class="line"> getters: &#123;&#125;,</span><br><span class="line"></span><br><span class="line"> <span class="comment">// mutations - 里面存放的是 mutation, mutation 是唯一能够修改仓库state的数据的地方</span></span><br><span class="line"></span><br><span class="line"> <span class="comment">//       1. 只能同步修改</span></span><br><span class="line"></span><br><span class="line"> <span class="comment">//       2. 自动接受到第一个参数，就是 state</span></span><br><span class="line"></span><br><span class="line"> <span class="comment">//       3. 第二个参数，就是调用时传递过来的 payload</span></span><br><span class="line"></span><br><span class="line"> mutations: &#123;&#125;,</span><br><span class="line"></span><br><span class="line"> <span class="comment">// actions - 里面存放的是 action, action 是可以异步去修改 state 数据的地方，但是它并不能直接修改 state 数据，而是在里面调用了 某个 mutation.</span></span><br><span class="line"></span><br><span class="line"> actions: &#123;&#125;</span><br><span class="line"></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 5. 暴露store</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> store</span><br><span class="line"></span><br><span class="line">$store</span><br><span class="line"></span><br><span class="line">使用了 vuex 之后，自动绑定到vue实例上的数据，这个数据就是当前vuex仓库的实例对象</span><br><span class="line"></span><br><span class="line"><span class="number">1.</span> 如何将仓库中的state数据拿到组件中使用**</span><br><span class="line"></span><br><span class="line"><span class="number">1.</span> <span class="string">`this.$store.state.xxxx 的方式 （不推荐）`</span></span><br><span class="line"><span class="number">2.</span> <span class="string">`通过computed去取出仓库中的数据 (推荐) ？为什么使用仓库中state的数据需要在computed中取出？ ！state数据不允许直接修改，用在computed上更好，如果修改，会报错！`</span></span><br><span class="line"><span class="number">3.</span> <span class="string">`使用 mapState() 这个辅助函数的方式 (更推荐)`</span></span><br><span class="line"></span><br><span class="line"><span class="number">2.</span> 如何将仓库中的getter数据拿到组件使用**</span><br><span class="line"></span><br><span class="line"><span class="number">1.</span> <span class="string">`this.$store.getters.xxx 的方式 (不推荐)`</span></span><br><span class="line"><span class="number">2.</span> <span class="string">`通过computed去取出仓库中getter的数据（推荐）`</span></span><br><span class="line"><span class="number">3.</span> <span class="string">`使用 mapGetters() 辅助函数 (更推荐)`</span></span><br><span class="line"></span><br><span class="line"><span class="number">3.</span> 如何修改仓库中的 state 数据呢**</span><br><span class="line"></span><br><span class="line"><span class="number">1.</span> <span class="string">`this.$store.commit('mutation的名字', payload)`</span></span><br><span class="line"><span class="number">2.</span> <span class="string">`通过 mapMutations() 辅助函数 (更推荐)`</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/12/25/vue-cli/" rel="next" title="vue-cli">
+                <i class="fa fa-chevron-left"></i> vue-cli
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://www.17qq.com/img_qqtouxiang/11308981.jpeg"
+                alt="CRK" />
+            
+              <p class="site-author-name" itemprop="name">CRK</p>
+              <p class="site-description motion-element" itemprop="description">一个前端学习路上的萌新</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-12-3总结"><span class="nav-number">1.</span> <span class="nav-text">1. 12.3总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-全局前置守卫"><span class="nav-number">2.</span> <span class="nav-text">1. 全局前置守卫</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#路由独享的守卫"><span class="nav-number">3.</span> <span class="nav-text">路由独享的守卫</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#组件内的守卫"><span class="nav-number">4.</span> <span class="nav-text">组件内的守卫</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vuex"><span class="nav-number">5.</span> <span class="nav-text">vuex</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用步骤"><span class="nav-number">5.1.</span> <span class="nav-text">使用步骤</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#store-index-js-文件书写示范"><span class="nav-number">6.</span> <span class="nav-text">store/index.js 文件书写示范</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">CRK</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
